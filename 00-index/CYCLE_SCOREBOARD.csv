@@ -1,3 +1,4 @@
 cycle_id,theme,a_sources,a_hard_evidence,b_challenged,b_failed_claims,c_promoted_p0,c_rejected,quality_score_100,notes
 C1,mcp_gateway,60,50,18,2,6,2,84,A done; B challenge backfill added; C decisions now challenge-informed | B done
-C2,mcp_gateway,0,0,18,0,0,0,73,B-window review completed; all claims classified partial with boundary conditions
+C2,mcp_gateway,67,57,18,0,0,0,73,B-window review completed; all claims classified partial with boundary conditions | A done
+C3,eval_security_failure_modes,0,0,18,1,0,0,76,B-window review completed; scoring-model gap identified and one claim failed

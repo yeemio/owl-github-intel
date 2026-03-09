@@ -47,3 +47,10 @@
   - updated `40-insights/risks/upgrade-risk-matrix.csv` with MCP/gateway/retrieval upgrade risks
   - updated `00-index/CYCLE_SCOREBOARD.csv` with C1 provisional score and outcomes
   - published `50-publish/weekly_digest_2026-03-09_C1.md`
+
+- Window C cycle C1 finalized with B-challenge inputs:
+  - consumed `10-raw/scans/scan_2026-03-09_A_C1.md` and `30-analysis/cross/challenge_matrix_2026-03-09_C1.csv`
+  - updated `20-normalized/repo_master_latest.csv` with challenge-informed verdict/source/risk/rollback fields
+  - rewrote `40-insights/adoption_backlog_latest.md` to remove provisional/duplicate notes and record failed claim IDs
+  - appended C1-specific entries to `40-insights/risks/upgrade-risk-matrix.csv`
+  - published final (non-provisional) `50-publish/weekly_digest_2026-03-09_C1.md`

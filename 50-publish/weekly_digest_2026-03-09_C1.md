@@ -5,53 +5,58 @@
 - Window: C (Decision Desk)
 - Theme: MCP + Gateway reliability
 - Input quality:
-  - A evidence status: available in scoreboard summary
-  - B challenge status: missing handoff for this cycle
-- Decision confidence: provisional (pending B red-team verdicts)
+  - A evidence package: available
+  - B challenge package: available
+- Decision confidence: final (challenge-informed)
 
-## Promoted (P0)
+## A/B/C Outcome Snapshot
+
+- A metrics: sources=60, hard_evidence=50, new_claims=12
+- B metrics: challenged=18, fails=2
+- C adjudication rule applied:
+  - survives -> candidate conclusion
+  - partial -> conditional conclusion with boundary
+  - fails -> reject or downgrade
+
+## Promoted (P0 Final)
 
 1. `modelcontextprotocol/servers`
 2. `modelcontextprotocol/typescript-sdk`
 3. `BerriAI/litellm`
-4. `qdrant/qdrant`
-5. `langfuse/langfuse`
-6. `langchain-ai/langgraph`
+4. `langfuse/langfuse`
+5. `langchain-ai/langgraph`
+6. `qdrant/qdrant`
 
-Rationale:
-- Each promoted P0 has explicit risk and rollback signals in `20-normalized/repo_master_latest.csv`.
-- Upgrade and migration risks were added or validated in `40-insights/risks/upgrade-risk-matrix.csv`.
+Why final:
+- each P0 has >=2 independent sources in `20-normalized/repo_master_latest.csv`
+- each P0 contains explicit risk + rollback signal
+- B-window counterexamples were resolved into boundary conditions
 
-## Conditional (P1/P2)
+## Downgraded or Reframed by B Challenges
 
-- `langchain-ai/langchain`, `microsoft/autogen`, `crewaiinc/crewai`
-- `run-llama/llama_index`, `weaviate/weaviate`, `chroma-core/chroma`, `milvus-io/milvus`
-- `openai/evals`, `huggingface/lighteval`, `truera/trulens`
-- `guardrails-ai/guardrails`, `temporalio/sdk-python`, `microsoft/durabletask-python`, `dapr/dapr-agents`
+- `C-A04` (release frequency -> regression risk) downgraded to conditional claim:
+  - only holds when regression gate and canary discipline are weak
+- `C-A12` (closed-loop necessity) reframed as stage-dependent:
+  - early low-complexity systems may operate without full loop, but scale stage requires closed loop
 
-Condition:
-- Keep in backlog but require B-window counterexample challenge before any promotion to P0 in the next cycle.
-
-## Rejected Claims
+## Rejected / Watch-only
 
 - `huggingface/text-generation-inference`
-  - Verdict: fails
-  - Reason: maintenance mode trend and reduced momentum for active adoption priority.
 - `protectai/rebuff`
-  - Verdict: fails
-  - Reason: archived status; reference-only value.
 
-## Risk and Rollback Signals
+## Risk + Rollback Signals (C1)
 
-- MCP risk: protocol/schema mismatch across sdk/server versions.
-  - Rollback: pin and roll back sdk+server as a compatibility pair.
-- Gateway risk: provider api/proxy drift causing fallback breakage.
-  - Rollback: revert gateway image and routing policy bundle.
-- Retrieval risk: index/search behavior changes impacting recall/latency.
-  - Rollback: restore prior snapshot and previous minor release.
+- MCP compatibility risk:
+  - rollback sdk-server pair together
+- Gateway auth/proxy risk:
+  - rollback gateway image + routing bundle
+- Agent handoff state risk:
+  - rollback SDK minor + disable nested path
 
-## Next-Cycle Requirements
+## Files Updated in C1
 
-- Require `20-normalized/handoff_B_to_C_<date>_<cycle>.md` before final promotion lock.
-- Re-score P0 list after B verdicts; downgrade if any claim fails adversarial challenge.
-- Publish updated digest with final (non-provisional) verdicts.
+- `20-normalized/repo_master_latest.csv`
+- `40-insights/adoption_backlog_latest.md`
+- `40-insights/risks/upgrade-risk-matrix.csv`
+- `50-publish/weekly_digest_2026-03-09_C1.md`
+- `00-index/CHANGELOG.md`
