@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>推理网关 - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">门户</a>
+        <a class="btn" href="../en/topic-gateway.html">English</a>
+      </div>
+      <h1>推理网关</h1>
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>网关是成本控制、稳定性治理和策略执行的实际控制点。</p>
+      </div>
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>路由策略质量直接影响成本和错误率。</li>
+          <li>fallback 链路必须配套熔断和边界条件。</li>
+          <li>统一请求格式可以降低多供应商切换成本。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/BerriAI/litellm">BerriAI/litellm</a></li>
+          <li><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
+          <li><a href="https://github.com/huggingface/text-generation-inference">huggingface/text-generation-inference</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>fallback 配置不当可能“更贵但不更稳”。</li>
+          <li>路由规则分散会导致策略不可控。</li>
+          <li>指标覆盖不足会延迟回归发现。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>定义统一路由策略 schema。</li>
+          <li>按路由设置预算上限与 fallback 限额。</li>
+          <li>每周跟踪 route 级 SLO 和失败特征。</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主题 Gateway - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">门户</a>
+        <a class="btn" href="../en/topic-gateway.html">English</a>
+      </div>
+      <h1>推理网关与可靠性</h1>
+
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>
+          网关决定多供应商可迁移性、成本治理和故障隔离能力。网关层薄弱时，模型故障会直接变成业务故障。
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>规模化场景下，仅网关单层治理不够，需要分层弹性。</li>
+          <li>预算治理应拆分为“实时执行层 + 权威账本层”。</li>
+          <li>默认方案必须按团队规模分档，避免过度工程化。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/BerriAI/litellm">BerriAI/litellm</a></li>
+          <li><a href="https://github.com/istio/istio">istio/istio</a></li>
+          <li><a href="https://github.com/openmeterio/openmeter">openmeterio/openmeter</a></li>
+          <li><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>低规模阶段引入重栈会拖慢交付节奏。</li>
+          <li>关键依赖许可证不明确会阻断生产上线。</li>
+          <li>重试与回退策略调参不当会放大故障。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>定义 minimal/scale 两套网关画像与触发阈值。</li>
+          <li>每月执行 provider 与预算异常演练。</li>
+          <li>NOASSERTION 依赖必须先过法务门禁再晋级。</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

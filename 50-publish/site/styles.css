@@ -60,6 +60,59 @@ p {
   font-size: 14px;
 }
 
+.search-controls {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.control {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.select-control {
+  width: 100%;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.status-banner {
+  margin-top: 12px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+.status-banner[data-type="loading"] {
+  border-color: #1d4ed8;
+  color: #bfdbfe;
+}
+
+.status-banner[data-type="empty"] {
+  border-color: #b45309;
+  color: #fde68a;
+}
+
+.status-banner[data-type="error"] {
+  border-color: #991b1b;
+  color: #fecaca;
+}
+
+.status-banner[data-type="ready"] {
+  border-color: #14532d;
+  color: #bbf7d0;
+}
+
 .card {
   background: #1e293b;
   border: 1px solid #334155;
@@ -92,6 +145,13 @@ p {
   display: block;
   color: #94a3b8;
   margin-top: 4px;
+}
+
+mark {
+  background: #fef08a;
+  color: #1f2937;
+  border-radius: 2px;
+  padding: 0 2px;
 }
 
 .grid {

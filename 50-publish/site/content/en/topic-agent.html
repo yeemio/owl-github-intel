@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Agent - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">Portal</a>
+        <a class="btn" href="../zh/topic-agent.html">中文</a>
+      </div>
+      <h1>Agent Orchestration</h1>
+
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>
+          Agent systems fail in production when orchestration cannot recover, replay, or
+          constrain tool behavior. For OwlClaw, orchestration quality directly controls
+          reliability, cost, and auditability.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>Stateful orchestration is more durable than pure prompt chains.</li>
+          <li>Multi-agent capability is not enough without replay and guardrails.</li>
+          <li>MCP boundary plus observability should be treated as baseline, not extras.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a></li>
+          <li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></li>
+          <li><a href="https://github.com/microsoft/autogen">microsoft/autogen</a></li>
+          <li><a href="https://github.com/crewAIInc/crewAI">crewAIInc/crewAI</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>Framework lock-in if business logic is deeply embedded in one runtime.</li>
+          <li>Hidden cost blow-up from uncontrolled handoff loops.</li>
+          <li>Weak incident replayability without strict trace contracts.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Run same-task dual benchmark with clear stop/go criteria.</li>
+          <li>Enforce MCP adapter as the only tool boundary for new integrations.</li>
+          <li>Gate promotions using business outcomes plus runtime reliability metrics.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

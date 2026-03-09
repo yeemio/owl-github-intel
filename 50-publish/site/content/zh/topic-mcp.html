@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCP 生态 - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">门户</a>
+        <a class="btn" href="../en/topic-mcp.html">English</a>
+      </div>
+      <h1>MCP 生态</h1>
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>MCP 正在从接入协议演化为生态分发层，既影响开发效率也影响治理能力。</p>
+      </div>
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>社区服务器的协议一致性差异较大。</li>
+          <li>Schema 完整度和版本兼容是高频断点。</li>
+          <li>工具可连通不等于可生产，运行门禁同样关键。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/typescript-sdk">modelcontextprotocol/typescript-sdk</a></li>
+          <li><a href="https://github.com/wong2/awesome-mcp-servers">wong2/awesome-mcp-servers</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>Schema 不一致会造成隐蔽行为退化。</li>
+          <li>协议快速演进易形成兼容性债务。</li>
+          <li>不同服务器安全与运维成熟度差异显著。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>建立 MCP 接入质量门槛并强制执行。</li>
+          <li>维护版本兼容矩阵并纳入日常检查。</li>
+          <li>为 schema 异常设计降级与回退策略。</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主题 MCP - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">门户</a>
+        <a class="btn" href="../en/topic-mcp.html">English</a>
+      </div>
+      <h1>MCP 协议与工具互操作</h1>
+
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>
+          MCP 是 Agent 与工具实现解耦的关键边界。没有协议层，框架切换时会产生高额重写成本。
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>成熟度应看一致性和版本治理，不只看热度。</li>
+          <li>发现机制要“目录检查 + 运行时能力检查”双轨。</li>
+          <li>Server 安全姿态差异大，必须做白名单和 owner 绑定。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/modelcontextprotocol/modelcontextprotocol">modelcontextprotocol/modelcontextprotocol</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/servers">modelcontextprotocol/servers</a></li>
+          <li><a href="https://github.com/modelcontextprotocol/python-sdk">modelcontextprotocol/python-sdk</a></li>
+          <li><a href="https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md">MCP tools specification</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>协议兼容不代表生产安全可控。</li>
+          <li>目录元数据与真实运行能力可能不一致。</li>
+          <li>过严门禁会拖慢紧急接入，需例外通道。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>落地 transport + protocol 兼容性 CI 矩阵。</li>
+          <li>建立按风险分级的 server 准入流程。</li>
+          <li>进入 P0 前必须先完成挑战判定与冲突归档。</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

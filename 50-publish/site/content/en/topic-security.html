@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Security - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">Portal</a>
+        <a class="btn" href="../zh/topic-security.html">中文</a>
+      </div>
+      <h1>Security and Governance</h1>
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>Agent systems amplify risk through tool invocation, context injection, and weak policy boundaries.</p>
+      </div>
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>Input/output checks are necessary but not sufficient.</li>
+          <li>Tool permission boundaries and audit traces are the real control layer.</li>
+          <li>Security controls must be tested under realistic multi-step workflows.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/guardrails-ai/guardrails">guardrails-ai/guardrails</a></li>
+          <li><a href="https://github.com/protectai/rebuff">protectai/rebuff</a></li>
+          <li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>False sense of safety from output-only guardrails.</li>
+          <li>Privilege escalation when tool scopes are not explicit.</li>
+          <li>Missing evidence trails for incident response and governance.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Define mandatory tool scope policy and enforcement checks.</li>
+          <li>Attach security controls to release gates, not post-release audits.</li>
+          <li>Track security regression scenarios in weekly challenge cycles.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Security - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">Portal</a>
+        <a class="btn" href="../zh/topic-security.html">中文</a>
+      </div>
+      <h1>Security and Governance</h1>
+
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>
+          Agent platforms expand attack surface across prompt ingress, tool invocation, and
+          generated artifacts. Security must be enforced as runtime control, not documentation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>Policy engine, auth graph, and sandbox should be designed as one control stack.</li>
+          <li>Binary pass/fail KPIs are insufficient without adversarial coverage metrics.</li>
+          <li>Supply-chain trust needs SBOM, signature, and provenance gates together.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/open-policy-agent/opa">open-policy-agent/opa</a></li>
+          <li><a href="https://github.com/openfga/openfga">openfga/openfga</a></li>
+          <li><a href="https://github.com/e2b-dev/E2B">e2b-dev/E2B</a></li>
+          <li><a href="https://github.com/sigstore/cosign">sigstore/cosign</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>Zero-incident metrics can hide detection blind spots.</li>
+          <li>Archived/no-license corpora can introduce legal uncertainty.</li>
+          <li>Exception paths can silently bypass policy without expiry controls.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Add breakout-test cadence and adversarial coverage index.</li>
+          <li>Enforce time-bound exception policy with signed approvals.</li>
+          <li>Publish legal handling rules for benchmark and corpus ingestion.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

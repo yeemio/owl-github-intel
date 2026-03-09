@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Gateway - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">Portal</a>
+        <a class="btn" href="../zh/topic-gateway.html">中文</a>
+      </div>
+      <h1>Inference Gateway</h1>
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>The gateway is the practical control point for cost, reliability, and policy enforcement.</p>
+      </div>
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>Routing policy quality directly affects production cost and error rate.</li>
+          <li>Fallback chains need explicit circuit breaker behavior.</li>
+          <li>Unified request format reduces provider switching friction.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/BerriAI/litellm">BerriAI/litellm</a></li>
+          <li><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
+          <li><a href="https://github.com/huggingface/text-generation-inference">huggingface/text-generation-inference</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>Misconfigured fallback can increase cost without improving reliability.</li>
+          <li>Policy sprawl if routing rules are not centralized.</li>
+          <li>Metrics gaps make regression detection too slow.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Define one canonical routing policy schema.</li>
+          <li>Add per-route budget guardrails and fallback limits.</li>
+          <li>Track route-level SLO and failure signatures weekly.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topic Gateway - Owl AI Dev Intel</title>
+    <link rel="stylesheet" href="../styles-content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="top">
+        <a class="btn" href="../../index.html">Portal</a>
+        <a class="btn" href="../zh/topic-gateway.html">中文</a>
+      </div>
+      <h1>Inference Gateway and Reliability</h1>
+
+      <div class="card">
+        <h2>Why it matters</h2>
+        <p>
+          Gateway design decides provider portability, cost control, and failure containment.
+          A weak gateway turns model outages into business outages.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul>
+          <li>Gateway-only governance is not enough at scale; layered resilience is needed.</li>
+          <li>Budget control should separate real-time enforcement and authoritative ledger.</li>
+          <li>Defaults must be profile-based; small teams need a lighter path.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Evidence sources</h2>
+        <ul>
+          <li><a href="https://github.com/BerriAI/litellm">BerriAI/litellm</a></li>
+          <li><a href="https://github.com/istio/istio">istio/istio</a></li>
+          <li><a href="https://github.com/openmeterio/openmeter">openmeterio/openmeter</a></li>
+          <li><a href="https://github.com/vllm-project/vllm">vllm-project/vllm</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Risks</h2>
+        <ul>
+          <li>Over-engineering can delay delivery for low-scale products.</li>
+          <li>License uncertainty in critical components can block production.</li>
+          <li>Retry/fallback policies can amplify failure when poorly tuned.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Next actions</h2>
+        <ul>
+          <li>Define minimal and scale gateway profiles with trigger thresholds.</li>
+          <li>Run monthly fault injection drills for provider and budget incidents.</li>
+          <li>Enforce legal gate for NOASSERTION dependencies before promotion.</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

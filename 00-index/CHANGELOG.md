@@ -45,6 +45,8 @@
   - `50-publish/site/content/en/*.html`
   - `50-publish/site/content/zh/*.html`
   - shared style: `50-publish/site/content/styles-content.css`
+- Completed bilingual topic page set and linked topic hubs to language-matched pages:
+  - `topic-agent`, `topic-mcp`, `topic-rag`, `topic-gateway`, `topic-eval`, `topic-security`
 - Window C cycle C1 decision pass completed:
   - updated `20-normalized/repo_master_latest.csv` with decision verdicts and explicit risk/rollback signals
   - updated `40-insights/adoption_backlog_latest.md` with C1 adjudication notes and rejected claims
