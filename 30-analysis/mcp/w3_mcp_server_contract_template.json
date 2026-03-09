@@ -1,0 +1,123 @@
+{
+  "contractVersion": "1.0.0",
+  "serverId": "io.yourorg.example-server",
+  "displayName": "Example MCP Server",
+  "ownerTeam": "agent-platform",
+  "repository": "https://github.com/yourorg/example-mcp-server",
+  "protocol": {
+    "supportedVersions": [
+      "2025-11-25",
+      "2025-03-26"
+    ],
+    "defaultVersion": "2025-11-25"
+  },
+  "transports": {
+    "stdio": {
+      "enabled": true,
+      "launch": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@yourorg/example-mcp-server"
+        ]
+      }
+    },
+    "streamableHttp": {
+      "enabled": true,
+      "endpoint": "https://mcp.yourorg.com/example/mcp",
+      "requiresProtocolHeader": true,
+      "originValidation": true,
+      "sessionManagement": true
+    }
+  },
+  "capabilities": {
+    "tools": {
+      "enabled": true,
+      "listChanged": true
+    },
+    "resources": {
+      "enabled": false
+    },
+    "prompts": {
+      "enabled": false
+    }
+  },
+  "tools": [
+    {
+      "name": "yourorg.example.search",
+      "title": "Search",
+      "description": "Searches internal indexed content",
+      "inputSchemaRef": "schemas/tools/search.input.schema.json",
+      "outputSchemaRef": "schemas/tools/search.output.schema.json",
+      "requiresHumanConfirmation": false,
+      "riskLevel": "medium"
+    },
+    {
+      "name": "yourorg.example.write",
+      "title": "Write",
+      "description": "Writes approved content into target system",
+      "inputSchemaRef": "schemas/tools/write.input.schema.json",
+      "outputSchemaRef": "schemas/tools/write.output.schema.json",
+      "requiresHumanConfirmation": true,
+      "riskLevel": "high"
+    }
+  ],
+  "security": {
+    "authMode": "oauth2_or_api_key",
+    "leastPrivilege": {
+      "enabled": true,
+      "pathAllowlist": [],
+      "networkAllowlist": []
+    },
+    "rateLimit": {
+      "requestsPerMinute": 120,
+      "burst": 20
+    },
+    "auditLogging": {
+      "enabled": true,
+      "requiredFields": [
+        "requestId",
+        "timestamp",
+        "actor",
+        "toolName",
+        "argumentsHash",
+        "resultStatus",
+        "latencyMs"
+      ]
+    }
+  },
+  "compatibility": {
+    "knownIssues": [],
+    "extensionSupport": {
+      "io.modelcontextprotocol/ui": false,
+      "io.modelcontextprotocol/oauth-client-credentials": false,
+      "io.modelcontextprotocol/enterprise-managed-authorization": false
+    }
+  },
+  "operations": {
+    "healthcheck": {
+      "enabled": true,
+      "path": "/healthz",
+      "sloAvailability": "99.9%"
+    },
+    "rollback": {
+      "strategy": "blue_green",
+      "maxRollbackTimeMinutes": 15
+    }
+  },
+  "ciGates": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G06",
+    "G08",
+    "G10"
+  ],
+  "references": [
+    "https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md",
+    "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports.md",
+    "https://modelcontextprotocol.io/specification/versioning.md",
+    "https://modelcontextprotocol.io/community/sdk-tiers.md"
+  ]
+}

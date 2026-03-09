@@ -1,0 +1,15 @@
+task_id,workstream,task_name,owner_role,eta_days,dependency,deliverable,acceptance_check,priority,risk_if_delayed
+P0-01,Observability,Define trace schema and release_unit contract,platform_engineer,2,none,schema_v1 and field dictionary,"100% new events include trace_id/prompt_version/model_id/toolset_version",P0,No cross-system join for incidents
+P0-02,Observability,Instrument gateway and agent runtime with trace_id,sre_engineer,3,P0-01,otel spans in gateway+runtime,">=99% production requests have trace_id",P0,Blind spots in production debugging
+P0-03,Prompt Lifecycle,Enforce prompt_version tagging in deployment pipeline,ml_engineer,2,P0-01,ci rule and deployment check,"deploy fails when prompt_version missing",P0,Untraceable prompt regressions
+P0-04,Dataset,Create golden_core v1 (120+ samples) with owner signoff,app_owner,5,none,dataset snapshot and labels,"golden_core sample_count >= 120 and owner approval logged",P0,PR gate not meaningful
+P0-05,Dataset,Create adversarial_set v1 (80+ samples),security_engineer,4,none,attack dataset with categories,"injection/jailbreak/privilege-escalation coverage >= 1 each",P0,Safety regressions ship to prod
+P0-06,Evaluation,Implement PR eval job (quality+safety+cost),ml_engineer,3,P0-04|P0-05,ci workflow and eval report artifact,"PR blocked when task_success_rate<0.90 or injection_pass<0.95",P0,No release quality gate
+P0-07,Observability,Create production KPI dashboards (latency/error/cost),sre_engineer,3,P0-02,dashboard urls and alert policy,"p95/error_rate/cost_per_success visible in 5m windows",P0,No real-time risk detection
+P0-08,Release,Implement release state machine and canary policy,platform_engineer,4,P0-06|P0-07,release controller config,"promotion follows draft->pr_eval->staging_shadow->canary->full_rollout",P0,Manual release drift and inconsistent decisions
+P0-09,Release,Add auto rollback triggers and last-stable pointer,sre_engineer,3,P0-08,rollback automation job,"rollback executes within 10 minutes when error_rate>3%",P0,Extended blast radius during incident
+P0-10,Feedback Loop,Build sev1/sev2 incident backfill to shadow_prod,platform_engineer,3,P0-02|P0-04,incident ingestion job,">=95% sev1/2 incidents backfilled in <=24h",P0,No closed-loop learning
+P0-11,Governance,Publish KPI catalog and weekly quality review cadence,program_manager,2,P0-06|P0-07,kpi doc and meeting cadence,"weekly report includes quality/cost/safety trend and owner actions",P1,Metrics drift and unclear ownership
+P0-12,Security,Integrate guardrails runtime checks on critical flows,security_engineer,3,P0-05,policy config and block actions,"policy_violation_rate monitored and block action tested",P0,Unsafe output reaches users
+P0-13,Cost Control,Enable model routing fallback policy (safe and cheap lanes),finops_engineer,3,P0-07|P0-08,router policy config,"cost_per_success alert triggers route adjustment in <=15m",P1,Cost spikes with no automatic response
+P0-14,QA,Run game day for regression and rollback drills,sre_engineer,2,P0-09,drill report and remediation list,"2 drill scenarios passed: high error and safety redline",P0,Rollback path fails in real incidents

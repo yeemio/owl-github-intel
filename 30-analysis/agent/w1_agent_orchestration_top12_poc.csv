@@ -1,0 +1,13 @@
+rank,repo,role_in_stack,priority,license_risk,poc_goal_2w,core_kpi,source_url
+1,langchain-ai/langgraph,Primary orchestrator candidate,P0,Low,Validate durable state-machine orchestration for long tasks,Task success rate and recovery success rate,https://api.github.com/repos/langchain-ai/langgraph
+2,microsoft/autogen,Primary multi-agent candidate,P0,Medium,Validate multi-agent delegation quality and coordination cost,Multi-agent completion rate and token per task,https://api.github.com/repos/microsoft/autogen
+3,crewAIInc/crewAI,Primary role-based candidate,P0,Low,Validate role/task pipeline maintainability,Workflow latency and failed handoff ratio,https://api.github.com/repos/crewAIInc/crewAI
+4,deepset-ai/haystack,Pipeline/RAG orchestration candidate,P0,Low,Validate retrieval+routing reliability in production style pipelines,Grounded answer rate and timeout ratio,https://api.github.com/repos/deepset-ai/haystack
+5,openai/openai-agents-python,Lightweight baseline,P0,Low,Build minimal baseline agent runtime for benchmark control,Baseline task pass rate and implementation complexity score,https://api.github.com/repos/openai/openai-agents-python
+6,langfuse/langfuse,Observability control plane,P0,High,Unify traces/evals across all candidate frameworks,Trace coverage and regression detection lead time,https://api.github.com/repos/langfuse/langfuse
+7,AgentOps-AI/agentops,Observability alternate,P1,Low,Compare cost analytics and framework integration friction,Instrumentation time and cost attribution completeness,https://api.github.com/repos/AgentOps-AI/agentops
+8,modelcontextprotocol/python-sdk,Protocol boundary,P1,Low,Standardize tool interface boundary for framework swap,Tool portability pass rate,https://api.github.com/repos/modelcontextprotocol/python-sdk
+9,tadata-org/fastapi_mcp,Service-to-tool bridge,P1,Low,Expose internal APIs as tool contracts with auth,Reliable tool invocation rate and auth policy coverage,https://api.github.com/repos/tadata-org/fastapi_mcp
+10,mem0ai/mem0,Memory subsystem,P1,Low,Evaluate externalized long-term memory for agent sessions,Memory hit quality and stale-memory error rate,https://api.github.com/repos/mem0ai/mem0
+11,browser-use/browser-use,Execution actuator,P1,Low,Validate browser task execution as downstream actuator,UI task completion rate and retry burden,https://api.github.com/repos/browser-use/browser-use
+12,microsoft/agent-framework,Enterprise candidate,P2,Low,Assess Python/.NET cross-stack orchestration fit,Cross-language parity and deployment overhead,https://api.github.com/repos/microsoft/agent-framework

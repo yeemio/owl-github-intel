@@ -1,0 +1,32 @@
+layer,relevance,repo,repo_url,why_it_matters,adoption_hint
+agent_orchestration,strong,langchain-ai/langchain,https://github.com/langchain-ai/langchain,largest general LLM app ecosystem,reference integration patterns not core lock-in
+agent_orchestration,strong,langchain-ai/langgraph,https://github.com/langchain-ai/langgraph,durable graph orchestration for stateful agents,borrow checkpoint and resumability ideas
+agent_orchestration,strong,microsoft/autogen,https://github.com/microsoft/autogen,mature multi-agent collaboration model,study agent-to-agent protocol patterns
+agent_orchestration,strong,crewaiinc/crewai,https://github.com/crewaiinc/crewai,high-adoption collaborative agent framework,benchmark crew-style task decomposition
+agent_orchestration,medium,deepset-ai/haystack,https://github.com/deepset-ai/haystack,production-oriented LLM pipeline framework,learn componentized pipeline design
+mcp_protocol,strong,modelcontextprotocol/servers,https://github.com/modelcontextprotocol/servers,official MCP reference implementations,use as protocol conformance baseline
+mcp_protocol,strong,modelcontextprotocol/typescript-sdk,https://github.com/modelcontextprotocol/typescript-sdk,official SDK for MCP servers/clients,track protocol evolution and compatibility
+mcp_protocol,strong,modelcontextprotocol/create-typescript-server,https://github.com/modelcontextprotocol/create-typescript-server,official server scaffold,compare with internal template generation
+mcp_protocol,strong,wong2/awesome-mcp-servers,https://github.com/wong2/awesome-mcp-servers,largest curated MCP directory,use as ecosystem radar feed
+mcp_protocol,medium,docker/mcp-servers,https://github.com/docker/mcp-servers,container-centric MCP server collection,study packaging and deployment patterns
+rag_data,strong,run-llama/llama_index,https://github.com/run-llama/llama_index,data framework for RAG and agents,extract indexing/retrieval architecture ideas
+rag_data,strong,milvus-io/milvus,https://github.com/milvus-io/milvus,cloud-native vector database,benchmark for high-scale retrieval workloads
+rag_data,strong,qdrant/qdrant,https://github.com/qdrant/qdrant,high-performance vector DB with strong dev UX,good candidate for practical integrations
+rag_data,strong,weaviate/weaviate,https://github.com/weaviate/weaviate,vector-native DB with enterprise features,reference for multi-tenant and RBAC models
+rag_data,strong,chroma-core/chroma,https://github.com/chroma-core/chroma,developer-friendly vector retrieval stack,useful for local/prototyping workflows
+gateway_inference,strong,BerriAI/litellm,https://github.com/BerriAI/litellm,de-facto multi-provider LLM gateway,reference routing/fallback/cost governance
+gateway_inference,strong,vllm-project/vllm,https://github.com/vllm-project/vllm,high-throughput inference engine,benchmark serving performance strategies
+gateway_inference,medium,huggingface/text-generation-inference,https://github.com/huggingface/text-generation-inference,legacy production inference server now maintenance mode,watch migration signals to vLLM/SGLang
+eval_observability,strong,langfuse/langfuse,https://github.com/langfuse/langfuse,leading open-source LLM observability stack,align tracing and eval data model
+eval_observability,strong,openai/evals,https://github.com/openai/evals,standardized eval harness and benchmarks,use structure for internal regression tests
+eval_observability,strong,huggingface/lighteval,https://github.com/huggingface/lighteval,multi-backend LLM evaluation toolkit,adapt evaluation suite patterns
+eval_observability,strong,truera/trulens,https://github.com/truera/trulens,LLM app eval and tracking framework,borrow rag-triad style quality metrics
+eval_observability,medium,Agenta-AI/agenta,https://github.com/Agenta-AI/agenta,prompt+eval+observability integrated platform,reference for prompt lifecycle operations
+eval_observability,medium,latitude-dev/latitude-llm,https://github.com/latitude-dev/latitude-llm,prompt engineering workflow platform,study prompt iteration loops
+security_governance,medium,guardrails-ai/guardrails,https://github.com/guardrails-ai/guardrails,structured output and risk validators,baseline for output validation policy
+security_governance,weak,protectai/rebuff,https://github.com/protectai/rebuff,prompt injection detector archived,use only for historical patterns not adoption
+agent_mcp_bridge,strong,mcp-use/mcp-use,https://github.com/mcp-use/mcp-use,high-visibility MCP app/server framework,observe packaging and distribution motions
+agent_mcp_bridge,medium,QuantGeekDev/mcp-framework,https://github.com/QuantGeekDev/mcp-framework,TypeScript MCP server framework,compare developer ergonomics
+durable_execution,strong,temporalio/sdk-python,https://github.com/temporalio/sdk-python,durable workflow execution in python,evaluate adapter feasibility for long-running tasks
+durable_execution,strong,microsoft/durabletask-python,https://github.com/microsoft/durabletask-python,durable task SDK with dapr compatibility,study deterministic workflow boundaries
+durable_execution,medium,dapr/dapr-agents,https://github.com/dapr/dapr-agents,resilient agent execution in dapr ecosystem,compare with existing trigger/runtime model

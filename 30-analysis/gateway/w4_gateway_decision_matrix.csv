@@ -1,0 +1,11 @@
+candidate_stack,throughput_score_25,cost_governance_score_20,multi_model_score_20,sla_score_20,observability_score_15,total_score_100,fit,notes
+LiteLLM+vLLM+Istio+OpenMeter+OTel,23,19,18,18,13,91,Best Overall,Best balance for scale+governance; needs strong platform team
+Portkey+vLLM+Istio+Langfuse+OpenMeter,22,17,19,18,13,89,Strong Alternative,Good multi-model strategy; commercial/open mix governance needed
+Kong+vLLM+Istio+Prometheus+Grafana+Jaeger+OpenMeter,21,18,15,19,14,87,Enterprise Policy-Heavy,Great org policy control; multi-model abstraction weaker than LiteLLM/Portkey
+APISIX+SGLang+Istio+OpenLIT+OpenMeter,21,17,16,18,13,85,Open-Source Lean,Solid OSS posture; higher integration effort
+LiteLLM+TGI+Linkerd+Langfuse+OpenMeter,19,18,17,16,13,83,Simpler Mesh Path,Operationally lighter than Istio; SLA controls less rich
+KGateway+vLLM+Istio+Langfuse+OpenMeter,20,17,15,18,13,83,K8s-Native Route,Strong in K8s-native traffic management
+Traefik+vLLM+Resilience4j+Prometheus+Grafana+OpenMeter,19,17,14,16,12,78,Mid-Market Practical,Good practicality; lacks first-class AI gateway abstraction
+NGINX+vLLM+Polly+Prometheus+Grafana+OpenMeter,20,16,12,16,12,76,Conservative Stack,Stable and known; multi-model strategy mostly custom
+LiteLLM+Ollama+Keda+OTel+Grafana,14,17,13,14,12,70,Private/Offline Focus,Great for privacy and fallback; limited peak throughput
+Kong+TensorRT-LLM+Istio+Helicone+OpenMeter,23,17,12,18,12,82,GPU-Centric High Perf,High performance path with license/compliance checks required

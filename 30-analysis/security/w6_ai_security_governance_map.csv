@@ -1,0 +1,57 @@
+project,kind,category,maintenance_status,archived,stars_estimate,last_update_estimate,license_or_authority,why_relevant,url
+protectai/rebuff,project,输入防护,archived,true,1.4k,2024-08,Apache-2.0,Prompt Injection detector但已归档可作历史基线,https://api.github.com/repos/protectai/rebuff
+trailofbits/copilot-prompt-injection-demo,project,输入防护,archived,true,10,2025-08,no-license,真实攻击演示用于红队回归用例,https://api.github.com/repos/trailofbits/copilot-prompt-injection-demo
+NVIDIA/garak,project,输入防护,active,false,7.2k,2026-03,Apache-2.0,LLM漏洞扫描器覆盖越狱与提示攻击探针,https://api.github.com/repos/NVIDIA/garak
+promptfoo/promptfoo,project,输入防护,active,false,10.9k,2026-03,MIT,可把Prompt Injection与越权场景纳入CI回归,https://api.github.com/repos/promptfoo/promptfoo
+Azure/PyRIT,project,输入防护,active,false,3.5k,2026-03,MIT,面向生成式AI红队测试的自动化框架,https://api.github.com/repos/Azure/PyRIT
+protectai/llm-guard,project,输入防护,active,false,2.6k,2025-12,MIT,输入输出过滤器组件化便于嵌入Agent网关,https://api.github.com/repos/protectai/llm-guard
+superagent-ai/superagent,project,输入防护,active,false,6.5k,2026-02,MIT,强调Prompt Injection与数据泄露联防,https://api.github.com/repos/superagent-ai/superagent
+invariantlabs-ai/invariant,project,输入防护,active,false,395,2026-01,Apache-2.0,面向Agent的安全约束与规则检查,https://api.github.com/repos/invariantlabs-ai/invariant
+ZenGuard-AI/fast-llm-security-guardrails,project,输入防护,active,false,152,2026-02,MIT,轻量Trust Layer可作边缘输入防火墙,https://api.github.com/repos/ZenGuard-AI/fast-llm-security-guardrails
+microsoft/BIPIA,project,输入防护,active,false,108,2024-04,NOASSERTION,间接注入鲁棒性基准可补齐RAG页面注入测试,https://api.github.com/repos/microsoft/BIPIA
+liu00222/Open-Prompt-Injection,project,输入防护,active,false,402,2025-10,MIT,可用于构建注入攻防对抗基准集,https://api.github.com/repos/liu00222/Open-Prompt-Injection
+Tencent/AI-Infra-Guard,project,输入防护,active,false,3.1k,2026-03,NOASSERTION,覆盖MCP与Agent技能扫描适合平台级红队入口,https://api.github.com/repos/Tencent/AI-Infra-Guard
+msoedov/agentic_security,project,输入防护,active,false,1.8k,2026-02,Apache-2.0,Agent漏洞扫描与fuzz能力可纳入上线闸门,https://api.github.com/repos/msoedov/agentic_security
+OWASP/www-project-top-10-for-large-language-model-applications,spec,输入防护,active,false,1.1k,2026-02,OWASP project,LLM01 Prompt Injection与LLM06泄露是输入防护基准,https://api.github.com/repos/OWASP/www-project-top-10-for-large-language-model-applications
+e2b-dev/E2B,project,工具权限边界,active,false,11.2k,2026-03,Apache-2.0,Agent执行沙箱降低工具滥用与主机逃逸风险,https://api.github.com/repos/e2b-dev/E2B
+openfga/openfga,project,工具权限边界,active,false,4.9k,2026-03,Apache-2.0,细粒度授权可限制Agent对工具与数据的动作范围,https://api.github.com/repos/openfga/openfga
+open-policy-agent/opa,project,工具权限边界,active,false,11.3k,2026-03,Apache-2.0,统一策略引擎可对工具调用进行显式准入判定,https://api.github.com/repos/open-policy-agent/opa
+cedar-policy/cedar,project,工具权限边界,active,false,1.3k,2026-03,Apache-2.0,策略语言适合表达主体资源动作条件约束,https://api.github.com/repos/cedar-policy/cedar
+open-policy-agent/gatekeeper,project,工具权限边界,active,false,4.2k,2026-03,Apache-2.0,K8s admission策略可迁移到Agent工具准入治理,https://api.github.com/repos/open-policy-agent/gatekeeper
+kyverno/kyverno,project,工具权限边界,active,false,7.5k,2026-03,Apache-2.0,策略即代码适合做多租户Agent平台边界控制,https://api.github.com/repos/kyverno/kyverno
+kubewarden/policy-server,project,工具权限边界,archived,true,153,2026-01,Apache-2.0,归档但其WASM策略执行模式对Agent工具隔离有借鉴,https://api.github.com/repos/kubewarden/policy-server
+alibaba/OpenSandbox,project,工具权限边界,active,false,7.0k,2026-03,Apache-2.0,多运行时沙箱可承接高风险工具隔离执行,https://api.github.com/repos/alibaba/OpenSandbox
+abshkbh/arrakis,project,工具权限边界,active,false,774,2025-06,AGPL-3.0,MicroVM隔离适合强隔离执行面,https://api.github.com/repos/abshkbh/arrakis
+SWE-agent/SWE-ReX,project,工具权限边界,active,false,449,2026-03,MIT,并行沙箱执行层可降低CI与批量任务侧风险,https://api.github.com/repos/SWE-agent/SWE-ReX
+authzed/spicedb,project,工具权限边界,active,false,6.5k,2026-03,Apache-2.0,Zanzibar风格授权适合细粒度工具与数据权限图建模,https://api.github.com/repos/authzed/spicedb
+casbin/casbin,project,工具权限边界,active,false,19.9k,2026-02,Apache-2.0,多模型访问控制便于快速接入现有服务边界,https://api.github.com/repos/casbin/casbin
+ory/keto,project,工具权限边界,active,false,5.3k,2026-03,Apache-2.0,可扩展权限服务器适合多租户Agent平台,https://api.github.com/repos/ory/keto
+OWASP/www-project-machine-learning-security-top-10,spec,工具权限边界,active,false,97,2025-12,OWASP project,提供ML系统威胁分层可补足Agent权限建模,https://api.github.com/repos/OWASP/www-project-machine-learning-security-top-10
+guardrails-ai/guardrails,project,输出校验,active,false,6.5k,2026-03,Apache-2.0,输出结构约束校验可防止危险响应直达下游执行器,https://api.github.com/repos/guardrails-ai/guardrails
+NVIDIA-NeMo/Guardrails,project,输出校验,active,false,5.7k,2026-03,NOASSERTION,对话与动作层Guardrails适合做出站安全闸门,https://api.github.com/repos/NVIDIA-NeMo/Guardrails
+microsoft/presidio,project,输出校验,active,false,7.1k,2026-03,MIT,PII识别与脱敏用于输出泄露防护与合规,https://api.github.com/repos/microsoft/presidio
+protectai/modelscan,project,输出校验,active,false,652,2026-02,Apache-2.0,模型工件扫描防止恶意序列化载荷进入推理链路,https://api.github.com/repos/protectai/modelscan
+gitleaks/gitleaks,project,输出校验,active,false,25.3k,2026-02,MIT,可拦截Agent生成内容中的密钥泄露,https://api.github.com/repos/gitleaks/gitleaks
+semgrep/semgrep,project,输出校验,active,false,14.4k,2026-03,LGPL-2.1,对生成代码做规则审计防止高危模式落地,https://api.github.com/repos/semgrep/semgrep
+aquasecurity/trivy,project,输出校验,active,false,33.0k,2026-03,Apache-2.0,对Agent产出的镜像IaC和SBOM进行漏洞与配置校验,https://api.github.com/repos/aquasecurity/trivy
+google/osv-scanner,project,输出校验,active,false,8.5k,2026-03,Apache-2.0,依赖漏洞扫描用于阻断不安全输出进入发布流程,https://api.github.com/repos/google/osv-scanner
+anchore/grype,project,输出校验,active,false,11.7k,2026-03,Apache-2.0,镜像与文件系统漏洞扫描可作为执行前阻断器,https://api.github.com/repos/anchore/grype
+SORRY-Bench/sorry-bench,project,输出校验,active,false,76,2025-03,MIT,拒答安全评测可量化模型输出安全稳定性,https://api.github.com/repos/SORRY-Bench/sorry-bench
+Giskard-AI/phare,project,输出校验,active,false,12,2025-12,no-license,多维安全基准可补充输出风险评测覆盖,https://api.github.com/repos/Giskard-AI/phare
+OWASP/www-project-ai-security-and-privacy-guide,spec,输出校验,active,false,358,2026-03,OWASP project,AI安全与隐私实践集合可补充输出治理控制项,https://api.github.com/repos/OWASP/www-project-ai-security-and-privacy-guide
+langfuse/langfuse,project,审计追踪,active,false,22.9k,2026-03,NOASSERTION,链路级trace与评测记录支撑事后审计与追责,https://api.github.com/repos/langfuse/langfuse
+Arize-ai/phoenix,project,审计追踪,active,false,8.8k,2026-03,NOASSERTION,评测加观测一体化有助定位输出失控根因,https://api.github.com/repos/Arize-ai/phoenix
+truera/trulens,project,审计追踪,active,false,3.1k,2026-03,MIT,评测记录可形成上线前后安全回归基线,https://api.github.com/repos/truera/trulens
+open-telemetry/opentelemetry-collector,project,审计追踪,active,false,6.7k,2026-03,Apache-2.0,统一遥测管道可把Agent事件接入SIEM与取证体系,https://api.github.com/repos/open-telemetry/opentelemetry-collector
+open-telemetry/opentelemetry-specification,spec,审计追踪,active,false,4.2k,2026-03,Apache-2.0,统一语义规范减少跨Agent框架审计字段割裂,https://api.github.com/repos/open-telemetry/opentelemetry-specification
+Giskard-AI/giskard-oss,project,审计追踪,active,false,5.2k,2026-03,Apache-2.0,LLM测试工件与失败样本可持续沉淀审计证据,https://api.github.com/repos/Giskard-AI/giskard-oss
+falcosecurity/falco,project,审计追踪,active,false,8.7k,2026-03,Apache-2.0,运行时检测可监控Agent沙箱和容器异常行为,https://api.github.com/repos/falcosecurity/falco
+elastic/detection-rules,project,审计追踪,active,false,2.5k,2026-03,NOASSERTION,可借鉴规则工程方法把Agent事件纳入SOC检测,https://api.github.com/repos/elastic/detection-rules
+mitre-atlas/atlas-website,spec,审计追踪,active,false,16,2026-02,MITRE ATLAS,对抗技战术语义可用于审计事件标签标准化,https://api.github.com/repos/mitre-atlas/atlas-website
+sigstore/cosign,project,策略执行,active,false,5.7k,2026-03,Apache-2.0,对模型与镜像签名验证实现发布前强制策略,https://api.github.com/repos/sigstore/cosign
+in-toto/in-toto,project,策略执行,active,false,981,2026-03,NOASSERTION,供应链完整性元数据可用于Agent构建链路证明,https://api.github.com/repos/in-toto/in-toto
+slsa-framework/slsa,spec,策略执行,active,false,1.8k,2026-03,SLSA framework,定义供应链成熟度等级用于策略分级执行,https://api.github.com/repos/slsa-framework/slsa
+anchore/syft,project,策略执行,active,false,8.5k,2026-03,Apache-2.0,SBOM产出能力可作为策略引擎输入证据,https://api.github.com/repos/anchore/syft
+OWASP LLM Top 10 v1.1,spec,策略执行,active,false,n/a,2026-02,OWASP,提供LLM01到LLM10控制目标可直接映射策略条款,https://owasp.org/www-project-top-10-for-large-language-model-applications/
+MITRE ATLAS,spec,策略执行,active,false,n/a,2026,MITRE,AI攻击战术技术矩阵可驱动策略编排与检测覆盖评估,https://atlas.mitre.org
+EU AI Act,spec,策略执行,active,false,n/a,2026-01,EU Regulation 2024/1689,风险分级与透明性义务可转化为平台强制治理策略,https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai

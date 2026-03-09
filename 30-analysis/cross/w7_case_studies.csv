@@ -1,0 +1,31 @@
+project,scenario,architecture,key_tech_choices,pitfalls,metrics_if_any,applicability_boundary,source_url
+langchain-ai/langchain,多工具 Agent 与企业工作流编排,Agent+Tool+Memory+Callback 分层编排,LangChain Expression Language 与工具抽象统一,链路复杂后可观测性不足与提示词漂移,无统一官方基准需自建评测,适合快速迭代不适合零治理直接上大规模生产,https://docs.langchain.com/oss/python/langchain/overview
+run-llama/llama_index,知识库问答与企业 RAG,Data connector+Index+Retriever+Response synthesizer,索引和检索策略模块化便于按场景切换,索引策略多样导致参数治理复杂,无统一官方 SLA 指标,适合文档密集型应用不适合强事务系统,https://docs.llamaindex.ai/en/stable/
+deepset-ai/haystack,检索增强问答与搜索应用,Pipeline 节点式架构（ingest/retrieval/rerank/generate）,组件化 Pipeline 与评测能力结合,节点增多后运维复杂度上升,官方文档强调评测流程但无单一通用指标,适合中大型团队协作不适合极简单机 PoC,https://docs.haystack.deepset.ai/docs/intro
+infiniflow/ragflow,可视化 RAG 流程编排,工作流编排+检索+重排+生成一体化,低代码流程配置与知识库管理,流程灵活性高但标准化治理成本高,未提供统一公开性能基准,适合业务团队共建不适合高度定制底层内核场景,https://github.com/infiniflow/ragflow
+microsoft/graphrag,复杂知识关系与多跳问答,图构建+社区摘要+图检索+生成,图索引增强多跳与全局语义,图构建成本高更新链路长,公开论文与文档强调质量提升但依赖数据特性,适合高关联知识域不适合低关系短文本检索,https://microsoft.github.io/graphrag/
+HKUDS/LightRAG,轻量图增强检索,轻量图结构+向量检索混合,在复杂关系任务中平衡效果与成本,图抽取质量不稳会放大误检,缺少统一工业级指标披露,适合预算有限的图增强实验不适合严格审计生产系统,https://github.com/HKUDS/LightRAG
+qdrant/qdrant,多租户向量检索与过滤检索,Vector index+Payload index+Query API,tenant/principal/payload 索引支持多租户优化,过滤字段索引过多会带来内存压力,官方示例有毫秒级查询展示但无统一全局 KPI,适合强过滤 RAG 不适合无索引治理的粗放写入,https://qdrant.tech/documentation/
+milvus-io/milvus,大规模向量检索平台,分布式存储+索引构建+查询节点,IVF/HNSW/DISKANN 多索引路线支持分规模演进,索引参数与资源配置耦合高,文档提供参数范围和性能调优建议,适合千万级以上检索不适合极轻量本地应用,https://milvus.io/docs
+weaviate/weaviate,语义搜索与混合检索,向量检索+关键词检索+模块扩展,Hybrid Search 与模块化扩展,模块与版本组合多导致升级测试成本高,无统一跨场景公开指标,适合需要混合检索的产品不适合极简依赖栈,https://docs.weaviate.io/weaviate
+chroma-core/chroma,本地化向量检索与快速原型,嵌入式向量存储+简单检索 API,开发门槛低便于快速试验,高并发与复杂过滤能力有限,无官方统一生产级 SLO,适合 PoC 与中小规模应用不适合大规模多租户,https://docs.trychroma.com/
+lancedb/lancedb,本地优先与分析友好向量检索,列式数据+向量索引融合,与数据分析链路结合紧密,生态集成广度仍在扩张中,无统一公开性能 KPI,适合离线分析+检索一体不适合重在线强 SLA 首选,https://lancedb.github.io/lancedb/
+pgvector/pgvector,在 PostgreSQL 内做向量检索,Postgres 表+HNSW/IVFFlat 索引,复用 ACID/WAL/SQL 生态降低系统复杂度,近似检索参数不当会导致召回下降,README 给出 lists/probes/ef_search 调优建议,适合已有 Postgres 团队不适合超大规模纯向量吞吐场景,https://github.com/pgvector/pgvector
+opensearch-project/OpenSearch,搜索+向量+混合检索统一平台,索引管道+knn_vector+混合检索 pipeline,可在同平台融合 lexical 与 vector,集群治理与插件配置复杂,文档展示语义/混合检索流程与权重策略,适合已有搜索平台升级不适合小团队低运维预算,https://opensearch.org/docs/latest/vector-search/
+elastic/elasticsearch,企业搜索与向量混检,倒排+向量字段+查询 DSL,生态成熟与企业特性完善,许可与版本策略需提前评估,提供向量检索能力文档但指标依场景,适合企业级统一搜索不适合许可策略不匹配团队,https://www.elastic.co/guide/en/elasticsearch/reference/current/vector-search-overview.html
+vespa-engine/vespa,超大规模检索与排序服务,内容节点+检索节点+排序表达式,强在线排序与多阶段检索能力,学习曲线陡峭部署复杂,官方强调大规模低延迟能力,适合高并发大规模搜索不适合小团队快启项目,https://docs.vespa.ai/en/nearest-neighbor-search.html
+meilisearch/meilisearch,开发友好的搜索与语义扩展,全文检索核心+向量能力扩展,易上手和开发体验优秀,复杂企业治理能力相对有限,无统一公开生产级 KPI,适合中小应用搜索升级不适合复杂多租户合规场景,https://www.meilisearch.com/docs/learn/ai_powered_search/vector_search
+typesense/typesense,低门槛实时搜索与语义检索,轻量集群+向量字段检索,部署简单响应快,复杂策略与深度定制空间有限,官方有性能说明但非统一行业基准,适合快速产品化不适合超复杂检索编排,https://typesense.org/docs/guide/vector-search.html
+facebookresearch/faiss,向量检索核心算法库,ANN 索引库（IVF/PQ/HNSW 等）,高性能底层算子和 GPU 支持,需自建完整服务化能力,以算法库为主缺少端到端业务指标,适合自研检索内核不适合想直接拿来即用平台,https://github.com/facebookresearch/faiss/wiki
+nmslib/hnswlib,轻量 ANN 检索内核,纯 ANN 库嵌入服务,极简高效便于嵌入应用,缺乏企业级治理与生态集成,无统一业务指标,适合内嵌式近邻检索不适合复杂平台化需求,https://github.com/nmslib/hnswlib
+AirbyteHQ/airbyte,多源数据接入到 AI 数据底座,Connector+Worker+Sync 编排架构,连接器生态丰富覆盖广,连接器质量参差与运维治理复杂,官方提供同步与连接器运行指标框架,适合多源接入不适合无数据治理规范团队,https://docs.airbyte.com/platform/understanding-airbyte/airbyte-architecture
+Unstructured-IO/unstructured,非结构化文档解析与切分,文档解析+分块+元数据抽取流水线,文档到 chunk 的工程化能力强,文档类型差异会导致抽取质量波动,无统一跨语料基准,适合文档 RAG 前处理不适合替代检索/生成主链路,https://docs.unstructured.io/
+apache/tika,通用文档内容提取,Parser 框架+格式识别+文本抽取,广泛格式支持与稳定性高,复杂文档语义结构保真有限,无统一在线指标,适合作为保底解析层不适合精细语义切分独立方案,https://tika.apache.org/
+apache/kafka,增量索引与事件驱动数据管道,Topic+Consumer Group+Stream 处理,高吞吐事件总线支撑实时更新,分区键和消费语义设计不当会放大乱序/重复问题,官方强调高吞吐与持久化语义,适合实时增量链路不适合小规模一次性批处理,https://kafka.apache.org/documentation/
+apache/spark,大规模离线重建与特征处理,批流一体计算引擎+SQL/ML,适合大批量索引重建和特征加工,资源调度与作业治理成本高,官方提供结构化流处理性能与语义说明,适合离线重建不适合低延迟在线检索主面,https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
+duckdb/duckdb,本地分析与评测加速,内嵌 OLAP 引擎,离线评测与数据分析效率高,分布式能力不是主设计目标,公开 benchmark 侧重分析性能,适合本地评测与数据准备不适合分布式在线主库,https://duckdb.org/docs/
+ClickHouse/ClickHouse,检索侧日志与分析中台,列式存储+并行查询,高吞吐日志分析和近实时聚合,表模型与分区策略设计复杂,官方提供性能导向实践,适合可观测与分析侧车不适合替代主向量库,https://clickhouse.com/docs
+BerriAI/litellm,多模型网关与成本路由,统一 API 网关+路由+回退,多供应商统一接入与预算治理,路由策略不当会造成质量波动,项目文档强调 cost tracking/routing 能力,适合模型供应商抽象层不适合缺乏评测门禁体系,https://docs.litellm.ai/
+vllm-project/vllm,高吞吐推理服务,LLM Serving Engine+PagedAttention,吞吐优先的推理栈,模型/版本升级需严格压测兼容,官方文档强调吞吐与服务化特性,适合高并发推理后端不适合极轻量单实例需求,https://docs.vllm.ai/
+huggingface/text-generation-inference,模型推理网关后端,推理服务器+批处理+并发调度,与 Hugging Face 生态集成顺滑,模型与硬件匹配要求高,官方文档提供部署与性能调优参数,适合标准化推理服务不适合重度定制算子路线,https://huggingface.co/docs/text-generation-inference/index
+langfuse/langfuse,LLM 观测与评测闭环,Trace+Prompt+Eval+成本监控平面,把评测与追踪绑定到同一平台,埋点规范不统一会削弱价值,官方提供可观测指标与追踪实践,适合构建质量闭环不适合无埋点纪律团队,https://langfuse.com/docs

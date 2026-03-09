@@ -1,0 +1,31 @@
+rank,repo,segment,phase_coverage,closure_fit_5,freshness_5,adoption_5,license_safety_5,total_score_20,license,risk_note,source_url
+1,langfuse/langfuse,Control Plane,dev+online+prompt,5,5,5,1,16,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/langfuse/langfuse
+2,comet-ml/opik,Eval+Observability,dev+online,5,5,4,5,19,Apache-2.0,Low license risk,https://api.github.com/repos/comet-ml/opik
+3,mlflow/mlflow,E2E LLMOps,dev+online+prompt,5,5,5,5,20,Apache-2.0,Low license risk,https://api.github.com/repos/mlflow/mlflow
+4,promptfoo/promptfoo,Prompt Testing+Security,dev+prompt,4,5,4,5,18,MIT,Low license risk,https://api.github.com/repos/promptfoo/promptfoo
+5,confident-ai/deepeval,Evaluation Framework,dev,4,5,4,5,18,Apache-2.0,Low license risk,https://api.github.com/repos/confident-ai/deepeval
+6,vibrantlabsai/ragas,RAG Evaluation,dev,4,4,4,5,17,Apache-2.0,Low license risk,https://api.github.com/repos/vibrantlabsai/ragas
+7,truera/trulens,Eval+Tracing,dev+online,4,4,3,5,16,MIT,Low license risk,https://api.github.com/repos/truera/trulens
+8,Arize-ai/phoenix,Eval+Observability,dev+online,5,5,4,1,15,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/Arize-ai/phoenix
+9,Helicone/helicone,Observability+Eval,online+dev,4,5,3,5,17,Apache-2.0,Low license risk,https://api.github.com/repos/Helicone/helicone
+10,openlit/openlit,OTel LLMOps,dev+online+prompt,5,5,3,5,18,Apache-2.0,Low license risk,https://api.github.com/repos/openlit/openlit
+11,microsoft/promptflow,Prompt App Lifecycle,dev+online+prompt,5,4,4,5,18,MIT,Low license risk,https://api.github.com/repos/microsoft/promptflow
+12,Agenta-AI/agenta,Prompt+Eval+Obs,dev+online+prompt,5,5,3,1,14,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/Agenta-AI/agenta
+13,latitude-dev/latitude-llm,Agent+Prompt Lifecycle,dev+online+prompt,4,5,3,3,15,LGPL-3.0,Check copyleft obligations,https://api.github.com/repos/latitude-dev/latitude-llm
+14,BerriAI/litellm,Gateway+Routing,online,4,5,5,1,15,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/BerriAI/litellm
+15,guardrails-ai/guardrails,Safety Guardrails,dev+online,4,5,4,5,18,Apache-2.0,Low license risk,https://api.github.com/repos/guardrails-ai/guardrails
+16,NVIDIA-NeMo/Guardrails,Safety Guardrails,dev+online,4,5,4,1,14,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/NVIDIA-NeMo/Guardrails
+17,EleutherAI/lm-evaluation-harness,Benchmark Harness,dev,4,4,4,5,17,MIT,Low license risk,https://api.github.com/repos/EleutherAI/lm-evaluation-harness
+18,openai/evals,Benchmark Registry,dev,4,3,4,1,12,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/openai/evals
+19,huggingface/lighteval,Evaluation Framework,dev,4,4,3,5,16,MIT,Low license risk,https://api.github.com/repos/huggingface/lighteval
+20,openai/simple-evals,Lightweight Eval Runner,dev,3,3,3,5,14,MIT,Low license risk,https://api.github.com/repos/openai/simple-evals
+21,coze-dev/coze-loop,Full Lifecycle Platform,dev+online+prompt,5,5,3,5,18,Apache-2.0,Low license risk,https://api.github.com/repos/coze-dev/coze-loop
+22,AgentOps-AI/agentops,Agent Monitoring+Cost,dev+online,4,3,3,5,15,MIT,Low license risk,https://api.github.com/repos/AgentOps-AI/agentops
+23,google/adk-python,Agent Toolkit,dev+online,4,5,4,5,18,Apache-2.0,Low license risk,https://api.github.com/repos/google/adk-python
+24,openai/openai-agents-python,Agent SDK,dev+online,4,5,4,5,18,MIT,Low license risk,https://api.github.com/repos/openai/openai-agents-python
+25,microsoft/autogen,Multi-agent Runtime,dev+online,4,5,5,2,16,CC-BY-4.0,Check content attribution obligations,https://api.github.com/repos/microsoft/autogen
+26,langchain-ai/langgraph,Agent Runtime,dev+online,4,5,5,5,19,MIT,Low license risk,https://api.github.com/repos/langchain-ai/langgraph
+27,langchain-ai/langchain,Integration Surface,dev+online,3,5,5,5,18,MIT,Low license risk,https://api.github.com/repos/langchain-ai/langchain
+28,langwatch/langwatch,Eval+Observability,dev+online,4,5,3,1,13,NOASSERTION,License review needed for commercial redistribution,https://api.github.com/repos/langwatch/langwatch
+29,zenml-io/zenml,MLOps+AgentOps,dev+online+prompt,4,5,3,5,17,Apache-2.0,Low license risk,https://api.github.com/repos/zenml-io/zenml
+30,uptrain-ai/uptrain,Evaluation+Monitoring,dev+online,4,2,3,5,14,Apache-2.0,Project activity should be revalidated before adoption,https://api.github.com/repos/uptrain-ai/uptrain

@@ -1,0 +1,13 @@
+metric_name,layer,owner,formula,data_source,window,target,alert_threshold,action_on_breach
+task_success_rate,quality,app_team,success_count/total_count,eval_runner+prod_events,15m+daily,>=0.90,<0.88 for 3 windows,rollback_or_block_release
+factuality_score,quality,llm_platform,mean(judge_factuality),offline_eval_store,per_release,>=0.85,<0.82,block_promotion
+answer_relevance,quality,app_team,mean(judge_relevance),offline_eval_store,per_release,>=0.85,<0.82,block_promotion
+tool_call_accuracy,quality,agent_team,correct_tool_calls/total_tool_calls,agent_trace_store,15m+daily,>=0.95,<0.92,open_incident_and_gate_release
+p95_latency_ms,reliability,sre_team,p95(latency_ms),otel_trace_store,5m,<=baseline*1.15,>baseline*1.20 for 2 windows,degrade_or_route_change
+error_rate,reliability,sre_team,error_requests/total_requests,api_gateway+agent_runtime,5m,<=0.015,>0.03,auto_rollback
+cost_per_success,cost,finops_team,total_cost_usd/max(success_count,1),gateway_billing+events,15m+daily,<=baseline*1.10,>baseline*1.25,model_route_optimization
+token_per_success,cost,finops_team,(input_tokens+output_tokens)/max(success_count,1),gateway_usage,15m+daily,downward_trend,upward_15pct_weekly,investigate_prompt_or_tool_depth
+prompt_injection_pass_rate,safety,security_team,safe_cases/injection_test_cases,security_eval_suite,per_release+daily,>=0.95,<0.95,block_or_rollback
+jailbreak_success_rate,safety,security_team,jailbreak_success_count/jailbreak_attempt_count,security_eval_suite,per_release+daily,<=0.02,>0.02,rollback_and_hotfix
+policy_violation_rate,safety,security_team,policy_violations/total_requests,policy_engine+runtime,15m+daily,<=0.01,>0.02,enable_strict_guardrails
+regression_backfill_sla,governance,llm_platform,sev1_2_backfilled_within_24h/total_sev1_2,incident_system+dataset_registry,weekly,>=0.95,<0.90,exec_escalation

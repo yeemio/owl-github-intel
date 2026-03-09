@@ -1,0 +1,24 @@
+category,relevance,repo_or_url,notes
+mcp,strong,https://github.com/modelcontextprotocol/servers,official reference servers
+mcp,strong,https://github.com/wong2/awesome-mcp-servers,largest curated MCP list
+mcp,strong,https://github.com/docker/mcp-servers,ecosystem server collection
+mcp,strong,https://github.com/modelcontextprotocol/typescript-sdk,official TypeScript SDK
+mcp,strong,https://github.com/modelcontextprotocol/create-typescript-server,official scaffold starter
+agent_mcp,strong,https://github.com/mcp-use/mcp-use,high-visibility MCP app/server framework
+agent_mcp,strong,https://docs.mcp-agent.com/,Python composable MCP agent framework docs
+agent_mcp,strong,https://github.com/rinadelph/Agent-MCP,multi-agent MCP collaboration focus
+agent_mcp,medium,https://github.com/QuantGeekDev/mcp-framework,TypeScript MCP server framework
+orchestration,medium,https://github.com/Josh-XT/AGiXT,multi-provider agent automation platform
+orchestration,medium,https://github.com/kagent-dev/kagent,Kubernetes-native agent framework
+orchestration,medium,https://github.com/mainframecomputer/orchestra,multi-model orchestration framework
+orchestration,medium,https://github.com/Decentralised-AI/swarms-Enterprise-Grade-Production-Ready-Multi-Agent-Orchestration-Framework,enterprise multi-agent orchestration
+durable_workflow,medium,https://github.com/temporalio/sdk-python,durable execution runtime for Python
+durable_workflow,medium,https://github.com/microsoft/durabletask-python,durable task SDK with Dapr compatibility
+durable_workflow,medium,https://github.com/dapr/dapr-agents,agent framework with resilient workflow model
+llmops,medium,https://github.com/langfuse/langfuse,observability and eval platform
+llmops,medium,https://github.com/BerriAI/litellm,multi-provider LLM gateway/proxy
+llmops,weak,https://github.com/agenta-ai/agenta,prompt/eval and app lifecycle platform
+llmops,weak,https://github.com/latitude-dev/latitude-llm,prompt engineering platform
+memory,weak,https://github.com/langchain-ai/langmem,long-term memory toolkit
+memory,weak,https://github.com/MemMachine/MemMachine,memory layer for agents
+skills,weak,https://github.com/agentskills/agentskills,skill specification and docs

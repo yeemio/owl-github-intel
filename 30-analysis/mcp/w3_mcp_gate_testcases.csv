@@ -1,0 +1,13 @@
+testcase_id,gate_id,scenario,input,expected_result,severity,owner_role,evidence_url
+TC01,G01,protocol negotiation success,client version list includes 2025-11-25 and server supports it,session established on 2025-11-25,high,platform-engineer,https://modelcontextprotocol.io/specification/versioning.md
+TC02,G01,protocol negotiation fail,client sends only unsupported version,server returns negotiation failure and session closes,critical,platform-engineer,https://modelcontextprotocol.io/specification/versioning.md
+TC03,G02,missing protocol header on remote request,http request without MCP-Protocol-Version header,request rejected or handled per policy with explicit fallback control,high,backend-engineer,https://modelcontextprotocol.io/specification/2025-11-25/basic/transports.md
+TC04,G03,tool contract drift runtime adds undeclared tool,tools/list returns extra tool not in contract,ci contract diff fails and blocks merge,critical,qa-engineer,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+TC05,G04,input schema violation for required field,tools/call missing required argument,tool returns actionable error and isError true,high,backend-engineer,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+TC06,G05,listChanged notification behavior,new tool enabled at runtime,notifications/tools/list_changed emitted and client refreshes tool list,medium,qa-engineer,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+TC07,G06,origin validation block,request with invalid Origin header,server returns 403 forbidden,critical,security-engineer,https://modelcontextprotocol.io/specification/2025-11-25/basic/transports.md
+TC08,G07,filesystem overprivilege config,allowed path set to root drive or wildcard,preprod policy check fails deployment,critical,security-engineer,https://modelcontextprotocol.io/docs/develop/connect-local-servers.md
+TC09,G08,inspector smoke connectivity,connect candidate server via inspector,connection and capability handshake pass,medium,qa-engineer,https://modelcontextprotocol.io/docs/tools/inspector.md
+TC10,G09,conformance threshold below target,sdk/server conformance result below policy threshold,release blocked and remediation ticket created,high,platform-engineer,https://modelcontextprotocol.io/community/sdk-tiers.md
+TC11,G10,registry metadata mismatch runtime behavior,registry says streamable http but runtime only stdio exposed,deployment blocked due consistency failure,high,platform-engineer,https://modelcontextprotocol.io/registry/about.md
+TC12,G11,audit logging completeness drop,required fields missing in sampled tool logs,incident opened and rollout frozen,critical,sre,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md

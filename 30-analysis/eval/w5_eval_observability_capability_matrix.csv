@@ -1,0 +1,31 @@
+repo,positioning,offline_eval,online_observability,prompt_lifecycle,dataset_ops,guardrails,ab_or_shadow,ci_gate_support,otel_native,mcp_related,self_hosted,ops_complexity,best_fit_stage,source_url
+langfuse/langfuse,Control Plane,strong,strong,strong,medium,medium,medium,strong,strong,medium,yes,medium,scale_up,https://api.github.com/repos/langfuse/langfuse
+comet-ml/opik,Eval+Observability,strong,strong,medium,medium,medium,strong,medium,medium,low,yes,medium,growth,https://api.github.com/repos/comet-ml/opik
+mlflow/mlflow,E2E Experiment Backbone,medium,medium,medium,strong,low,strong,medium,medium,low,yes,high,platform,https://api.github.com/repos/mlflow/mlflow
+Arize-ai/phoenix,Observability+Eval,strong,strong,low,medium,low,medium,low,medium,low,yes,medium,growth,https://api.github.com/repos/Arize-ai/phoenix
+Helicone/helicone,Runtime Telemetry,low,strong,low,low,low,medium,low,low,low,yes,medium,growth,https://api.github.com/repos/Helicone/helicone
+promptfoo/promptfoo,Prompt Test+Red Team,strong,low,strong,medium,strong,low,strong,low,low,yes,low,seed,https://api.github.com/repos/promptfoo/promptfoo
+confident-ai/deepeval,LLM Eval Framework,strong,low,medium,medium,medium,low,strong,low,low,yes,low,seed,https://api.github.com/repos/confident-ai/deepeval
+vibrantlabsai/ragas,RAG Eval,strong,low,low,medium,low,low,medium,low,low,yes,low,seed,https://api.github.com/repos/vibrantlabsai/ragas
+truera/trulens,Eval+Tracing,strong,medium,low,medium,low,low,medium,low,low,yes,medium,growth,https://api.github.com/repos/truera/trulens
+openlit/openlit,OTel-first LLMOps,medium,strong,medium,medium,low,medium,low,strong,low,yes,medium,growth,https://api.github.com/repos/openlit/openlit
+microsoft/promptflow,Prompt App Lifecycle,strong,medium,strong,medium,medium,medium,strong,low,low,yes,medium,growth,https://api.github.com/repos/microsoft/promptflow
+Agenta-AI/agenta,Prompt+Eval+Obs,strong,strong,strong,medium,medium,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/Agenta-AI/agenta
+latitude-dev/latitude-llm,Agent+Prompt Platform,medium,medium,strong,medium,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/latitude-dev/latitude-llm
+BerriAI/litellm,Gateway+Routing,low,strong,low,low,low,strong,low,low,low,yes,medium,growth,https://api.github.com/repos/BerriAI/litellm
+guardrails-ai/guardrails,Safety Validation,medium,low,low,low,strong,low,medium,low,low,yes,low,seed,https://api.github.com/repos/guardrails-ai/guardrails
+NVIDIA-NeMo/Guardrails,Safety Policy Runtime,medium,medium,low,low,strong,low,medium,low,low,yes,medium,growth,https://api.github.com/repos/NVIDIA-NeMo/Guardrails
+EleutherAI/lm-evaluation-harness,Benchmark Harness,strong,none,none,low,none,none,medium,none,none,yes,low,research,https://api.github.com/repos/EleutherAI/lm-evaluation-harness
+openai/evals,Benchmark Registry,strong,none,none,medium,none,none,medium,none,none,yes,low,research,https://api.github.com/repos/openai/evals
+huggingface/lighteval,Multi-backend Eval,strong,none,none,medium,none,none,medium,none,none,yes,low,research,https://api.github.com/repos/huggingface/lighteval
+coze-dev/coze-loop,Full Lifecycle AgentOps,strong,strong,medium,medium,medium,strong,medium,low,low,yes,high,platform,https://api.github.com/repos/coze-dev/coze-loop
+AgentOps-AI/agentops,Agent Monitoring+Cost,low,strong,low,low,low,medium,low,low,low,yes,low,seed,https://api.github.com/repos/AgentOps-AI/agentops
+google/adk-python,Agent Toolkit,medium,medium,low,low,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/google/adk-python
+openai/openai-agents-python,Agent SDK,medium,medium,low,low,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/openai/openai-agents-python
+microsoft/autogen,Multi-agent Runtime,medium,medium,low,low,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/microsoft/autogen
+langchain-ai/langgraph,Stateful Agent Runtime,medium,medium,low,low,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/langchain-ai/langgraph
+langwatch/langwatch,Eval+Agent Testing,strong,strong,medium,medium,low,medium,medium,low,low,yes,medium,growth,https://api.github.com/repos/langwatch/langwatch
+zenml-io/zenml,MLOps+Pipelines,medium,medium,low,strong,low,medium,medium,low,low,yes,high,platform,https://api.github.com/repos/zenml-io/zenml
+uptrain-ai/uptrain,Eval+RCA,strong,low,low,medium,medium,low,medium,low,low,yes,low,seed,https://api.github.com/repos/uptrain-ai/uptrain
+datachain-ai/datachain,Eval Data Engineering,medium,none,none,strong,none,none,low,none,none,yes,medium,growth,https://api.github.com/repos/datachain-ai/datachain
+agentscope-ai/OpenJudge,Judge Framework,strong,none,none,low,none,none,medium,none,none,yes,low,research,https://api.github.com/repos/agentscope-ai/OpenJudge

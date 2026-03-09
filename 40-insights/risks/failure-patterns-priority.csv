@@ -1,0 +1,11 @@
+rank,failure_type,severity_weight_5,signal_count,repo_coverage,priority_score,reproducible,recommended_control,example_source_url
+1,async_concurrency_state,5,19,19,576,partial,Idempotent tool calls + state isolation + load stress tests,https://github.com/langfuse/langfuse/issues/12401
+2,config_env_secret,5,17,17,568,partial,Startup config validation + secret rotation checks + env parity tests,https://github.com/huggingface/lighteval/issues/1170
+3,dependency_version_conflict,4,33,33,532,partial,Lockfiles + dependency matrix CI + periodic upgrade windows,https://github.com/langfuse/langfuse/issues/11738
+4,network_ssl_proxy,5,1,1,504,partial,Regional retry policy + CA/proxy baseline + timeout budget,https://github.com/BerriAI/litellm/issues/21314
+5,install_build_failure,4,7,7,428,partial,Reproducible devcontainer + prebuilt wheels/images + setup smoke test,https://github.com/Agenta-AI/agenta/issues/3169
+6,observability_tracing_gap,4,6,6,424,partial,Trace propagation policy + span coverage CI + drop-rate alerts,https://github.com/langfuse/langfuse/issues/12401
+7,rag_retrieval_quality,4,4,4,416,partial,Retrieval eval gate + chunk/reranker tuning + drift monitors,https://github.com/vibrantlabsai/ragas/issues/2629
+8,evaluation_metric_mismatch,3,14,14,356,partial,Metric governance board + KPI-aligned eval definitions,https://github.com/openai/evals/issues/1629
+9,ui_frontend_runtime,2,31,31,324,partial,Frontend version pin + browser/runtime compatibility checks,https://github.com/langfuse/langfuse/issues/11738
+10,docs_example_drift,1,28,28,212,partial,Docs-in-CI execution + versioned examples,https://github.com/openai/evals/issues/1629

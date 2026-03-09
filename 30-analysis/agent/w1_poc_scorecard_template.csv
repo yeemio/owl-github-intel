@@ -1,0 +1,13 @@
+repo,track,owner,status,task_success_rate,recovery_success_rate,p95_latency_ms,token_cost_per_task,trace_coverage,tool_portability,hitl_readiness,security_readiness,license_clarity,overall_score_100,go_no_go,notes
+langchain-ai/langgraph,orchestrator,TBD,planned,,,,,,,,,,,,,
+microsoft/autogen,orchestrator,TBD,planned,,,,,,,,,,,,,
+crewAIInc/crewAI,orchestrator,TBD,planned,,,,,,,,,,,,,
+deepset-ai/haystack,orchestrator,TBD,planned,,,,,,,,,,,,,
+openai/openai-agents-python,baseline,TBD,planned,,,,,,,,,,,,,
+langfuse/langfuse,observability,TBD,planned,,,,,,,,,,,,,
+AgentOps-AI/agentops,observability,TBD,planned,,,,,,,,,,,,,
+modelcontextprotocol/python-sdk,protocol,TBD,planned,,,,,,,,,,,,,
+tadata-org/fastapi_mcp,protocol,TBD,planned,,,,,,,,,,,,,
+mem0ai/mem0,memory,TBD,planned,,,,,,,,,,,,,
+browser-use/browser-use,actuator,TBD,planned,,,,,,,,,,,,,
+microsoft/agent-framework,enterprise,TBD,planned,,,,,,,,,,,,,

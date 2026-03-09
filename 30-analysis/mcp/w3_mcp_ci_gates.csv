@@ -1,0 +1,13 @@
+gate_id,gate_name,stage,rule,pass_criteria,fail_action,source_url
+G01,protocol_version_negotiation,premerge,initialize must negotiate supported version,session version is in support window,block merge,https://modelcontextprotocol.io/specification/versioning.md
+G02,transport_header_check,premerge,remote mode must include MCP-Protocol-Version header,all integration tests include valid header and pass,block merge,https://modelcontextprotocol.io/specification/2025-11-25/basic/transports.md
+G03,tools_list_contract,premerge,tools/list output must match declared contract,no missing/extra tool without approved change ticket,block merge,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+G04,tool_schema_validation,premerge,inputSchema/outputSchema validation enforced,100 percent schema tests pass,block merge,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+G05,list_changed_behavior,premerge,if listChanged enabled notification must be emitted,notification tests pass for add/remove tool events,block merge,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+G06,security_origin_validation,preprod,streamable HTTP server validates Origin header,invalid origin returns 403 in test suite,block deploy,https://modelcontextprotocol.io/specification/2025-11-25/basic/transports.md
+G07,least_privilege_local_access,preprod,filesystem-like tools must use allowlist paths,no wildcard or root-level unrestricted path in config,block deploy,https://modelcontextprotocol.io/docs/develop/connect-local-servers.md
+G08,inspector_smoke_suite,preprod,server must pass inspector smoke tests,all smoke test cases pass and report archived,block deploy,https://modelcontextprotocol.io/docs/tools/inspector.md
+G09,conformance_threshold,preprod,sdk/server must meet tier target threshold,score meets target policy (for example >= 80 percent),block deploy,https://modelcontextprotocol.io/community/sdk-tiers.md
+G10,registry_runtime_consistency,preprod,registry metadata must match runtime behavior,metadata fields and runtime capabilities are consistent,block deploy,https://modelcontextprotocol.io/registry/about.md
+G11,audit_log_presence,postdeploy,all tool calls logged with minimal audit fields,log sampling shows required fields completeness >= 99 percent,trigger incident,https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
+G12,rollback_readiness,postdeploy,each release has validated rollback path,rollback drill executed and documented before prod rollout,freeze rollout,https://modelcontextprotocol.io/specification/versioning.md

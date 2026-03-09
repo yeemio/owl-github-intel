@@ -1,0 +1,14 @@
+release_id,component,phase,criterion,weight,max_score,actual_score,status,evidence_artifact,owner
+RLS-001,protocol,premerge,version negotiation and support window compliance,0.10,10,10,pass,artifacts/premerge/contract-validation.json,platform-engineer
+RLS-002,tools,premerge,tools/list contract consistency and approved diffs only,0.12,10,10,pass,artifacts/premerge/tools-diff.json,qa-engineer
+RLS-003,schema,premerge,input/output schema validation hard-fail policy,0.10,10,9,pass_with_note,artifacts/premerge/schema-tests.json,backend-engineer
+RLS-004,transport,premerge,protocol header and invalid version rejection checks,0.08,10,10,pass,artifacts/premerge/transport-header-tests.json,backend-engineer
+RLS-005,security,preprod,origin/session/auth defense checks,0.12,10,9,pass_with_note,artifacts/preprod/security-origin-auth.json,security-engineer
+RLS-006,least_privilege,preprod,path/network allowlist and privileged confirmation policy,0.10,10,10,pass,artifacts/preprod/least-privilege.json,security-engineer
+RLS-007,inspector,preprod,inspector smoke plus edge case certification,0.08,10,9,pass_with_note,artifacts/preprod/inspector-smoke.json,qa-engineer
+RLS-008,conformance,preprod,conformance threshold meets internal tier target,0.10,10,8,pass_with_note,artifacts/preprod/conformance-report.json,platform-engineer
+RLS-009,registry_consistency,preprod,metadata and runtime capability consistency,0.08,10,10,pass,artifacts/preprod/registry-runtime-consistency.json,platform-engineer
+RLS-010,auditability,postdeploy,required audit fields completeness threshold,0.07,10,9,pass_with_note,artifacts/postdeploy/audit-completeness.json,sre
+RLS-011,rollback,postdeploy,rollback drill RTO within threshold,0.05,10,8,pass_with_note,artifacts/postdeploy/rollback-drill.json,sre
+RLS-012,aggregator_controls,preprod,tool collision and downstream isolation controls,0.10,10,9,pass_with_note,artifacts/preprod/aggregator-controls.json,platform-engineer
+TOTAL,all,all,weighted_total_score,1.00,100,91,go_with_guards,scorecard_rollup.json,release-manager

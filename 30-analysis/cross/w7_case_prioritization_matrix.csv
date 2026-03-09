@@ -1,0 +1,31 @@
+project,domain,impact_1to5,owlclaw_fit_1to5,implementation_complexity_1to5,delivery_speed_1to5,risk_1to5,priority,weighted_score_100,decision_rationale,source_url
+run-llama/llama_index,rag_framework,5,5,3,4,2,P0,90,默认框架主候选且与现有 RAG 方向高度一致,https://docs.llamaindex.ai/en/stable/
+qdrant/qdrant,vector_db,5,5,3,4,2,P0,90,过滤与多租户能力强且参数可控,https://qdrant.tech/documentation/
+BerriAI/litellm,llm_gateway,5,5,2,5,2,P0,93,多模型抽象与预算路由直接对应 OwlClaw 痛点,https://docs.litellm.ai/
+langfuse/langfuse,observability,5,5,2,5,2,P0,93,质量与成本闭环建设优先级最高,https://langfuse.com/docs
+Unstructured-IO/unstructured,ingestion,4,5,3,4,2,P0,85,文档预处理是 RAG 成败基础能力,https://docs.unstructured.io/
+vllm-project/vllm,inference_runtime,5,4,4,3,3,P0,82,吞吐收益高但上线需配套压测治理,https://docs.vllm.ai/
+opensearch-project/OpenSearch,hybrid_search,5,4,4,3,3,P1,79,混合检索可补长尾但运维复杂度上升,https://opensearch.org/docs/latest/vector-search/
+deepset-ai/haystack,rag_framework,4,4,3,4,2,P1,80,企业化 pipeline 能力强可作为并行路线,https://docs.haystack.deepset.ai/docs/intro
+pgvector/pgvector,vector_db,4,4,2,5,2,P1,86,若团队 PostgreSQL 经验强则落地速度快,https://github.com/pgvector/pgvector
+huggingface/text-generation-inference,inference_runtime,4,4,3,4,3,P1,77,标准化推理服务备选与 vLLM 互补,https://huggingface.co/docs/text-generation-inference/index
+apache/kafka,streaming_pipeline,4,4,4,3,3,P1,73,增量索引与事件驱动在中期必需,https://kafka.apache.org/documentation/
+milvus-io/milvus,vector_db,5,4,5,2,3,P1,74,大规模潜力高但首期复杂度偏高,https://milvus.io/docs
+langchain-ai/langchain,agent_framework,4,4,3,4,3,P1,76,生态广泛但工程治理需前置,https://docs.langchain.com/oss/python/langchain/overview
+weaviate/weaviate,hybrid_vector_db,4,3,4,3,3,P1,68,混合检索能力好但版本治理成本较高,https://docs.weaviate.io/weaviate
+apache/spark,batch_rebuild,4,3,5,2,3,P1,63,离线重建价值高但需较强平台能力,https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
+ClickHouse/ClickHouse,analytics_sidecar,4,4,4,3,3,P1,72,可观测与分析中台价值高适合中期建设,https://clickhouse.com/docs
+microsoft/graphrag,graph_rag,4,3,5,2,3,P2,59,多跳能力强但图构建成本高建议后置,https://microsoft.github.io/graphrag/
+HKUDS/LightRAG,graph_rag,3,3,4,3,3,P2,58,适合实验验证图增强不宜早期主线,https://github.com/HKUDS/LightRAG
+infiniflow/ragflow,rag_platform,3,3,4,3,3,P2,58,低代码友好但平台化治理成本较高,https://github.com/infiniflow/ragflow
+lancedb/lancedb,embedded_vector_db,3,3,3,4,2,P2,66,本地分析友好可作边缘方案补充,https://lancedb.github.io/lancedb/
+chroma-core/chroma,embedded_vector_db,3,3,2,5,2,P2,73,适合 PoC 与本地实验不作主生产库,https://docs.trychroma.com/
+vespa-engine/vespa,search_platform,5,2,5,1,4,P2,54,能力顶级但当前团队落地门槛过高,https://docs.vespa.ai/en/nearest-neighbor-search.html
+elastic/elasticsearch,search_platform,4,2,4,3,4,P2,56,许可与运维策略风险需法务和平台评估,https://www.elastic.co/guide/en/elasticsearch/reference/current/vector-search-overview.html
+meilisearch/meilisearch,search_engine,3,3,2,5,3,P2,67,中小场景友好但复杂检索上限有限,https://www.meilisearch.com/docs/learn/ai_powered_search/vector_search
+typesense/typesense,search_engine,3,3,2,5,3,P2,67,可快速上线但深度编排能力不足,https://typesense.org/docs/guide/vector-search.html
+facebookresearch/faiss,index_kernel,4,3,5,1,3,P2,56,适合深度自研内核不适合短期交付,https://github.com/facebookresearch/faiss/wiki
+nmslib/hnswlib,index_kernel,3,2,4,2,2,P2,50,轻量内核适合内嵌不适合平台主干,https://github.com/nmslib/hnswlib
+AirbyteHQ/airbyte,ingestion_orchestration,4,3,4,3,3,P2,64,连接器价值高但治理成本需预留资源,https://docs.airbyte.com/platform/understanding-airbyte/airbyte-architecture
+apache/tika,document_parsing,3,3,2,4,2,P2,66,作为保底解析层价值稳定但上限有限,https://tika.apache.org/
+duckdb/duckdb,offline_eval_data,3,4,1,5,1,P1,84,离线评测和分析可快速产生明显收益,https://duckdb.org/docs/
