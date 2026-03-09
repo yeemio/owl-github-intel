@@ -2,3 +2,5 @@ cycle_id,theme,a_sources,a_hard_evidence,b_challenged,b_failed_claims,c_promoted
 C1,mcp_gateway,60,50,18,2,6,2,84,A done; B challenge backfill added; C decisions now challenge-informed | B done
 C2,mcp_gateway,67,57,18,0,0,0,73,B-window review completed; all claims classified partial with boundary conditions | A done
 C3,eval_security_failure_modes,0,0,18,1,0,0,76,B-window review completed; scoring-model gap identified and one claim failed
+C4,eval_security_failure_modes,0,0,18,1,0,0,77,B-window review completed; KPI and rollout fallback gaps identified with one failed claim
+C5,agent_rag_architecture_tradeoffs,0,0,18,1,0,0,78,B-window review completed; framework-local criteria failed without business outcome gates

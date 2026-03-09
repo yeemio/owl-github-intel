@@ -2,20 +2,17 @@
 
 Last updated: 2026-03-09
 Source baseline: `20-normalized/repo_master_latest.csv`
-Decision cycle: `C1` (Window C final after B challenges)
+Decision cycle: `C2` (Window C final after B conditional review)
 
-## Window C Final Adjudication (C1)
+## C2 Final Decision Principle
 
-- Inputs consumed:
-  - `10-raw/scans/scan_2026-03-09_A_C1.md`
-  - `10-raw/scans/evidence_2026-03-09_A_C1.csv`
-  - `30-analysis/cross/challenge_log_2026-03-09_C1.md`
-  - `30-analysis/cross/challenge_matrix_2026-03-09_C1.csv`
-  - `20-normalized/handoff_B_to_C_2026-03-09_C1.md`
-- B-window summary: challenged=18, survives=5, partial=11, fails=2
-- Rejected claim IDs: `C-A04` (absolute release-frequency risk claim), `C-A12` (absolute closed-loop necessity claim)
+- B verdict summary: `survives=0, partial=18, fails=0`
+- Decision rule for this cycle:
+  - no absolute architecture mandates
+  - convert all recommendations into trigger-based conditional policies
+  - every promoted item must include rollback signal + exception policy
 
-## P0 - Execute First (final)
+## P0 - Scale Profile (triggered)
 
 1. `modelcontextprotocol/servers`
 2. `modelcontextprotocol/typescript-sdk`
@@ -24,34 +21,33 @@ Decision cycle: `C1` (Window C final after B challenges)
 5. `langchain-ai/langgraph`
 6. `qdrant/qdrant`
 
-P0 admission checks applied:
-- each P0 has >=2 independent sources in `repo_master_latest.csv`
-- each P0 has explicit `risk_signal` and `rollback_signal`
-- absolute claims downgraded to conditional where B produced counterexamples
+Activation triggers:
+- `QPS > 50/s` OR `provider_count >= 3`
+- `rollback_count >= 2/release`
+- `budget_drift > 3% for 2 weeks`
 
-## P1 - Conditional Build
+Not-hold conditions:
+- low-QPS internal tools with single provider and low compliance constraints
 
-- Agent runtime and orchestration:
-  - `langchain-ai/langchain`, `microsoft/autogen`, `openai/openai-agents-python`, `crewaiinc/crewai`
-- Retrieval and data stack:
-  - `run-llama/llama_index`, `weaviate/weaviate`, `chroma-core/chroma`, `milvus-io/milvus`
-- Evaluation expansion:
-  - `openai/evals`, `huggingface/lighteval`, `truera/trulens`
-- Safety and durable execution:
-  - `guardrails-ai/guardrails`, `temporalio/sdk-python`
+## P1 - Minimal Profile (default)
 
-## P2 - Watch / Optional
+- `openai/openai-agents-python`, `langchain-ai/langchain`, `microsoft/autogen`, `crewaiinc/crewai`
+- `openai/evals`, `huggingface/lighteval`, `truera/trulens`
+- `run-llama/llama_index`, `weaviate/weaviate`, `chroma-core/chroma`
+- `guardrails-ai/guardrails`, `temporalio/sdk-python`
 
-- `microsoft/durabletask-python`
-- `dapr/dapr-agents`
+Policy:
+- allow lean baseline first
+- promote to P0 only when trigger thresholds are hit
 
-## Rejected / Watch-Only
+## P2 / Watch
 
-- `huggingface/text-generation-inference` (maintenance trajectory)
-- `protectai/rebuff` (archived)
+- `milvus-io/milvus`, `microsoft/durabletask-python`, `dapr/dapr-agents`
+- `huggingface/text-generation-inference`, `protectai/rebuff`
 
-## Next-Cycle Gating
+## Exception Policy (C2)
 
-- Require canary + rollback drill evidence before any new P0 promotion
-- Require challenge_matrix verdict not equal to `fails`
-- Require release notes + issue trend to jointly support upgrade decisions
+- Emergency adoption allowed only with:
+  - risk acceptance ticket id
+  - explicit expiry (`<=7d` or `<=14d` depending on class)
+  - rollback owner + rehearsal evidence

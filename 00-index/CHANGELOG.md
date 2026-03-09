@@ -41,6 +41,10 @@
   - `50-publish/site/index.html`
   - `50-publish/site/styles.css`
   - `50-publish/site/app.js`
+- Added bilingual content pages (not navigation-only translation):
+  - `50-publish/site/content/en/*.html`
+  - `50-publish/site/content/zh/*.html`
+  - shared style: `50-publish/site/content/styles-content.css`
 - Window C cycle C1 decision pass completed:
   - updated `20-normalized/repo_master_latest.csv` with decision verdicts and explicit risk/rollback signals
   - updated `40-insights/adoption_backlog_latest.md` with C1 adjudication notes and rejected claims
@@ -54,3 +58,10 @@
   - rewrote `40-insights/adoption_backlog_latest.md` to remove provisional/duplicate notes and record failed claim IDs
   - appended C1-specific entries to `40-insights/risks/upgrade-risk-matrix.csv`
   - published final (non-provisional) `50-publish/weekly_digest_2026-03-09_C1.md`
+
+- Window C cycle C2 finalized (conditionalization pass):
+  - consumed A/B C2 handoffs and converted recommendations to trigger-based policies
+  - updated `20-normalized/repo_master_latest.csv` with `adoption_profile/trigger_threshold/exception_policy`
+  - rewrote `40-insights/adoption_backlog_latest.md` as C2 conditional-final backlog
+  - appended temporary-exception governance risk to `40-insights/risks/upgrade-risk-matrix.csv`
+  - published `50-publish/weekly_digest_2026-03-09_C2.md`

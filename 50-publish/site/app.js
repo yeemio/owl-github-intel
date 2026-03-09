@@ -34,12 +34,18 @@ const groups = {
     {
       en: ["Master Index", "Single source of navigation and current priorities"],
       zh: ["主入口", "统一导航与当前优先级"],
-      href: "../../00-index/MASTER_INDEX.md",
+      href: {
+        en: "./content/en/overview.html",
+        zh: "./content/zh/overview.html",
+      },
     },
     {
       en: ["Researcher Quickstart", "15 and 60 minute onboarding routes"],
       zh: ["研究者快速入口", "15分钟与60分钟上手路径"],
-      href: "../../00-index/QUICKSTART_FOR_RESEARCHERS.md",
+      href: {
+        en: "./content/en/research-guide.html",
+        zh: "./content/zh/research-guide.html",
+      },
     },
     {
       en: ["Public Overview", "External-facing project introduction page"],
@@ -66,7 +72,10 @@ const groups = {
     {
       en: ["3-Window Command Plan", "Minute-level execution for parallel windows"],
       zh: ["三窗口指挥计划", "分钟级并行执行作战方案"],
-      href: "../../00-index/THREE_WINDOW_EXECUTION_PLAN.md",
+      href: {
+        en: "./content/en/execution-plan.html",
+        zh: "./content/zh/execution-plan.html",
+      },
     },
   ],
   topicHubs: [
@@ -105,7 +114,10 @@ const groups = {
     {
       en: ["Failure Patterns", "Recurring production failure signatures"],
       zh: ["失败模式", "生产环境重复出现的故障特征"],
-      href: "../../40-insights/risks/failure-patterns.md",
+      href: {
+        en: "./content/en/risk-radar.html",
+        zh: "./content/zh/risk-radar.html",
+      },
     },
     {
       en: ["Upgrade Risk Matrix", "Breaking change and migration risk tracking"],
@@ -144,12 +156,13 @@ function renderList(targetId, items, className = "link-item") {
   const root = document.getElementById(targetId);
   root.innerHTML = "";
   items.forEach((item) => {
+    const href = typeof item.href === "string" ? item.href : item.href[lang];
     const a = document.createElement("a");
-    a.href = item.href;
+    a.href = href;
     a.className = className;
     a.target = "_blank";
     a.rel = "noopener noreferrer";
-    a.dataset.search = `${item[lang][0]} ${item[lang][1]} ${item.href}`.toLowerCase();
+    a.dataset.search = `${item[lang][0]} ${item[lang][1]} ${href}`.toLowerCase();
     a.innerHTML = `${item[lang][0]}<small>${item[lang][1]}</small>`;
     root.appendChild(a);
   });
