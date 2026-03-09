@@ -14,6 +14,7 @@ If you are a researcher, architect, or builder, this repository is meant to be n
 - High-value question bank: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
 - Public project overview: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
+- Static portal (EN/ZH): `50-publish/site/index.html`
 
 ## Directory Layout
 

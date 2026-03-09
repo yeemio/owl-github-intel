@@ -28,3 +28,22 @@
 - Updated top-level navigation links:
   - `README.md`
   - `00-index/MASTER_INDEX.md`
+- Upgraded three-window runbook to V2:
+  - `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
+  - changed from linear pipeline to discover/challenge/decide adversarial loop
+- Upgraded three-window runbook to V3 command-center style:
+  - stricter 70-minute cycle
+  - copy-paste prompts for each window
+  - kill rules for shallow cycles
+  - 8-cycle theme program
+  - added scoreboard: `00-index/CYCLE_SCOREBOARD.csv`
+- Added static portal with language switching:
+  - `50-publish/site/index.html`
+  - `50-publish/site/styles.css`
+  - `50-publish/site/app.js`
+- Window C cycle C1 decision pass completed:
+  - updated `20-normalized/repo_master_latest.csv` with decision verdicts and explicit risk/rollback signals
+  - updated `40-insights/adoption_backlog_latest.md` with C1 adjudication notes and rejected claims
+  - updated `40-insights/risks/upgrade-risk-matrix.csv` with MCP/gateway/retrieval upgrade risks
+  - updated `00-index/CYCLE_SCOREBOARD.csv` with C1 provisional score and outcomes
+  - published `50-publish/weekly_digest_2026-03-09_C1.md`

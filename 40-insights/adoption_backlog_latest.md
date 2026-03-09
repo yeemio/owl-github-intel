@@ -2,6 +2,30 @@
 
 Last updated: 2026-03-09
 Source baseline: `20-normalized/repo_master_latest.csv`
+Decision cycle: `C1` (Window C adjudication)
+
+## Window C Decision Notes (C1)
+
+- Input status: A/B handoff files were not found in this cycle, so claims were adjudicated from existing normalized and risk assets.
+- Decision policy applied:
+  - `survives` -> keep or promote in backlog
+  - `partial` -> keep as conditional with explicit gating
+  - `fails` -> reject from active backlog
+- Rejected claims logged:
+  - `huggingface/text-generation-inference` (maintenance trend; keep watch only)
+  - `protectai/rebuff` (archived; reference only)
+Decision cycle: `C1` (Window C adjudication)
+
+## Window C Decision Notes (C1)
+
+- Input status: A/B handoff files were not found in this cycle, so claims were adjudicated from existing normalized and risk assets.
+- Decision policy applied:
+  - `survives` -> keep or promote in backlog
+  - `partial` -> keep as conditional with explicit gating
+  - `fails` -> reject from active backlog
+- Rejected claims logged:
+  - `huggingface/text-generation-inference` (maintenance trend; keep watch only)
+  - `protectai/rebuff` (archived; reference only)
 
 ## P0 - Execute First
 
@@ -37,6 +61,8 @@ Source baseline: `20-normalized/repo_master_latest.csv`
   - create release gate based on KPI thresholds
 - Acceptance:
   - release checklist includes passing eval baseline with trace evidence
+  - each P0 item carries explicit risk and rollback signal in `repo_master_latest.csv`
+  - each P0 item carries explicit risk and rollback signal in `repo_master_latest.csv`
 
 ## P1 - Build Next
 
@@ -60,6 +86,16 @@ Source baseline: `20-normalized/repo_master_latest.csv`
 
 - `huggingface/text-generation-inference` (maintenance mode trend)
 - `protectai/rebuff` (archived, reference-only)
+
+## Rejected This Cycle
+
+- `huggingface/text-generation-inference`: not promoted due to maintenance trajectory and lower decision confidence.
+- `protectai/rebuff`: not promoted due to archived project status and weak maintenance signal.
+
+## Rejected This Cycle
+
+- `huggingface/text-generation-inference`: not promoted due to maintenance trajectory and lower decision confidence.
+- `protectai/rebuff`: not promoted due to archived project status and weak maintenance signal.
 
 ## Next Review Cadence
 

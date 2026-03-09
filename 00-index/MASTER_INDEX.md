@@ -18,7 +18,9 @@ Use this page first, then jump by topic or output type.
 - High-value questions: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
 - Three-window execution plan: `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
+- Cycle scoreboard: `00-index/CYCLE_SCOREBOARD.csv`
 - Public overview page: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
+- Static portal (EN/ZH): `50-publish/site/index.html`
 - Master normalized repo table: `20-normalized/repo_master_latest.csv`
 - Current adoption plan: `40-insights/adoption_backlog_latest.md`
 

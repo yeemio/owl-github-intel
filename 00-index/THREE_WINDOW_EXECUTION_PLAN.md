@@ -1,177 +1,224 @@
-# Three-Window Execution Plan
+# Three-Window Execution Plan (V3 - Command Center)
 
-Purpose: run high-output research operations with only three active windows while preserving quality and update cadence.
+Purpose: run a research factory with only 3 windows, but produce outputs deep enough to be publishable and decision-grade.
 
-Last updated: 2026-03-09
+Last updated: 2026-03-09 (v3)
 
-## Operating Model
+## One-Line Summary
 
-- Window A = Intake + Evidence Mining
-- Window B = Structuring + Normalization
-- Window C = Insight Synthesis + Publishing
-
-The three windows run in 50-minute cycles with strict handoff rules.
+Use a hard loop: **Mine -> Attack -> Decide**.  
+If a claim cannot survive attack, it never enters backlog.
 
 ---
 
-## Window A - Intake and Evidence Mining
+## Window Ownership
 
-## Mission
+- `Window A`: Evidence Miner (high-volume discovery)
+- `Window B`: Red Team Reviewer (adversarial falsification)
+- `Window C`: Decision Desk (resolution + publication)
 
-Collect high-signal external evidence and produce structured raw artifacts.
-
-## Scope
-
-- External searches and source collection
-- Issue/PR/release evidence extraction
-- Source credibility tagging
-
-## Required Outputs per cycle
-
-1. One raw scan markdown:
-   - `10-raw/scans/scan_<date>_A_<cycle>.md`
-2. One raw evidence csv:
-   - `10-raw/scans/evidence_<date>_A_<cycle>.csv`
-3. One handoff note:
-   - `10-raw/scans/handoff_A_to_B_<date>_<cycle>.md`
-
-## Mandatory fields in evidence csv
-
-- `source_type` (repo/release/issue/pr/blog)
-- `topic` (agent/mcp/rag/gateway/eval/security/cross)
-- `claim`
-- `evidence_excerpt`
-- `url`
-- `date_observed`
-- `confidence` (high/medium/low)
-
-## Quality bar
-
-- Minimum 20 validated URLs per cycle
-- At least 5 issue or PR links (not only README/blog)
-- Every claim must have direct source references
+Each window has fixed commands, fixed outputs, and fixed scoring.
 
 ---
 
-## Window B - Structuring and Normalization
+## Timebox and Rhythm
 
-## Mission
+Use 70-minute cycles (better depth than 50/60):
 
-Turn incoming raw evidence into clean, deduplicated, decision-ready datasets.
+- Minute 0-25: A mines evidence
+- Minute 25-45: B attacks A claims
+- Minute 45-60: C resolves and writes decisions
+- Minute 60-70: all windows handoff + scorecard update
 
-## Scope
+Run 4 cycles/day minimum.
 
-- Deduplicate repositories and claims
-- Normalize schema and tags
-- Score relevance/risk/priority
+---
 
-## Required Outputs per cycle
+## Window A - Evidence Miner
 
-1. Update:
-   - `20-normalized/repo_master_latest.csv`
-2. Update (if risk-related evidence exists):
-   - `40-insights/risks/failure-patterns.csv`
+## Objective
+
+Generate high-density evidence, not summary prose.
+
+## Mandatory output files per cycle
+
+1. `10-raw/scans/scan_<date>_A_<cycle>.md`
+2. `10-raw/scans/evidence_<date>_A_<cycle>.csv`
+3. `10-raw/scans/handoff_A_to_B_<date>_<cycle>.md`
+
+## Copy-paste prompt for Window A
+
+```text
+你是证据挖掘器。围绕当前主题进行深挖，不做泛泛总结。
+必须输出：
+1) evidence CSV（每行一条可验证证据）
+2) scan MD（按证据编号解释上下文）
+要求：
+- 本轮至少30个URL
+- 至少10条来自 issue/pr/release（不是README）
+- 每条证据写 claim_id，后续给B窗口挑战
+- 严禁无来源结论
+文件写入：
+10-raw/scans/scan_<date>_A_<cycle>.md
+10-raw/scans/evidence_<date>_A_<cycle>.csv
+10-raw/scans/handoff_A_to_B_<date>_<cycle>.md
+```
+
+## A窗口硬指标
+
+- `source_count >= 30`
+- `hard_evidence_count(issue/pr/release) >= 10`
+- `new_claims >= 12`
+
+If any metric fails, A must rerun before handoff.
+
+---
+
+## Window B - Red Team Reviewer
+
+## Objective
+
+Try to break A's claims with counterexamples and boundary conditions.
+
+## Mandatory output files per cycle
+
+1. `30-analysis/cross/challenge_log_<date>_<cycle>.md`
+2. `30-analysis/cross/challenge_matrix_<date>_<cycle>.csv`
+3. `20-normalized/handoff_B_to_C_<date>_<cycle>.md`
+
+## Copy-paste prompt for Window B
+
+```text
+你是反驳审校员。读取A窗口claim_id逐条攻击：
+1) 找反例
+2) 找过时证据
+3) 找不可泛化场景
+每条claim必须给 verdict：
+- survives
+- partial
+- fails
+并给 counter_source_url。
+输出：
+30-analysis/cross/challenge_log_<date>_<cycle>.md
+30-analysis/cross/challenge_matrix_<date>_<cycle>.csv
+20-normalized/handoff_B_to_C_<date>_<cycle>.md
+```
+
+## B窗口硬指标
+
+- `claims_challenged >= 15`
+- `counter_sources >= claims_challenged`
+- `every_claim_has_verdict = true`
+
+If B leaves any claim unclassified, cycle is invalid.
+
+---
+
+## Window C - Decision Desk
+
+## Objective
+
+Resolve contested claims and update official decision assets.
+
+## Mandatory output files per cycle
+
+1. update `20-normalized/repo_master_latest.csv`
+2. update `40-insights/adoption_backlog_latest.md`
+3. update one risk file:
+   - `40-insights/risks/failure-patterns.csv` or
    - `40-insights/risks/upgrade-risk-matrix.csv`
-3. One handoff note:
-   - `20-normalized/handoff_B_to_C_<date>_<cycle>.md`
+4. `50-publish/weekly_digest_<date>_<cycle>.md`
+5. append `00-index/CHANGELOG.md`
 
-## Normalization rules
+## Copy-paste prompt for Window C
 
-- Repo name format must be `owner/repo`
-- Merge duplicates by URL and canonical repo slug
-- Keep strongest evidence when claims conflict
-- Always set:
-  - `relevance` (strong/medium/weak)
-  - `risk_level` (high/medium/low)
-  - `adoption_priority` (P0/P1/P2/watch)
+```text
+你是决策编辑台。读取A和B的交付，按“证据强度+反驳结果”定稿：
+1) survives -> 可进入候选结论
+2) partial -> 仅标注为条件性结论
+3) fails -> 进入驳回列表，不进backlog
+必须更新：
+- 20-normalized/repo_master_latest.csv
+- 40-insights/adoption_backlog_latest.md
+- 40-insights/risks/*.csv（至少一个）
+- 50-publish/weekly_digest_<date>_<cycle>.md
+- 00-index/CHANGELOG.md
+```
 
-## Quality bar
+## C窗口硬指标
 
-- Zero empty `repo` or `url`
-- No duplicate `owner/repo` rows
-- At least one source file trace for each newly added row
+- `P0 entries must have >=2 independent sources`
+- `every P0 has risk + rollback signal`
+- `rejected_claims logged`
 
----
-
-## Window C - Insight Synthesis and Publishing
-
-## Mission
-
-Convert normalized datasets into narrative intelligence and public-facing outputs.
-
-## Scope
-
-- Topic analysis updates
-- Backlog and recommendation updates
-- Public digest refresh
-
-## Required Outputs per cycle
-
-1. One analysis update in `30-analysis/<topic>/`
-2. One decision update in:
-   - `40-insights/adoption_backlog_latest.md`
-3. One publish artifact:
-   - `50-publish/weekly_digest_<date>_<cycle>.md`
-4. Index updates:
-   - `00-index/CHANGELOG.md`
-   - if needed, `00-index/MASTER_INDEX.md`
-
-## Narrative structure requirement
-
-Each analysis update must include:
-
-1. What changed this cycle
-2. Evidence-backed findings
-3. Risks and unknowns
-4. Recommended action (P0/P1/P2)
-5. Next-cycle research gap
+If C cannot justify a P0, downgrade to P1/P2.
 
 ---
 
-## Cycle Cadence (50 minutes)
+## Scoreboard (must maintain)
 
-- Minute 0-25: Window A mines and packages evidence
-- Minute 25-35: Window B normalizes and scores
-- Minute 35-47: Window C writes and publishes
-- Minute 47-50: all windows append handoff notes and blockers
+Create and update each cycle:
 
-Repeat for as many cycles as needed.
+- `00-index/CYCLE_SCOREBOARD.csv`
 
----
+Fields:
 
-## Handoff Protocol
+- `cycle_id`
+- `theme`
+- `a_sources`
+- `a_hard_evidence`
+- `b_challenged`
+- `b_failed_claims`
+- `c_promoted_p0`
+- `c_rejected`
+- `quality_score_100`
+- `notes`
 
-Every handoff note must include:
+Quality score formula:
 
-- Completed files
-- Open questions
-- Blockers
-- Suggested next 3 actions
+- Evidence density (40)
+- Adversarial rigor (30)
+- Decision clarity (30)
 
-No verbal-only handoff. Files are the source of truth.
-
----
-
-## Priority Rotation Strategy
-
-If one theme is saturated, rotate by cycle:
-
-1. Cycle 1: MCP + Gateway
-2. Cycle 2: Eval + Security
-3. Cycle 3: Agent + RAG
-4. Cycle 4: Cross-topic risks and upgrades
-
-This keeps breadth while still deepening evidence.
+Target: `quality_score_100 >= 75`.
 
 ---
 
-## Minimum Daily Done Criteria
+## Theme Plan (8-cycle program)
 
-End of day is complete only if all are true:
+1. C1-C2: MCP + Gateway reliability
+2. C3-C4: Eval + Security failure modes
+3. C5-C6: Agent + RAG architecture trade-offs
+4. C7-C8: Upgrade risk + cross-track decision memo
 
-- `repo_master_latest.csv` updated
-- at least one risk file updated
-- at least one publish digest created
-- changelog entry written
+At end of C8, publish:
 
-If any item is missing, continue another cycle.
+- `50-publish/executive_research_digest_<date>.md`
+- `40-insights/backlogs/decision_memo_<date>.md`
+
+---
+
+## "Not Deep Enough" Kill Rules
+
+A cycle is automatically rejected if:
+
+- mostly README/blog sources
+- no counterexamples
+- claims without boundary conditions
+- recommendations without rollback criteria
+
+Rejected cycles must be rerun with same theme.
+
+---
+
+## Minimum Daily Done (strict)
+
+Day closes only when all true:
+
+- 4 completed cycles
+- scoreboard updated
+- backlog updated
+- at least 1 public digest published
+- at least 1 decision memo drafted
+
+No exceptions.

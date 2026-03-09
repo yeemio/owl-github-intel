@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owl AI Dev Intel Portal</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1 id="title">Owl AI Dev Intel Portal</h1>
+        <p id="subtitle">
+          Research navigation for AI ecosystem intelligence
+        </p>
+      </div>
+      <button id="lang-toggle" class="btn">中文</button>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2 id="searchTitle">Search</h2>
+        <input
+          id="search-input"
+          class="search-input"
+          type="text"
+          placeholder="Type keywords..."
+        />
+        <p id="searchHint" class="search-hint">
+          Filter cards by title, description, and path.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2 id="quickStartTitle">Quick Start</h2>
+        <div id="quick-start" class="link-list"></div>
+      </section>
+
+      <section class="card">
+        <h2 id="researchPathsTitle">Research Paths</h2>
+        <div id="research-paths" class="link-list"></div>
+      </section>
+
+      <section class="card">
+        <h2 id="topicHubsTitle">Topic Hubs</h2>
+        <div id="topic-hubs" class="grid"></div>
+      </section>
+
+      <section class="card">
+        <h2 id="riskIntelTitle">Risk Intelligence</h2>
+        <div id="risk-intel" class="link-list"></div>
+      </section>
+
+      <section class="card">
+        <h2 id="operationsTitle">Operations and Contribution</h2>
+        <div id="operations" class="link-list"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="footerText">All links point to repository files.</span>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
