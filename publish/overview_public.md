@@ -1,54 +1,34 @@
 # Owl GitHub Intel
 
-An evidence-led research workspace for AI development ecosystems, curated for platform builders.
+This repository is an evidence-led research publication about the AI developer ecosystem.
+It exists to help builders make **faster** and **safer** decisions when adopting AI stacks (agents, MCP, RAG, gateways, eval, security).
 
-## Why this repository is worth your time
+## The customer value (what you can do with it)
 
-- It is not an "awesome list" clone.
-- It links ecosystem signals to architecture decisions.
-- It includes failure and upgrade intelligence, not just popularity snapshots.
-- It provides guided research trails so new contributors can start fast.
+- Build an adoption shortlist with clear posture (`P0/P1/P2`), boundaries, and rollback signals.
+- Avoid common production failures by reusing a cross-repo failure signature library.
+- Pre-empt breaking upgrades by tracking migration risk before you upgrade dependencies.
+- Keep a decision record that is evidence-backed (issue/release links), not “vibes”.
 
-## Who should read this
+## The outputs you can directly reuse
 
-- Engineering leaders designing AI platform roadmaps
-- Architects evaluating agent, MCP, RAG, gateway, eval, and security stacks
-- Developers who need decision-ready evidence, not scattered links
-
-## Start in 10 minutes
-
-1. Read `../index/RESEARCH_TRAIL_MAP.md`
-2. Open `../index/BROWSE_BY_TOPIC.md`
-3. Check `../data/master/repo_master.csv`
-4. End with `../insights/adoption_backlog.md`
-
-## What you can learn quickly
-
-- Which AI dev tracks are converging or fragmenting
-- Where production failures repeat across projects
-- Which upgrades are high-risk before you adopt dependencies
-- What to prioritize in 30/60/90-day execution
-
-## Core assets
-
-- Cross-topic synthesis:
-  - `../analysis/cross/deep_ai_dev_landscape_2026-03-09.md`
-- Failure intelligence:
+- Master dataset (filterable table): `../data/master/repo_master.csv`
+- Adoption decisions: `../insights/adoption_backlog.md`
+- Risk intelligence:
   - `../data/risks/failure-patterns.md`
-- Upgrade intelligence:
   - `../data/risks/upgrade-risk-matrix.md`
-- Decision benchmark:
-  - `../analysis/cross/architecture-decision-benchmark.md`
+  - `../data/risks/master_risk_register_2026-03-09.csv`
+- Digests: `../publish/digests/`
 
-## Contribution model
+## Start (10 minutes)
 
-1. Add source scans into `../sources/scans/`
-2. Normalize in `../data/master/repo_master.csv`
-3. Write evidence-backed analysis in `../analysis/`
-4. Update decisions in `../insights/adoption_backlog.md`
-5. Record updates in `../index/CHANGELOG.md`
+1. Use the 10-minute decision kit: `../publish/starter_pack.md`
+2. Read the current adoption list: `../insights/adoption_backlog.md`
+3. Filter the master dataset by your track: `../data/master/repo_master.csv`
+4. If you need depth, go to `../analysis/` by topic.
 
-## Practical philosophy
+## What this is not
 
-We optimize for: evidence density, reproducibility, and decision usefulness.
-We avoid: trend chasing without source-backed implications.
+- Not an “awesome list” clone.
+- Not a claim of correctness or freshness; treat outputs as decision inputs and verify critical points.
+- Not tied to any single downstream system (it was originally built to support OwlClaw, but it is independent).

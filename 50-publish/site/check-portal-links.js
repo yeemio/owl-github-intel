@@ -18,6 +18,7 @@ const DEFAULT_HREFS = [
   "./content/en/research-guide.html",
   "./content/zh/research-guide.html",
   "../../publish/overview_public.md",
+  "../../publish/starter_pack.md",
   "../../docs/OVERVIEW.md",
   "../../docs/METHODOLOGY.md",
   "../../docs/DATA_SCHEMA.md",

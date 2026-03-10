@@ -89,6 +89,14 @@ const DEFAULT_GROUPS = {
       href: { en: "./content/en/overview.html", zh: "./content/zh/overview.html" },
     },
     {
+      id: "starter-pack",
+      theme: "publish",
+      tags: ["starter", "value", "decision"],
+      en: ["Starter Pack", "10-minute decision kit: what to use and why"],
+      zh: ["10分钟决策包", "直接拿到可用结论：用什么、为什么、怎么控风险"],
+      href: "../../publish/starter_pack.md",
+    },
+    {
       id: "researcher-quickstart",
       theme: "overview",
       tags: ["onboarding", "workflow", "research"],

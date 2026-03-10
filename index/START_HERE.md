@@ -10,11 +10,12 @@ OwlClaw codebase or documentation site.
 ## What To Do (60 seconds)
 
 1. Open the portal: `50-publish/site/`
-2. Read the current decisions: `insights/adoption_backlog.md`
-3. Inspect risks before adopting anything:
+2. Use the 10-minute decision kit: `publish/starter_pack.md`
+3. Read the current decisions: `insights/adoption_backlog.md`
+4. Inspect risks before adopting anything:
    - `data/risks/failure-patterns.md`
    - `data/risks/upgrade-risk-matrix.md`
-4. If you need depth, pick a track under `analysis/` (agent/mcp/rag/gateway/eval/security).
+5. If you need depth, pick a track under `analysis/` (agent/mcp/rag/gateway/eval/security).
 
 ## Core Outputs
 
@@ -29,4 +30,3 @@ OwlClaw codebase or documentation site.
 
 If you add new conclusions, include sources and update the relevant dataset rows.
 See `CONTRIBUTING.md`.
-
