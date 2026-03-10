@@ -90,6 +90,8 @@ def main() -> int:
         require_file("docs/GLOSSARY.md")
         require_file("docs/FAQ.md")
         require_file("index/MASTER_INDEX.md")
+        require_file("publish/LATEST.md")
+        require_file("publish/starter_pack.md")
 
         require_columns(
             repo_master,
@@ -153,4 +155,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

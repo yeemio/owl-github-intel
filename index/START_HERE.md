@@ -10,8 +10,9 @@ OwlClaw codebase or documentation site.
 ## What To Do (60 seconds)
 
 1. Open the portal: `50-publish/site/`
-2. Use the 10-minute decision kit: `publish/starter_pack.md`
-3. Read the current decisions: `insights/adoption_backlog.md`
+2. Read the latest one-page brief: `publish/LATEST.md`
+3. Use the 10-minute decision kit: `publish/starter_pack.md`
+4. Read the current decisions: `insights/adoption_backlog.md`
 4. Inspect risks before adopting anything:
    - `data/risks/failure-patterns.md`
    - `data/risks/upgrade-risk-matrix.md`

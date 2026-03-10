@@ -89,6 +89,14 @@ const DEFAULT_GROUPS = {
       href: { en: "./content/en/overview.html", zh: "./content/zh/overview.html" },
     },
     {
+      id: "latest-brief",
+      theme: "publish",
+      tags: ["latest", "brief", "value"],
+      en: ["LATEST Brief", "One page: decisions, risks, digests"],
+      zh: ["最新一页纸", "一页拿到：结论、风险、摘要入口"],
+      href: "../../publish/LATEST.md",
+    },
+    {
       id: "starter-pack",
       theme: "publish",
       tags: ["starter", "value", "decision"],

@@ -16,6 +16,7 @@ License: MIT (see `LICENSE`).
 
 - Portal (GitHub Pages): `https://yeemio.github.io/owl-github-intel/50-publish/site/`
 - Single entrypoint: `index/START_HERE.md`
+- Latest one-page brief: `publish/LATEST.md`
 - 10-minute decision kit: `publish/starter_pack.md`
 - Core dataset: `data/master/repo_master.csv`
 
