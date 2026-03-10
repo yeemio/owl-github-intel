@@ -2,6 +2,10 @@
 
 ## 2026-03-09 (continued)
 
+- **3 窗口 C8 分配 + 统筹**：更新 `00-index/WINDOW_ASSIGNMENTS_NOW.md`：周期 C8、主题 Crawl/Search 栈采纳信号；窗口 A（Evidence Miner）、B（Red Team）、C（Decision Desk）各带复制用提示词与产出路径；新增「统筹」流程（发布→等待→收口→报告），收口时由统筹窗口执行 git commit/push。
+- **Crawl & search 收口**：补全 `30-analysis/crawl/`：新增 `README.md` 目录与分类速览；主文档第二节补许可/星数、新增第七节「选型速查」表；CSV 修正 Jina Reader self_hosted=no、Embedchain stars≈20k；BROWSE_BY_TOPIC 增加 crawl 目录链接。
+- **C6 Decision Desk pass**: Applied survives/partial/fails rule; rejected C6-B-018 (pipeline backbones P2-only); updated adoption_backlog_latest.md, upgrade-risk-matrix.csv, weekly_digest_2026-03-09_C6.md, CYCLE_SCOREBOARD.csv; no new P0 promotions.
+- **Crawl & search intel**: Added `30-analysis/crawl/llm_web_crawl_search_2026-03-09.md` and `.csv` — open-source projects for LLM + web crawl/search (Crawl4AI, Firecrawl, Jina Reader, ForgeCrawl, Crawl2RAG, RagRabbit, Embedchain, Tavily, etc.). BROWSE_BY_TOPIC updated with Crawl & Search section.
 - Added `00-index/WINDOW_ASSIGNMENTS_NOW.md`: C6 cycle assignment for 3 windows (A: Evidence Miner, B: Red Team, C: Decision Desk); theme: upgrade risk + cross-track; copy-paste prompts and output paths included. MASTER_INDEX linked to WINDOW_ASSIGNMENTS_NOW.
 
 ## 2026-03-09
