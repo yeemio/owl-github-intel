@@ -46,10 +46,10 @@
 - `00-index/CHANGELOG.md`
 - `00-index/CYCLE_SCOREBOARD.csv`
 
-## Next 5 unknowns
+## Next 5 unknowns（B→C 闭环：其中 2、4、5 对应 B 的 Top 3 风险）
 
 1. **Crawl/Search P0 bar** — What “≥2 independent sources” means for crawl stack (multi-repo evidence vs multi-URL per repo) and when to promote from P2 to P1.
-2. **Jina vs Firecrawl parity** — Same-URL/same-time comparison for site pass/fail (Thales, Reddit) to define fair benchmark and fallback policy.
+2. **Jina vs Firecrawl parity** — Same-URL/same-time comparison for site pass/fail (Thales, Reddit) to define fair benchmark and fallback policy. ← B Top 3 #2
 3. **Perplexica token/context baseline** — Reproducible token and context-size benchmarks vs Farfalle/Turboseek for adoption criteria.
-4. **Firecrawl adoption signal** — Distinguish “feature exists” from “adoption evidence” (stars, integration docs, third-party references) for backlog priority.
-5. **30-analysis/crawl coverage** — Whether to include ForgeCrawl, RagRabbit, Crawl2RAG in next evidence cycle and how they map to P2 triggers.
+4. **Firecrawl adoption signal** — Distinguish “feature exists” from “adoption evidence” (stars, integration docs, third-party references) for backlog priority. ← B Top 3 #3
+5. **30-analysis/crawl coverage** — Whether to include ForgeCrawl, RagRabbit, Crawl2RAG in next evidence cycle and how they map to P2 triggers; external sources or “内部归纳、待外部验证” for crawl conclusions. ← B Top 3 #1

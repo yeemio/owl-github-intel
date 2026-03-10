@@ -25,3 +25,19 @@
 ## Blocking/Warning Notes
 - No direct primary-source ingestion for NIST/CISA in this environment; C should preserve this as explicit audit caveat.
 - C should avoid promoting any eval/security item to unconditional P0 without profile and exception policy fields.
+
+---
+
+## 规范补全（B 窗口必填 — 方便 C 写 digest 和闭环）
+
+### Top 5 风险（简短描述 + claim_id）
+1. **Top30 评分维度缺 org 就绪与迁移债务，采纳决策易偏** — **C3-B-016**
+2. **离线—在线闭环无负责人与 SLA 则不可达成** — **C3-B-002**
+3. **回滚仅靠错误率/成功率触发会漏语义与幻觉退化** — **C3-B-008**
+4. **周序 90 天滚动假设人力稳定，无重大事件打断** — **C3-B-015**
+5. **未签名制品零部署在紧急热修场景需时限例外与事后审计** — **C3-B-013**
+
+### 给 C 的 3 条建议行动（可执行、和证据相关）
+1. **扩展评测排名模型并增加临时例外政策** — 在 eval 相关资产中增加 org_readiness_score、migration_debt_score；在安全治理文档中增加 temporary_exception_policy（时限+批准链）；证据：C3-B-016 fails，C3-B-013 partial。
+2. **回滚策略增加语义质量退化触发** — 在 rollback/runbook 中增加 semantic_quality_regression 触发条件（不限于 error/latency/safety）；证据：C3-B-008。
+3. **“默认栈”全部改为画像化建议** — 所有 default stack 表述改为 profile-specific，并注明 exception_policy 与证据债务登记；证据：C3 全部 partial 的 boundary 与 recommendation_for_c。

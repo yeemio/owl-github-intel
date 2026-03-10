@@ -1,0 +1,21 @@
+claim_id,challenge_type,counter_source_url,verdict,notes
+C9-A01,boundary_condition,https://github.com/langchain-ai/langgraph,partial,Checkpoint/resume is framework-local; business task success and rollback blast-radius gates still needed for production-ready. C: add outcome-based promotion criterion.
+C9-A02,boundary_condition,https://github.com/openai/openai-agents-python,partial,3% handoff failure alone can mislead if low-impact or auto-recovered. C: use severity-weighted handoff failure and business impact before downgrade.
+C9-A03,boundary_condition,https://github.com/modelcontextprotocol/python-sdk,partial,Mandatory from day-1 can block teams with legacy tools. C: phased MCP adoption with exception inventory; new integrations only first.
+C9-A04,boundary_condition,https://github.com/modelcontextprotocol/servers,partial,Curation risk is real; discovery-only is one mitigation. C: add version/compatibility check before any server import.
+C9-A05,boundary_condition,https://github.com/chroma-core/chroma,partial,Optimal for mid-scale is context-dependent; small static corpus may not need full stack. C: label as default for balanced/growth profile only.
+C9-A06,boundary_condition,https://github.com/vibrantlabsai/ragas,partial,Always-on reranker adds latency/cost; conditional reranking by uncertainty needed. C: adopt conditional reranking policy.
+C9-A07,boundary_condition,https://github.com/istio/istio,partial,Sufficient only when org has mesh capacity; small team may need lighter stack. C: label as scale profile and add minimal profile.
+C9-A08,counterevidence,https://github.com/BerriAI/litellm/issues/14321,partial,Cascade is evidenced; mitigation is rollback and routing bundle. C: add cascade to runbook and rollback drill.
+C9-A09,boundary_condition,https://github.com/langfuse/langfuse/issues/11789,partial,Regressions can hide defects; trace completeness threshold is mitigation. C: add trace completeness to release gate.
+C9-A10,boundary_condition,https://github.com/openai/evals,partial,Metric drift is real; freeze eval dataset and benchmark config is mitigation. C: document metric freeze and revert procedure.
+C9-A11,boundary_condition,https://github.com/guardrails-ai/guardrails/releases,partial,Rule drift can increase false rejects; version guard specs and rollback help. C: add rule version and reject-rate monitoring.
+C9-A12,boundary_condition,https://github.com/kyverno/kyverno/releases,partial,Some policy engines are embedded; separation not always feasible. C: allow combined rollout with stricter canary when separation impossible.
+C9-A13,boundary_condition,50-publish/weekly_digest_2026-03-09_C8.md,partial,Crawl P0 bar is an open question not a claim; multi-repo vs multi-URL needs definition. C: define and document in adoption_backlog.
+C9-A14,boundary_condition,50-publish/weekly_digest_2026-03-09_C8.md,partial,Same-URL same-time is method not yet done; parity claim premature. C: add controlled benchmark to backlog before parity conclusion.
+C9-A15,boundary_condition,50-publish/weekly_digest_2026-03-09_C8.md,partial,Baseline is unknown not claim; benchmarks needed to make adoption criteria. C: add token/context benchmark to research backlog.
+C9-A16,boundary_condition,https://github.com/firecrawl/firecrawl/releases/tag/v2.8.0,partial,Feature vs adoption evidence is distinction not yet applied in backlog. C: label Firecrawl as feature signal until adoption metrics added.
+C9-A17,boundary_condition,30-analysis/crawl/README.md,partial,Coverage expansion is recommendation not validated claim. C: add ForgeCrawl RagRabbit Crawl2RAG to next scan scope with P2 trigger.
+C9-A18,counterevidence,40-insights/risks/failure-patterns.md,partial,Frequency from issue text may not match production incident root cause. C: cross-check with internal incident taxonomy; add production-weight option.
+C9-A19,boundary_condition,https://github.com/truera/trulens/releases,partial,Adapters add maintenance and can lag multi-version support. C: document adapter maintenance SLA and version support window.
+C9-A20,counterevidence,30-analysis/cross/challenge_matrix_2026-03-09_C7.csv,fails,C7-B-016/C8-A07: expiry without enforcement leads to permanent exceptions. Manual expiry insufficient; automated exception-expiry check and escalation required. C: implement automated expiry and document in risk register.

@@ -2,6 +2,8 @@
 
 ## 2026-03-09 (continued)
 
+- **C 收口加固（约 30 分钟）**：failure-patterns.csv 新增 cross-track C9-A18（失败类型频次与生产根因对齐 caveat）；adoption_backlog 例外政策补充「临时例外须含自动化到期」及 C9-A20 引用、C8 Crawl 节补充「内部归纳、待外部验证」；CURRENT_CYCLE 标 C9 已收口、C10 预备与历史；30-analysis/crawl/README 采纳结论标注待外部验证；THREE_WINDOW_WORKFLOW 增加 C 每轮必做检查两条。
+- **C9 Decision Desk 收口**：主题全轨道采纳信号+失败模式复核；已消费 A+B C9 产出；更新 upgrade-risk-matrix（例外政策须自动化到期 C9-A20、网关级联 runbook C9-A08）、adoption_backlog；C9-A20 判 fails 并纳入风险与 digest；weekly_digest_2026-03-09_C9.md 文末「下轮 5 个未知」含 B 的 top 5 风险中 ≥2 条闭环；CYCLE_SCOREBOARD 新增 C9 行。
 - **排期文档**：新增 `00-index/CURRENT_CYCLE.md`，写明当前周期 C9、主题、A/B/C 任务概要、产出路径、提示词所在、下一轮预备；MASTER_INDEX 增「当前排期」表与链接，THREE_WINDOW_WORKFLOW 增 CURRENT_CYCLE 链接，便于一眼看到「排了啥」。
 - **C9 分配（加量）**：更新 `WINDOW_ASSIGNMENTS_NOW.md` 为 C9；主题「全轨道采纳信号 + 失败模式复核」；A 要求六轨覆盖 + C8 未知深挖（≥45 URL，≥18 claim），B 要求全部挑战 + handoff 含 top 5 风险与 3 条建议行动，C 要求更新至少一个 risk 文件且 digest 下轮未知引用 B top 5 中≥2 条；文末增加 C10 预备说明。
 - **C8 Decision Desk 收口**：主题 Crawl/Search 栈采纳信号；已消费 A 的 scan/evidence/handoff 与 B 的 challenge 产出（B 内容与主题错位，为升级风险/跨轨）；按 A 证据更新 adoption_backlog（Crawl/Search P2 条件项）、upgrade-risk-matrix、repo_master；已写 weekly_digest_2026-03-09_C8.md、CYCLE_SCOREBOARD C8 行；无新 P0。

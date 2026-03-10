@@ -19,17 +19,27 @@ const DEFAULT_TEXT = {
     searchTitle: "Search",
     searchHint: "Filter cards by title, description, and path.",
     searchPlaceholder: "Type keywords...",
+    searchAriaLabel: "Search and filter cards by title, description, path",
     filterTheme: "Theme",
     filterTag: "Tag",
     filterAllThemes: "All themes",
     filterAllTags: "All tags",
     statusLoading: "Loading portal data...",
-    statusError: "Render failed. Please refresh or check script errors.",
+    statusError: "Render failed. Please refresh or click Retry.",
     statusEmpty: "No results. Try clearing filters or changing keywords.",
     statusReady: "Showing {count} cards.",
     clearFilters: "Clear filters",
+    retry: "Retry",
+    emptySectionHint: "No items in this section.",
     footerText: "All links point to repository files.",
     toggle: "中文",
+    "lang-toggle": "中文",
+    mainAriaLabel: "Portal content",
+    searchSectionAriaLabel: "Search and filters",
+    wrongRootWarningTitle: "Links may 404: server is likely not run from repo root.",
+    wrongRootWarningBody: "Run the HTTP server from the repository root and open /50-publish/site/. Example: python -m http.server 3765 then open http://localhost:3765/50-publish/site/",
+    noscriptLine1: "JavaScript is disabled.",
+    noscriptLine2: "This portal needs JavaScript for navigation and filters. Enable it and refresh, or browse 00-index, 40-insights, 50-publish in your editor.",
   },
   zh: {
     title: "Owl AI 开发生态研究导航",
@@ -42,17 +52,27 @@ const DEFAULT_TEXT = {
     searchTitle: "搜索",
     searchHint: "按标题、描述和路径筛选卡片。",
     searchPlaceholder: "输入关键词...",
+    searchAriaLabel: "按标题、描述、路径搜索与筛选卡片",
     filterTheme: "主题",
     filterTag: "标签",
     filterAllThemes: "全部主题",
     filterAllTags: "全部标签",
     statusLoading: "正在加载门户数据...",
-    statusError: "渲染失败，请刷新页面或检查脚本错误。",
+    statusError: "渲染失败，请刷新或点击重试。",
     statusEmpty: "没有匹配结果，请清空筛选或更换关键词。",
     statusReady: "当前显示 {count} 个卡片。",
     clearFilters: "清空筛选",
+    retry: "重试",
+    emptySectionHint: "本区暂无条目。",
     footerText: "所有链接都指向仓库内文件。",
     toggle: "English",
+    "lang-toggle": "English",
+    mainAriaLabel: "门户内容",
+    searchSectionAriaLabel: "搜索与筛选",
+    wrongRootWarningTitle: "部分链接可能 404：当前很可能未从仓库根目录启动服务。",
+    wrongRootWarningBody: "请在仓库根目录启动 HTTP 服务并访问 /50-publish/site/。例如：python -m http.server 3765，然后打开 http://localhost:3765/50-publish/site/",
+    noscriptLine1: "未启用 JavaScript。",
+    noscriptLine2: "本门户需 JavaScript 加载导航与筛选。请启用后刷新，或在编辑器中浏览 00-index、40-insights、50-publish。",
   },
 };
 
@@ -335,15 +355,15 @@ const router = (() => {
 
 const filterModel = (() => {
   function allEntries() {
-    return Object.entries(groups).flatMap(([section, items]) =>
-      items.map((item) => ({
-        ...item,
-        section,
-        searchable:
-          `${item.en[0]} ${item.en[1]} ${item.zh[0]} ${item.zh[1]} ${(item.tags || []).join(" ")}`
-            .toLowerCase(),
-      }))
-    );
+    return Object.entries(groups).flatMap(([section, items]) => {
+      if (!Array.isArray(items)) return [];
+      return items.map((item) => {
+        const en = item.en && Array.isArray(item.en) ? item.en : [];
+        const zh = item.zh && Array.isArray(item.zh) ? item.zh : [];
+        const searchable = `${en[0] ?? ""} ${en[1] ?? ""} ${zh[0] ?? ""} ${zh[1] ?? ""} ${(item.tags || []).join(" ")}`.toLowerCase();
+        return { ...item, section, searchable };
+      });
+    });
   }
 
   function availableThemes() {
@@ -374,15 +394,32 @@ const state = {
 };
 
 function applyText(lang) {
-  Object.keys(text[lang]).forEach((id) => {
+  const t = text[lang] || text.en || {};
+  Object.keys(t).forEach((id) => {
     const el = document.getElementById(id);
-    if (el) el.textContent = text[lang][id];
+    if (el && t[id] != null && typeof t[id] === "string") el.textContent = t[id];
   });
 
   const searchInput = document.getElementById("search-input");
   if (searchInput) {
-    searchInput.placeholder = text[lang].searchPlaceholder;
+    if (t.searchPlaceholder != null) searchInput.placeholder = t.searchPlaceholder;
+    if (t.searchAriaLabel != null) searchInput.setAttribute("aria-label", t.searchAriaLabel);
   }
+
+  const wrongRoot = document.getElementById("wrong-root-warning");
+  if (wrongRoot && t.wrongRootWarningTitle != null && t.wrongRootWarningBody != null) {
+    wrongRoot.textContent = "";
+    const strong = document.createElement("strong");
+    strong.textContent = t.wrongRootWarningTitle;
+    wrongRoot.appendChild(strong);
+    wrongRoot.appendChild(document.createElement("br"));
+    wrongRoot.appendChild(document.createTextNode(t.wrongRootWarningBody));
+  }
+
+  const mainEl = document.querySelector("main[role='main']");
+  if (mainEl && t.mainAriaLabel != null) mainEl.setAttribute("aria-label", t.mainAriaLabel);
+  const searchSection = document.getElementById("search-section");
+  if (searchSection && t.searchSectionAriaLabel != null) searchSection.setAttribute("aria-label", t.searchSectionAriaLabel);
 }
 
 function hydrateControls() {
@@ -406,21 +443,24 @@ function hydrateControls() {
 
   const themeFilter = document.getElementById("theme-filter");
   const tagFilter = document.getElementById("tag-filter");
+  if (!themeFilter || !tagFilter) return;
+
   const lang = i18n.getLang();
+  const t = text[lang] || text.en || {};
 
   const filterThemeLabel = document.getElementById("filterTheme");
   const filterTagLabel = document.getElementById("filterTag");
-  if (filterThemeLabel) filterThemeLabel.textContent = text[lang].filterTheme ?? "Theme";
-  if (filterTagLabel) filterTagLabel.textContent = text[lang].filterTag ?? "Tag";
+  if (filterThemeLabel) filterThemeLabel.textContent = t.filterTheme ?? "Theme";
+  if (filterTagLabel) filterTagLabel.textContent = t.filterTag ?? "Tag";
 
   themeFilter.innerHTML = "";
   tagFilter.innerHTML = "";
 
-  const allThemeOption = new Option(text[lang].filterAllThemes, "all");
+  const allThemeOption = new Option(t.filterAllThemes ?? "All themes", "all");
   themeFilter.add(allThemeOption);
   filterModel.availableThemes().forEach((theme) => themeFilter.add(new Option(theme, theme)));
 
-  const allTagOption = new Option(text[lang].filterAllTags, "all");
+  const allTagOption = new Option(t.filterAllTags ?? "All tags", "all");
   tagFilter.add(allTagOption);
   filterModel.availableTags().forEach((tag) => tagFilter.add(new Option(tag, tag)));
 
@@ -446,11 +486,21 @@ function render() {
     }, {});
 
     Object.entries(SECTION_MAP).forEach(([section, targetId]) => {
-      renderLinks(targetId, bySection[section] || [], {
+      const items = bySection[section] || [];
+      renderLinks(targetId, items, {
         lang: i18n.getLang(),
         query: state.q,
         itemClass: section === "topicHubs" ? "hub" : "link-item",
       });
+      if (items.length === 0) {
+        const root = document.getElementById(targetId);
+        if (root) {
+          const hint = document.createElement("p");
+          hint.className = "empty-section-hint";
+          hint.textContent = i18n.translate("emptySectionHint");
+          root.appendChild(hint);
+        }
+      }
     });
 
     // Dynamic sections: any group key not in SECTION_MAP gets a card in #dynamic-groups
@@ -477,11 +527,21 @@ function render() {
         const titles = sectionTitles[sectionKey];
         const titleEl = document.getElementById("dynamic-title-" + sectionKey);
         if (titleEl && titles) titleEl.textContent = titles[lang] || titles.en || titles.zh || sectionKey;
-        renderLinks("dynamic-list-" + sectionKey, bySection[sectionKey] || [], {
+        const dynItems = bySection[sectionKey] || [];
+        renderLinks("dynamic-list-" + sectionKey, dynItems, {
           lang: i18n.getLang(),
           query: state.q,
           itemClass: "link-item",
         });
+        if (dynItems.length === 0) {
+          const dynRoot = document.getElementById("dynamic-list-" + sectionKey);
+          if (dynRoot) {
+            const hint = document.createElement("p");
+            hint.className = "empty-section-hint";
+            hint.textContent = i18n.translate("emptySectionHint");
+            dynRoot.appendChild(hint);
+          }
+        }
       });
     }
 
@@ -498,15 +558,26 @@ function render() {
         statusEl.appendChild(clearBtn);
       }
     } else {
-      setStatus(
-        "search-status",
-        i18n.translate("statusReady").replace("{count}", String(matched.length)),
-        "ready"
-      );
+      let statusMsg = i18n.translate("statusReady").replace("{count}", String(matched.length));
+      const parts = [];
+      if (state.theme !== "all") parts.push(i18n.translate("filterTheme") + ": " + state.theme);
+      if (state.tag !== "all") parts.push(i18n.translate("filterTag") + ": " + state.tag);
+      if (parts.length) statusMsg += " (" + parts.join(", ") + ")";
+      setStatus("search-status", statusMsg, "ready");
     }
   } catch (err) {
     console.error(err);
     setStatus("search-status", i18n.translate("statusError"), "error");
+    const statusEl = document.getElementById("search-status");
+    if (statusEl) {
+      statusEl.appendChild(document.createTextNode(" "));
+      const retryBtn = document.createElement("button");
+      retryBtn.type = "button";
+      retryBtn.id = "retry-btn";
+      retryBtn.className = "btn btn-inline";
+      retryBtn.textContent = i18n.translate("retry");
+      statusEl.appendChild(retryBtn);
+    }
   }
 }
 
@@ -548,6 +619,10 @@ function bindEvents() {
       e.preventDefault();
       clearFiltersAndRender();
     }
+    if (e.target && e.target.id === "retry-btn") {
+      e.preventDefault();
+      render();
+    }
   });
 
   document.addEventListener("change", (e) => {
@@ -565,11 +640,11 @@ function bindEvents() {
 
   window.addEventListener("hashchange", () => {
     const fromUrl = router.parseHash();
-    state.q = fromUrl.q;
-    state.theme = fromUrl.theme;
-    state.tag = fromUrl.tag;
+    state.q = fromUrl.q ?? "";
+    state.theme = fromUrl.theme ?? "all";
+    state.tag = fromUrl.tag ?? "all";
     const searchInput = document.getElementById("search-input");
-    searchInput.value = state.q;
+    if (searchInput) searchInput.value = state.q;
     render();
   });
 
@@ -596,9 +671,9 @@ function ensureWrongRootWarning() {
 async function bootstrap() {
   await hydrateConfig();
   const fromUrl = router.parseHash();
-  state.q = fromUrl.q;
-  state.theme = fromUrl.theme;
-  state.tag = fromUrl.tag;
+  state.q = fromUrl.q ?? "";
+  state.theme = fromUrl.theme ?? "all";
+  state.tag = fromUrl.tag ?? "all";
   const searchInput = document.getElementById("search-input");
   if (searchInput) searchInput.value = state.q;
   bindEvents();

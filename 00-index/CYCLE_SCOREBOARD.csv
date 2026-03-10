@@ -7,3 +7,4 @@ C5,agent_rag_architecture_tradeoffs,0,0,18,1,0,0,78,B-window review completed; f
 C6,agent_rag_architecture_tradeoffs,0,0,18,1,0,1,79,C Decision Desk completed; 0 promoted (no survives); 1 rejected (C6-B-018 pipeline backbone P2-only); velocity-based promotion rule added to backlog and risk matrix
 C7,upgrade_risk_cross_track,0,0,18,1,0,0,80,B-window review completed; exception policy and upgrade gates need automation and tiering
 C8,crawl_search_adoption,44,41,12,1,0,0,78,A+B outputs present; B theme mismatch (upgrade risk vs crawl/search); C resolved from A; Crawl/Search P2 conditional entries in backlog and repo_master
+C9,full_track_adoption_failure_review,46,38,20,1,0,1,82,C Decision Desk; C9-A20 fails (exception automation); risk file updated; digest 下轮5未知含 B top5≥2 条闭环

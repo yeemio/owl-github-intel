@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Owl AI Dev Intel Portal</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script>
+      (function () {
+        var lang = localStorage.getItem("owl.portal.lang");
+        if (lang === "zh") {
+          document.documentElement.lang = "zh-CN";
+          document.title = "Owl AI 开发生态研究导航";
+        }
+      })();
+    </script>
   </head>
   <body>
     <header class="topbar">
@@ -17,15 +26,18 @@
       <button id="lang-toggle" class="btn" type="button">中文</button>
     </header>
 
-    <main class="layout" role="main" aria-label="Portal content">
-      <section class="card" aria-label="Search and filters">
+    <noscript class="card" style="margin: 16px; padding: 16px; background: #1e293b; border: 1px solid #334155; border-radius: 12px;">
+      <p><strong>JavaScript is disabled.</strong> <span lang="zh">未启用 JavaScript。</span> This portal needs JavaScript to load the navigation cards and filters. <span lang="zh">本门户需 JavaScript 加载导航与筛选。</span> Please enable it and refresh, or browse <code>00-index</code>, <code>40-insights</code>, <code>50-publish</code> in your editor. <span lang="zh">请启用后刷新，或在编辑器中浏览上述目录。</span></p>
+    </noscript>
+    <main class="layout" role="main" aria-label="">
+      <section id="search-section" class="card" aria-label="">
         <h2 id="searchTitle">Search</h2>
         <input
           id="search-input"
           class="search-input"
           type="text"
           placeholder="Type keywords..."
-          aria-label="Search and filter cards by title, description, path"
+          aria-label=""
           autocomplete="off"
         />
         <p id="searchHint" class="search-hint">
@@ -64,20 +76,14 @@
       <span id="footerText">All links point to repository files.</span>
     </footer>
 
-    <!-- Must run via HTTP: ES modules and fetch are blocked on file:// -->
+    <!-- Must run via HTTP: ES modules and fetch are blocked on file://. Content in both en/zh for when module fails to load. -->
     <div id="file-protocol-warning" class="file-protocol-warning hidden" role="alert">
-      <strong>此页面需通过本地 HTTP 服务打开才能正常使用。</strong><br/>
-      <span class="en-only">This page must be opened via a local web server (browsers block scripts on file://).</span>
-      <p>请在<strong>仓库根目录</strong>执行以下命令之一，然后访问终端里提示的地址下的 <code>/50-publish/site/</code>：</p>
-      <pre>python -m http.server 3765</pre>
-      <p>或 <code>npx serve . -l 3765</code>，再打开 <code>http://localhost:3765/50-publish/site/</code></p>
+      <p><strong lang="en">This page must be opened via a local web server (browsers block scripts on file://).</strong> <strong lang="zh">此页面需通过本地 HTTP 服务打开才能正常使用。</strong></p>
+      <p lang="en">Run the server from the <strong>repository root</strong> and open <code>/50-publish/site/</code>. Example: <code>python -m http.server 3765</code> then open <code>http://localhost:3765/50-publish/site/</code></p>
+      <p lang="zh">请在<strong>仓库根目录</strong>启动服务并访问 <code>/50-publish/site/</code>。例如：<code>python -m http.server 3765</code>，然后打开 <code>http://localhost:3765/50-publish/site/</code></p>
     </div>
-    <!-- Shown when server is run from site folder only (many links 404) -->
-    <div id="wrong-root-warning" class="file-protocol-warning hidden" role="alert">
-      <strong>当前很可能是从子目录提供页面，部分链接会 404。</strong><br/>
-      请改为在<strong>仓库根目录</strong>启动服务，并访问 <code>/50-publish/site/</code> 路径。<br/>
-      例如在项目根目录执行：<code>python -m http.server 3765</code>，然后打开 <code>http://localhost:3765/50-publish/site/</code>
-    </div>
+    <!-- Shown when server is run from site folder only (many links 404). Content filled by applyText() for i18n. -->
+    <div id="wrong-root-warning" class="file-protocol-warning hidden" role="alert"></div>
 
     <script>
       (function () {

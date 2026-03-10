@@ -178,6 +178,13 @@ p {
   outline-offset: 2px;
 }
 
+.empty-section-hint {
+  margin: 0;
+  padding: 8px 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
 .hidden {
   display: none !important;
 }
@@ -228,3 +235,5 @@ mark {
   font-size: 13px;
 }
 .file-protocol-warning code { font-size: 13px; }
+html:not([lang="zh-CN"]) .file-protocol-warning [lang="zh"] { display: none; }
+html[lang="zh-CN"] .file-protocol-warning [lang="en"] { display: none; }

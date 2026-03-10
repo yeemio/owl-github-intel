@@ -1,0 +1,14 @@
+{
+  "name": "owl-github-intel",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Evidence-led AI ecosystem intelligence workspace (portal + datasets + analysis).",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "portal:check-links": "node 50-publish/site/check-portal-links.js"
+  }
+}
+

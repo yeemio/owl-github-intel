@@ -22,7 +22,14 @@ export function ensureControlBar(id) {
     node.id = id;
     node.className = "search-controls";
     const hint = document.getElementById("searchHint");
-    hint?.after(node);
+    const firstCard = document.querySelector(".layout .card");
+    if (hint) {
+      hint.after(node);
+    } else if (firstCard) {
+      firstCard.appendChild(node);
+    } else {
+      document.querySelector("main")?.prepend(node);
+    }
   }
   return node;
 }
@@ -36,11 +43,15 @@ export function ensureStatusNode(id) {
     node.setAttribute("aria-live", "polite");
     node.setAttribute("aria-atomic", "true");
     const controls = document.getElementById("search-controls");
+    const hint = document.getElementById("searchHint");
     if (controls) {
       controls.after(node);
+    } else if (hint) {
+      hint.after(node);
     } else {
-      const hint = document.getElementById("searchHint");
-      hint?.after(node);
+      const firstCard = document.querySelector("main .card");
+      if (firstCard) firstCard.after(node);
+      else document.body.appendChild(node);
     }
   }
   return node;
@@ -67,15 +78,22 @@ export function renderLinks(targetId, items, options) {
     const a = document.createElement("a");
     a.href = href;
     a.className = itemClass;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
+    a.title = href;
+    const isExternal = href.startsWith("http://") || href.startsWith("https://");
+    const sameOrigin = isExternal && typeof window !== "undefined" && new URL(href, window.location.origin).origin === window.location.origin;
+    if (isExternal && !sameOrigin) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    } else {
+      a.target = "_self";
+    }
     a.dataset.search = item.searchable || "";
     a.dataset.theme = item.theme || "";
     a.dataset.tags = (item.tags || []).join(",");
 
-    const title = highlightText(label[0] ?? "", query);
+    const titleText = highlightText(label[0] ?? "", query);
     const desc = highlightText(label[1] ?? "", query);
-    a.innerHTML = `${title}<small>${desc}</small>`;
+    a.innerHTML = `${titleText}<small>${desc}</small>`;
     root.appendChild(a);
   });
 }

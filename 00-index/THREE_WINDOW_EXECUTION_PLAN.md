@@ -124,10 +124,10 @@ Resolve contested claims and update official decision assets.
 
 1. update `20-normalized/repo_master_latest.csv`
 2. update `40-insights/adoption_backlog_latest.md`
-3. update one risk file:
+3. **update at least one risk file** (content must relate to current-cycle evidence / B risks, e.g. C9):
    - `40-insights/risks/failure-patterns.csv` or
    - `40-insights/risks/upgrade-risk-matrix.csv`
-4. `50-publish/weekly_digest_<date>_<cycle>.md`
+4. `50-publish/weekly_digest_<date>_<cycle>.md` — **digest closure**: the section "下轮 5 个未知" / "Next 5 unknowns" must include **at least 2 items from B's top 5 risks**, so that B→C→next round forms a loop.
 5. append `00-index/CHANGELOG.md`
 
 ## Copy-paste prompt for Window C
@@ -140,8 +140,8 @@ Resolve contested claims and update official decision assets.
 必须更新：
 - 20-normalized/repo_master_latest.csv
 - 40-insights/adoption_backlog_latest.md
-- 40-insights/risks/*.csv（至少一个）
-- 50-publish/weekly_digest_<date>_<cycle>.md
+- 40-insights/risks/*.csv（至少一个，且与当轮证据/B 风险相关）
+- 50-publish/weekly_digest_<date>_<cycle>.md（文末「下轮 5 个未知」须包含 B 的 **top 5 风险**中至少 2 条，形成 B→C→下一轮闭环）
 - 00-index/CHANGELOG.md
 ```
 

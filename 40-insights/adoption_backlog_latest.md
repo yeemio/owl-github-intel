@@ -2,9 +2,16 @@
 
 Last updated: 2026-03-09
 Source baseline: `20-normalized/repo_master_latest.csv`
-Decision cycle: `C8` (Window C final after A+B; B challenge content theme-mismatched with A)
+Decision cycle: `C9` (Window C final after A+B)
 
-## C8 Decision Principle
+## C9 Decision Principle
+
+- **Rule**: survives → candidate for backlog; partial → conditional only; fails → reject, do not promote.
+- **C9 theme**: 全轨道采纳信号 + 失败模式复核（六轨 + C8 未知深挖）。A: 20 claims, 46 evidence rows; B: 20 challenged, 19 partial, 1 fails (C9-A20).
+- **Rejected**: **C9-A20** — 例外政策须含自动化到期，不可仅靠人工到期与补偿控制；已纳入 upgrade-risk-matrix 与 digest，后续验收须含自动化例外到期检查与升级。
+- **B top 5 风险**已写入 digest「下轮 5 个未知」≥2 条闭环；六轨结论已按 B 建议标注 adoption_profile / trigger 边界（scale vs minimal）。
+
+## C8 Decision Principle (carryover)
 
 - **Rule**: survives → candidate for backlog; partial → conditional only; fails → reject, do not promote.
 - **C8 theme**: Crawl/Search 栈采纳信号（Crawl4AI, Firecrawl, Jina Reader, Perplexica, Farfalle, Turboseek）。
@@ -49,6 +56,8 @@ Policy: allow lean baseline first; promote to P0 only when trigger thresholds ar
 
 ## C8 Crawl/Search (P2 conditional)
 
+**说明**：以下采纳结论部分来自 30-analysis/crawl 内部归纳，**待外部验证**（C8-A12/B）；采纳决策时须结合外部来源（GitHub 活跃度、第三方集成案例）或显式标注「内部归纳、待外部验证」。
+
 - `unclecode/crawl4ai` — P2: Docker/schema 0.8.x risk; MCP bridge timeout + Redis/security config; proxy_config breaking change. Adopt only after schema migration and security hardening; rollback to v0.7.x if regression.
 - `firecrawl/firecrawl` — P2: v2 parsers.mode + MCP/Google model compatibility; self-host hostname/proxy. Adopt with parser validation and self-host checklist; rollback to prior image if scrape failures.
 - `jina-ai/reader` — P2: Agent/MCP site variance (Reddit, Thales) and Unauthorized API key issues. Use with fallback (e.g. Firecrawl) and verify API key path before P1.
@@ -58,10 +67,10 @@ Policy: allow lean baseline first; promote to P0 only when trigger thresholds ar
 
 Trigger for P2→P1: two independent adoption signals (e.g. docs + issue resolution) and explicit risk + rollback note.
 
-## Exception Policy (C6)
+## Exception Policy (C6 + C9)
 
 - Emergency adoption allowed only with:
   - risk acceptance ticket id
-  - explicit expiry (`<=7d` or `<=14d` depending on class)
+  - **explicit expiry** (`<=7d` or `<=14d` depending on class); **临时例外须含自动化到期检查与升级路径，不得仅依赖人工到期**（C9-A20，见 upgrade-risk-matrix）
   - rollback owner + rehearsal evidence
 - Every promoted item must have `adoption_profile`, and `trigger_threshold` or `exception_policy` where applicable.
