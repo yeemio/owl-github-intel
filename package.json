@@ -8,7 +8,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "portal:check-links": "node 50-publish/site/check-portal-links.js"
+    "portal:check-links": "node 50-publish/site/check-portal-links.js",
+    "validate:data": "python scripts/validate_data.py"
   }
 }
-

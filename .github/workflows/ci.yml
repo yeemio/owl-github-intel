@@ -29,6 +29,10 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Validate core datasets and docs
+        run: |
+          python scripts/validate_data.py
+
       - name: Start static server from repo root
         run: |
           python -m http.server 3765 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
@@ -39,4 +43,3 @@ jobs:
           PORT: "3765"
         run: |
           node 50-publish/site/check-portal-links.js
-
