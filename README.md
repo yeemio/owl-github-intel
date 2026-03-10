@@ -4,6 +4,8 @@ This workspace stores and maintains external AI ecosystem intelligence for OwlCl
 
 If you are a researcher, architect, or builder, this repository is meant to be navigated as a research trail, not a dump folder.
 
+License: MIT (see `LICENSE`).
+
 ## Start Here
 
 - Main entrypoint: `00-index/MASTER_INDEX.md`
@@ -42,3 +44,17 @@ Every update should:
 2. Update normalized master table.
 3. Reflect decisions in adoption backlog.
 4. Append one line to `00-index/CHANGELOG.md`.
+
+## Portal (Optional)
+
+The static portal lives in `50-publish/site/` and must be served over HTTP (browsers block ES modules and `fetch` on `file://`).
+
+- Start server from repo root: `python -m http.server 3765`
+- Open: `http://localhost:3765/50-publish/site/`
+- Link check: `node 50-publish/site/check-portal-links.js` (Node 18+)
+
+## Contributing and Security
+
+- Contributing guide: `CONTRIBUTING.md`
+- Code of conduct: `CODE_OF_CONDUCT.md`
+- Security policy: `SECURITY.md`

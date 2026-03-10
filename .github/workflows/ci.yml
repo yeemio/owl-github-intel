@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  portal-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure node_modules is not tracked
+        run: |
+          if git ls-files | grep -q '^node_modules/'; then
+            echo "node_modules/ must not be committed."
+            exit 1
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Start static server from repo root
+        run: |
+          python -m http.server 3765 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          sleep 1
+
+      - name: Portal link check
+        env:
+          PORT: "3765"
+        run: |
+          node 50-publish/site/check-portal-links.js
+
