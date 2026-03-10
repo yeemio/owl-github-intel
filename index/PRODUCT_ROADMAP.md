@@ -15,9 +15,13 @@ This repository is evolving from an “intel workspace” into a product: a sear
   - design: `../.kiro/specs/intel_search_engine/design.md`
   - tasks: `../.kiro/specs/intel_search_engine/tasks.md`
 
+- Repo Architecture + Directory Layout (foundation): `../.kiro/specs/repo_architecture_layout/`
+  - requirements: `../.kiro/specs/repo_architecture_layout/requirements.md`
+  - design: `../.kiro/specs/repo_architecture_layout/design.md`
+  - tasks: `../.kiro/specs/repo_architecture_layout/tasks.md`
+
 ## Working Agreement
 
 - Evidence-first: no recommendation without evidence links.
 - Public-only closed loop first; private repos later.
 - Reports must include: boundaries, risk signals, rollback signals, and next actions.
-
