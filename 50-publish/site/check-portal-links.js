@@ -86,12 +86,47 @@ async function check(url, method = "GET") {
   }
 }
 
+function extractLocalLinksFromHtml(html) {
+  const out = [];
+  if (!html) return out;
+  const re = /(?:href|src)=["']([^"']+)["']/gi;
+  let m;
+  while ((m = re.exec(html))) {
+    const raw = (m[1] || "").trim();
+    if (!raw) continue;
+    if (raw.startsWith("#")) continue;
+    if (raw.startsWith("http://") || raw.startsWith("https://")) continue;
+    if (raw.startsWith("mailto:") || raw.startsWith("tel:")) continue;
+    if (raw.startsWith("data:") || raw.startsWith("javascript:")) continue;
+    const cleaned = raw.split("#")[0];
+    if (!cleaned) continue;
+    out.push(cleaned);
+  }
+  return out;
+}
+
 async function main() {
   const allHrefs = [...DEFAULT_HREFS, ...loadConfigHrefs(), ...CONTENT_ASSETS];
   const unique = [...new Set(allHrefs)];
 
+  // Crawl first-level portal content pages and verify their internal links too.
+  const discovered = new Set();
+  const contentHrefs = unique.filter((h) => typeof h === "string" && h.startsWith("./content/") && h.endsWith(".html"));
+  for (const href of contentHrefs) {
+    const pageUrl = resolveUrl(href);
+    const res = await fetch(pageUrl, { method: "GET", redirect: "follow" });
+    if (!res.ok) continue;
+    const html = await res.text();
+    const links = extractLocalLinksFromHtml(html);
+    for (const link of links) {
+      discovered.add(new URL(link, pageUrl).href);
+    }
+  }
+
+  const finalHrefs = [...new Set([...unique, ...Array.from(discovered)])];
+
   const results = [];
-  for (const href of unique) {
+  for (const href of finalHrefs) {
     const url = resolveUrl(href);
     const out = await check(url);
     results.push({ href, url, ...out });

@@ -13,105 +13,61 @@
         <a class="btn" href="../zh/topic-eval.html" aria-label="中文 (Switch to Chinese)">中文</a>
       </div>
       <h1>Evaluation and Observability</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>Without stable evaluation and traces, teams cannot detect regression before user impact.</p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>Trace + eval + release gate should be one connected loop.</li>
-          <li>Business-aligned metrics outperform generic benchmark-only scoring.</li>
-          <li>Data versioning is critical for reproducible quality checks.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a></li>
-          <li><a href="https://github.com/openai/evals">openai/evals</a></li>
-          <li><a href="https://github.com/truera/trulens">truera/trulens</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>Overfitting to static benchmark sets.</li>
-          <li>Missing trace dimensions for tool-level failures.</li>
-          <li>Release decisions made without confidence intervals.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>Define mandatory release-gate metrics and thresholds.</li>
-          <li>Version control eval datasets and prompts.</li>
-          <li>Map top failure modes to dedicated observable signals.</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Topic Eval - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="Back to portal">Portal</a>
-        <a class="btn" href="../zh/topic-eval.html" aria-label="中文 (Switch to Chinese)">中文</a>
-      </div>
-      <h1>Evaluation and Observability</h1>
 
       <div class="card">
         <h2>Why it matters</h2>
         <p>
-          Without a reliable eval-observability loop, releases optimize proxy metrics while
-          real user quality regresses. Governance needs measurable and replayable evidence.
+          Without eval gates and trace coverage, teams ship prompt and tool changes blind.
+          The result is silent quality drift and slow incident recovery.
         </p>
+      </div>
+
+      <div class="card">
+        <h2>Key links in this repo</h2>
+        <ul>
+          <li><a href="../../../../analysis/eval/w5_eval_observability_analysis.md">Eval and observability analysis</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_release_gate_rules.yaml">Release gate rules (YAML)</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_rollback_runbook.md">Rollback runbook</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_kpi_catalog.csv">KPI catalog (CSV)</a></li>
+        </ul>
       </div>
 
       <div class="card">
         <h2>Key findings</h2>
         <ul>
-          <li>Outcome metrics alone are insufficient; coverage and calibration are required.</li>
-          <li>Rollback policies must include semantic quality regressions, not only error spikes.</li>
-          <li>Single control-plane strategy needs portability and exit planning.</li>
+          <li>Trace coverage and dataset versioning are the true baseline, not model choice.</li>
+          <li>Eval signals must be tied to promotion rules and rollback triggers.</li>
+          <li>SQL-based eval is useful for drift detection when logs are normalized.</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Evidence sources</h2>
         <ul>
-          <li><a href="https://github.com/comet-ml/opik">comet-ml/opik</a></li>
+          <li><a href="https://github.com/openai/evals">openai/evals</a></li>
           <li><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a></li>
-          <li><a href="https://github.com/promptfoo/promptfoo">promptfoo/promptfoo</a></li>
-          <li><a href="https://github.com/confident-ai/deepeval">confident-ai/deepeval</a></li>
+          <li><a href="https://github.com/truera/trulens">truera/trulens</a></li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Risks</h2>
         <ul>
-          <li>Static thresholds can create false confidence and metric gaming.</li>
-          <li>Missing replay fields reduces incident auditability.</li>
-          <li>License uncertainty in core tooling can block promotion.</li>
+          <li>Metric sprawl without ownership leads to false confidence.</li>
+          <li>Sampling bias if eval sets are not refreshed and rebalanced.</li>
+          <li>Observability gaps across tool boundaries hide regressions.</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Next actions</h2>
         <ul>
-          <li>Add org-readiness and migration debt to selection scoring.</li>
-          <li>Introduce semantic-regression rollback trigger in release policy.</li>
-          <li>Publish profile-specific KPI targets (minimal, regulated, scale).</li>
+          <li>Define promotion gates: data + eval + reliability + cost thresholds.</li>
+          <li>Require trace contracts for new tools and gateways.</li>
+          <li>Schedule drift reviews tied to release windows.</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+

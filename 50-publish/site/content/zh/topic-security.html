@@ -3,60 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>安全与治理 - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="返回门户">门户</a>
-        <a class="btn" href="../en/topic-security.html" aria-label="English (Switch to English)">English</a>
-      </div>
-      <h1>安全与治理</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>Agent 系统会放大工具调用、上下文注入和策略边界薄弱带来的安全风险。</p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>仅靠输入输出检查不够。</li>
-          <li>工具权限边界与审计轨迹才是核心控制层。</li>
-          <li>安全控制要在真实多步流程中验证，而非只做静态检查。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/guardrails-ai/guardrails">guardrails-ai/guardrails</a></li>
-          <li><a href="https://github.com/protectai/rebuff">protectai/rebuff</a></li>
-          <li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>仅做输出防护会产生“安全假象”。</li>
-          <li>工具作用域不清可能导致权限升级。</li>
-          <li>缺少证据链会削弱事后追溯和治理能力。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>定义并强制执行工具权限策略。</li>
-          <li>把安全控制纳入发布门禁，而非发布后补救。</li>
-          <li>在每周挑战循环中跟踪安全回归场景。</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>主题 Security - Owl AI Dev Intel</title>
     <link rel="stylesheet" href="../styles-content.css" />
   </head>
@@ -69,48 +15,59 @@
       <h1>安全与治理</h1>
 
       <div class="card">
-        <h2>Why it matters</h2>
+        <h2>为什么重要</h2>
         <p>
-          Agent 平台攻击面覆盖输入、工具调用和生成产物执行。安全治理必须是运行时控制，而不是文档声明。
+          AI 系统引入新的攻击面：prompt 注入、工具滥用、数据泄露、集成链路的权限升级。
+          治理必须能落到可执行的运行时门禁。
         </p>
       </div>
 
       <div class="card">
-        <h2>Key findings</h2>
+        <h2>本仓库入口</h2>
         <ul>
-          <li>策略引擎、授权图和沙箱应作为一体化控制栈设计。</li>
-          <li>仅二元通过率不够，必须补对抗覆盖类指标。</li>
-          <li>供应链信任要同时具备 SBOM、签名和溯源门禁。</li>
+          <li><a href="../../../../analysis/security/w6_ai_security_governance_analysis.md">治理分析</a></li>
+          <li><a href="../../../../analysis/security/w6_ai_security_control_module_mapping.md">控制项-模块映射</a></li>
+          <li><a href="../../../../analysis/security/w6_ai_security_control_module_mapping.csv">映射表（CSV）</a></li>
+          <li><a href="../../../../data/risks/master_risk_register_2026-03-09.csv">风险总表</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Evidence sources</h2>
+        <h2>关键发现</h2>
         <ul>
-          <li><a href="https://github.com/open-policy-agent/opa">open-policy-agent/opa</a></li>
-          <li><a href="https://github.com/openfga/openfga">openfga/openfga</a></li>
-          <li><a href="https://github.com/e2b-dev/E2B">e2b-dev/E2B</a></li>
-          <li><a href="https://github.com/sigstore/cosign">sigstore/cosign</a></li>
+          <li>工具边界安全是默认要求，不是可选增强。</li>
+          <li>脱敏、超时、路径校验能阻断常见的数据泄露故障。</li>
+          <li>例外政策必须可自动到期与可审计。</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Risks</h2>
+        <h2>证据来源</h2>
         <ul>
-          <li>零事故指标可能掩盖检测盲区。</li>
-          <li>归档或无许可证语料可能带来法律不确定性。</li>
-          <li>例外通道若无失效机制会绕开策略治理。</li>
+          <li><a href="https://github.com/Azure/PyRIT">Azure/PyRIT</a></li>
+          <li><a href="https://github.com/openai/evals">openai/evals</a></li>
+          <li><a href="https://github.com/guardrails-ai/guardrails">guardrails-ai/guardrails</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Next actions</h2>
+        <h2>主要风险</h2>
         <ul>
-          <li>新增沙箱逃逸演练频率与对抗覆盖指数。</li>
-          <li>建立有时限的例外审批与签字流程。</li>
-          <li>发布测试语料与基准引入的法务规则。</li>
+          <li>政策文档如果不绑定运行时门禁，会快速漂移。</li>
+          <li>工具权限过宽会把 prompt 注入变成“动作注入”。</li>
+          <li>观测缺口会掩盖敏感数据泄露。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>下一步动作</h2>
+        <ul>
+          <li>在工具边界强制 allowlist、脱敏与超时。</li>
+          <li>为每条集成线路建立威胁模型（MCP、网关、RAG、评测）。</li>
+          <li>例外政策必须具备到期自动化，才能入生产。</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+

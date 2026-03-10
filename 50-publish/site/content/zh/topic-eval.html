@@ -3,60 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>评测与可观测 - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="返回门户">门户</a>
-        <a class="btn" href="../en/topic-eval.html" aria-label="English (Switch to English)">English</a>
-      </div>
-      <h1>评测与可观测</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>没有稳定评测和完整 trace，团队很难在用户受影响前发现回归。</p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>trace、eval、release gate 应形成一体闭环。</li>
-          <li>与业务目标对齐的指标比通用 benchmark 更有效。</li>
-          <li>数据版本化是可复现质量检查的前提。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a></li>
-          <li><a href="https://github.com/openai/evals">openai/evals</a></li>
-          <li><a href="https://github.com/truera/trulens">truera/trulens</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>对固定 benchmark 过拟合。</li>
-          <li>缺少工具级失败观测维度。</li>
-          <li>缺乏置信度支撑就做版本发布决策。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>定义强制 release gate 指标与阈值。</li>
-          <li>对评测数据集与 prompt 做版本管理。</li>
-          <li>将高频失败模式映射为可观测信号。</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>主题 Eval - Owl AI Dev Intel</title>
     <link rel="stylesheet" href="../styles-content.css" />
   </head>
@@ -69,48 +15,59 @@
       <h1>评测与可观测</h1>
 
       <div class="card">
-        <h2>Why it matters</h2>
+        <h2>为什么重要</h2>
         <p>
-          没有可靠的评测-观测闭环，发布会优化代理指标却牺牲真实用户质量。治理需要可量化、可回放的证据链。
+          没有评测门禁和 trace 覆盖，团队会在“看不见”的状态下上线 prompt 与工具变更，
+          结果是静默质量漂移和慢事故恢复。
         </p>
       </div>
 
       <div class="card">
-        <h2>Key findings</h2>
+        <h2>本仓库入口</h2>
         <ul>
-          <li>仅看结果指标不够，必须补覆盖率与校准指标。</li>
-          <li>回滚策略应纳入语义质量退化，不只盯错误率。</li>
-          <li>单一控制平面方案必须有可迁移与退出设计。</li>
+          <li><a href="../../../../analysis/eval/w5_eval_observability_analysis.md">评测与可观测分析</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_release_gate_rules.yaml">发布门禁规则（YAML）</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_rollback_runbook.md">回滚手册</a></li>
+          <li><a href="../../../../analysis/eval/w5_eval_kpi_catalog.csv">KPI 目录（CSV）</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Evidence sources</h2>
+        <h2>关键发现</h2>
         <ul>
-          <li><a href="https://github.com/comet-ml/opik">comet-ml/opik</a></li>
+          <li>trace 覆盖与数据集版本化才是基线，不是模型选择。</li>
+          <li>评测信号必须绑定晋级规则与回滚触发条件。</li>
+          <li>日志归一化后，SQL 评测对漂移检测很有效。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>证据来源</h2>
+        <ul>
+          <li><a href="https://github.com/openai/evals">openai/evals</a></li>
           <li><a href="https://github.com/langfuse/langfuse">langfuse/langfuse</a></li>
-          <li><a href="https://github.com/promptfoo/promptfoo">promptfoo/promptfoo</a></li>
-          <li><a href="https://github.com/confident-ai/deepeval">confident-ai/deepeval</a></li>
+          <li><a href="https://github.com/truera/trulens">truera/trulens</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Risks</h2>
+        <h2>主要风险</h2>
         <ul>
-          <li>固定阈值容易造成“看起来达标”的假安全感。</li>
-          <li>回放字段不完整会削弱事故可追溯性。</li>
-          <li>核心工具许可证不确定会阻断晋级上线。</li>
+          <li>指标无 owner 会导致“假自信”。</li>
+          <li>评测集不刷新会形成采样偏差。</li>
+          <li>跨工具边界的观测缺口会掩盖回归。</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Next actions</h2>
+        <h2>下一步动作</h2>
         <ul>
-          <li>选型评分新增组织就绪度与迁移债务维度。</li>
-          <li>发布策略加入语义退化触发回滚。</li>
-          <li>按画像发布 KPI 目标（minimal/regulated/scale）。</li>
+          <li>定义晋级门禁：数据 + 评测 + 可靠性 + 成本阈值。</li>
+          <li>新工具与网关必须满足 trace 契约。</li>
+          <li>把漂移复盘固定到 release window。</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+

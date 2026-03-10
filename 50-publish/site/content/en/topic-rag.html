@@ -12,76 +12,32 @@
         <a class="btn" href="../../index.html" aria-label="Back to portal">Portal</a>
         <a class="btn" href="../zh/topic-rag.html" aria-label="中文 (Switch to Chinese)">中文</a>
       </div>
-      <h1>RAG and Data Stack</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>RAG quality depends on retrieval architecture, evaluation loops, and operational fit.</p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>Vector store choice should follow workload shape, not popularity.</li>
-          <li>Evaluation design often limits quality more than model choice.</li>
-          <li>Metadata strategy strongly impacts retrieval reliability.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a></li>
-          <li><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></li>
-          <li><a href="https://github.com/chroma-core/chroma">chroma-core/chroma</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>Overfitting retrieval parameters to narrow benchmark sets.</li>
-          <li>High migration cost when index schema is tightly coupled.</li>
-          <li>Silent quality regressions without stable eval sets.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>Adopt a fixed evaluation set and periodic drift checks.</li>
-          <li>Separate retrieval logic from storage-specific adapters.</li>
-          <li>Track quality-cost-latency tradeoffs in one dashboard.</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Topic RAG - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="Back to portal">Portal</a>
-        <a class="btn" href="../zh/topic-rag.html" aria-label="中文 (Switch to Chinese)">中文</a>
-      </div>
-      <h1>RAG Data and Retrieval</h1>
+      <h1>RAG Data Stack</h1>
 
       <div class="card">
         <h2>Why it matters</h2>
         <p>
-          In many production assistants, user trust is primarily determined by retrieval quality,
-          not by model size. Weak retrieval makes every downstream layer look unstable.
+          RAG quality is constrained by data modeling, chunking, recall metrics, and operational
+          cost. Most failures are data contract failures, not embedding failures.
         </p>
+      </div>
+
+      <div class="card">
+        <h2>Key links in this repo</h2>
+        <ul>
+          <li><a href="../../../../analysis/rag/w3_rag_deep_dive.md">Deep dive</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_data_analysis.md">Data analysis</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_execution_checklist.md">Execution checklist</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_data_map.csv">Ecosystem map (CSV)</a></li>
+        </ul>
       </div>
 
       <div class="card">
         <h2>Key findings</h2>
         <ul>
-          <li>Default stack should be profile-based, not one-size-fits-all.</li>
-          <li>Two-stage retrieval is high leverage but should be conditional by query complexity.</li>
-          <li>Upgrade planning must include migration rehearsal and compatibility checks.</li>
+          <li>Define retrieval quality KPIs before tuning chunk/embedding parameters.</li>
+          <li>Cost models should include index rebuild and data refresh, not just query costs.</li>
+          <li>Evaluation sets must include negative examples and versioned ground truth.</li>
         </ul>
       </div>
 
@@ -89,29 +45,29 @@
         <h2>Evidence sources</h2>
         <ul>
           <li><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a></li>
-          <li><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></li>
-          <li><a href="https://github.com/milvus-io/milvus">milvus-io/milvus</a></li>
-          <li><a href="https://github.com/opensearch-project/OpenSearch">opensearch-project/OpenSearch</a></li>
+          <li><a href="https://github.com/langchain-ai/langchain">langchain-ai/langchain</a></li>
+          <li><a href="https://github.com/weaviate/weaviate">weaviate/weaviate</a></li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Risks</h2>
         <ul>
-          <li>Static quality thresholds can be gamed by query mix shifts.</li>
-          <li>Reranker always-on can add cost with marginal gain.</li>
-          <li>Index rollback may fail if embedding/version compatibility is ignored.</li>
+          <li>Silent relevance regressions without stable eval sets.</li>
+          <li>Index drift when data refresh rules are implicit and untracked.</li>
+          <li>Cost blow-ups from uncontrolled re-embedding and re-indexing.</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Next actions</h2>
         <ul>
-          <li>Adopt stratified eval gates by intent and difficulty.</li>
-          <li>Enable uncertainty-driven reranking instead of blanket reranking.</li>
-          <li>Run dual-read migration drills before major storage upgrades.</li>
+          <li>Standardize a retrieval-eval pack (queries, docs, labels, metrics).</li>
+          <li>Version the data contract and track refresh cadence explicitly.</li>
+          <li>Gate changes with regression thresholds and rollback plans.</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+

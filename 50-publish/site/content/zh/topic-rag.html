@@ -3,60 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAG 与数据栈 - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="返回门户">门户</a>
-        <a class="btn" href="../en/topic-rag.html" aria-label="English (Switch to English)">English</a>
-      </div>
-      <h1>RAG 与数据栈</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>RAG 质量受检索架构、评测闭环和运维匹配度共同影响。</p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>向量库选型应跟随负载特征，而不是只看热度。</li>
-          <li>评测设计往往比模型选择更影响最终质量。</li>
-          <li>元数据策略会显著影响检索稳定性。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a></li>
-          <li><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></li>
-          <li><a href="https://github.com/chroma-core/chroma">chroma-core/chroma</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>参数调优可能对窄样本过拟合。</li>
-          <li>索引 schema 过度耦合会提高迁移成本。</li>
-          <li>缺少稳定评测集会导致质量退化难被及时发现。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>固定评测集并定期做漂移检查。</li>
-          <li>检索逻辑与存储适配层分离。</li>
-          <li>统一跟踪质量、成本、延迟三指标。</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>主题 RAG - Owl AI Dev Intel</title>
     <link rel="stylesheet" href="../styles-content.css" />
   </head>
@@ -66,52 +12,62 @@
         <a class="btn" href="../../index.html" aria-label="返回门户">门户</a>
         <a class="btn" href="../en/topic-rag.html" aria-label="English (Switch to English)">English</a>
       </div>
-      <h1>RAG 数据与检索</h1>
+      <h1>RAG 数据栈</h1>
 
       <div class="card">
-        <h2>Why it matters</h2>
+        <h2>为什么重要</h2>
         <p>
-          在知识型助手中，用户信任更多由检索质量决定，而不是模型参数规模。
-          检索层不稳会放大整条链路的不确定性。
+          RAG 的上限由数据建模、切分、召回指标与运营成本决定。多数线上问题是数据合同问题，
+          不是 embedding 算法问题。
         </p>
       </div>
 
       <div class="card">
-        <h2>Key findings</h2>
+        <h2>本仓库入口</h2>
         <ul>
-          <li>默认栈应按场景画像分层，不应“一刀切”。</li>
-          <li>二阶段检索收益高，但应按查询复杂度条件触发。</li>
-          <li>升级路径必须包含迁移演练和兼容性验证。</li>
+          <li><a href="../../../../analysis/rag/w3_rag_deep_dive.md">深度分析</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_data_analysis.md">数据分析</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_execution_checklist.md">执行清单</a></li>
+          <li><a href="../../../../analysis/rag/w3_rag_data_map.csv">生态地图（CSV）</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Evidence sources</h2>
+        <h2>关键发现</h2>
+        <ul>
+          <li>先定义检索质量 KPI，再调 chunk/embedding 参数。</li>
+          <li>成本模型要包含重建索引与刷新数据的成本。</li>
+          <li>评测集需要负例与可版本化的 ground truth。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>证据来源</h2>
         <ul>
           <li><a href="https://github.com/run-llama/llama_index">run-llama/llama_index</a></li>
-          <li><a href="https://github.com/qdrant/qdrant">qdrant/qdrant</a></li>
-          <li><a href="https://github.com/milvus-io/milvus">milvus-io/milvus</a></li>
-          <li><a href="https://github.com/opensearch-project/OpenSearch">opensearch-project/OpenSearch</a></li>
+          <li><a href="https://github.com/langchain-ai/langchain">langchain-ai/langchain</a></li>
+          <li><a href="https://github.com/weaviate/weaviate">weaviate/weaviate</a></li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Risks</h2>
+        <h2>主要风险</h2>
         <ul>
-          <li>固定阈值易被 query mix 变化“刷分”。</li>
-          <li>重排常开会增加成本但收益不稳定。</li>
-          <li>忽略 embedding/索引版本兼容会让回滚失效。</li>
+          <li>没有稳定评测集时，相关性回归会“静默发生”。</li>
+          <li>刷新规则不显式，会导致索引漂移与难以追溯。</li>
+          <li>不受控的重嵌入/重索引会导致成本失控。</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Next actions</h2>
+        <h2>下一步动作</h2>
         <ul>
-          <li>按意图和难度分层建立评测门禁。</li>
-          <li>引入不确定性驱动的条件重排策略。</li>
-          <li>重大升级前强制 dual-read 迁移演练。</li>
+          <li>标准化一套 retrieval-eval 包（query/doc/label/metric）。</li>
+          <li>显式化数据合同与刷新节奏，并做版本管理。</li>
+          <li>用回归阈值与回滚预案作为变更门禁。</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+

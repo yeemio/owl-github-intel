@@ -3,63 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agent 编排 - Owl AI Dev Intel</title>
-    <link rel="stylesheet" href="../styles-content.css" />
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="top">
-        <a class="btn" href="../../index.html" aria-label="返回门户">门户</a>
-        <a class="btn" href="../en/topic-agent.html" aria-label="English (Switch to English)">English</a>
-      </div>
-      <h1>Agent 编排</h1>
-      <div class="card">
-        <h2>Why it matters</h2>
-        <p>
-          Agent 系统能否在生产环境稳定运行，核心在于编排层是否支持恢复、回放和工具边界控制。
-        </p>
-      </div>
-      <div class="card">
-        <h2>Key findings</h2>
-        <ul>
-          <li>有状态编排通常比纯 prompt 链更稳。</li>
-          <li>多 Agent 协作如果缺少可观测与回放，故障定位成本会快速上升。</li>
-          <li>MCP 工具边界应作为默认基线，而非可选增强。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Evidence sources</h2>
-        <ul>
-          <li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a></li>
-          <li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></li>
-          <li><a href="https://github.com/microsoft/autogen">microsoft/autogen</a></li>
-          <li><a href="https://github.com/crewAIInc/crewAI">crewAIInc/crewAI</a></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Risks</h2>
-        <ul>
-          <li>业务逻辑深度绑定单一框架会导致迁移困难。</li>
-          <li>多次 handoff 回路可能造成成本失控。</li>
-          <li>缺少统一 trace 合同会降低事故复盘能力。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Next actions</h2>
-        <ul>
-          <li>对同一业务任务进行双框架对照测试并定义 stop/go 标准。</li>
-          <li>新增工具接入默认走 MCP adapter 边界。</li>
-          <li>晋级评审必须同时满足业务效果和稳定性指标。</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-</html>
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>主题 Agent - Owl AI Dev Intel</title>
     <link rel="stylesheet" href="../styles-content.css" />
   </head>
@@ -72,24 +15,34 @@
       <h1>Agent 编排</h1>
 
       <div class="card">
-        <h2>Why it matters</h2>
+        <h2>为什么重要</h2>
         <p>
-          Agent 在生产中失败，通常不是模型不够强，而是编排层无法恢复、回放和约束工具动作。
-          对 OwlClaw 来说，编排能力直接决定稳定性、成本和可审计性。
+          生产环境里 Agent 失败往往不是模型不够强，而是编排层缺少恢复、回放与工具边界约束。
+          对 OwlClaw 这类系统而言，编排质量直接决定稳定性、成本和可审计性。
         </p>
       </div>
 
       <div class="card">
-        <h2>Key findings</h2>
+        <h2>本仓库入口</h2>
         <ul>
-          <li>状态化编排比纯提示词链更抗故障。</li>
+          <li><a href="../../../../analysis/agent/w1_index.md">Agent 研究索引</a></li>
+          <li><a href="../../../../analysis/agent/w1_agent_orchestration_analysis.md">编排分析</a></li>
+          <li><a href="../../../../analysis/agent/w1_agent_orchestration_map.csv">生态地图（CSV）</a></li>
+          <li><a href="../../../../insights/adoption_backlog.md">采纳待办</a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>关键发现</h2>
+        <ul>
+          <li>有状态编排通常比纯 prompt 链更抗故障。</li>
           <li>多 Agent 不是终点，回放与护栏才是上线门槛。</li>
           <li>MCP 边界与观测链路应作为默认基线，而非可选项。</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2>Evidence sources</h2>
+        <h2>证据来源</h2>
         <ul>
           <li><a href="https://github.com/langchain-ai/langgraph">langchain-ai/langgraph</a></li>
           <li><a href="https://github.com/openai/openai-agents-python">openai/openai-agents-python</a></li>
@@ -99,7 +52,7 @@
       </div>
 
       <div class="card">
-        <h2>Risks</h2>
+        <h2>主要风险</h2>
         <ul>
           <li>业务逻辑深绑单框架会导致迁移成本暴涨。</li>
           <li>缺少回合护栏时，handoff 循环会放大成本与延迟。</li>
@@ -108,13 +61,14 @@
       </div>
 
       <div class="card">
-        <h2>Next actions</h2>
+        <h2>下一步动作</h2>
         <ul>
           <li>同题双跑并设定明确 stop/go 条件。</li>
           <li>新工具接入统一走 MCP 适配层。</li>
-          <li>上线门禁从“框架指标”升级为“业务结果+运行可靠性”。</li>
+          <li>上线门禁从“框架指标”升级为“业务结果 + 运行可靠性”。</li>
         </ul>
       </div>
     </div>
   </body>
 </html>
+
