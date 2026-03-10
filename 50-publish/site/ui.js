@@ -33,6 +33,8 @@ export function ensureStatusNode(id) {
     node = document.createElement("div");
     node.id = id;
     node.className = "status-banner";
+    node.setAttribute("aria-live", "polite");
+    node.setAttribute("aria-atomic", "true");
     const controls = document.getElementById("search-controls");
     if (controls) {
       controls.after(node);

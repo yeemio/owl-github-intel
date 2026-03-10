@@ -4,7 +4,7 @@
 
 - **cycle_id:** C8
 - **date:** 2026-03-09
-- **theme:** Upgrade risk + cross-track decision memo
+- **theme:** Crawl/Search 栈采纳信号与风险证据
 - **reviewer_window:** B (Red Team Reviewer)
 - **input_scope:**
   - `10-raw/scans/scan_2026-03-09_A_C8.md`
@@ -16,8 +16,8 @@
 
 | Requirement | Target | Actual | Pass |
 |-------------|--------|--------|------|
-| claims_challenged | ≥ 12 | 12 | ✓ |
-| counter_sources | ≥ claims_challenged | 12 | ✓ |
+| claims_challenged | ≥ 12 | 14 | ✓ |
+| counter_sources | ≥ claims_challenged | 14 | ✓ |
 | every_claim_has_verdict | true | true | ✓ |
 
 ## Verdict Distribution
@@ -25,99 +25,110 @@
 | Verdict | Count |
 |---------|-------|
 | survives | 0 |
-| partial | 11 |
+| partial | 13 |
 | fails | 1 |
 
 ## Per-Claim Summary and Verdict
 
 ### C8-A01 — partial
-**Claim:** Upgrade risk matrix (explicit breaking vs no_clear_breaking) is the single source of truth for upgrade prioritization.  
-**Challenge:** Holds only when changelog coverage is complete; no_clear_breaking can hide breaks in sparse or automated changelog.  
-**Counter source:** https://github.com/protectai/llm-guard  
-**Verdict:** partial — Add changelog-quality flag and code-diff requirement for no_clear_breaking.
+**Claim:** Crawl4AI Docker API 与 schema 兼容性问题（from_serializable_dict 拒绝 type 字段）影响 0.8.x 升级。  
+**Challenge:** 问题可能仅限特定 schema 或 0.8.0；后续 patch 或 schema 形态 workaround 可能已存在。  
+**Counter source:** https://github.com/unclecode/crawl4ai/issues/1797  
+**Verdict:** partial — C 需在采纳清单中注明受影响 schema 形态及可用修复版本。
 
 ### C8-A02 — partial
-**Claim:** Executive research digest and decision memo at end of C8 are the canonical publishable outputs for stakeholders.  
-**Challenge:** Canonical for “research closure” audience; ops and eng need live backlog and risk register.  
-**Counter source:** 40-insights/backlogs/master_action_backlog_2026-03-09.md  
-**Verdict:** partial — Clarify audience and add pointer to operational assets.
+**Claim:** Crawl4AI MCP bridge 与 LLM 集成存在超时与安全配置问题，影响 Agent 采纳。  
+**Challenge:** 5s 超时可能可配置；Redis/安全联系方式可能是流程缺口而非代码缺陷。  
+**Counter source:** https://github.com/unclecode/crawl4ai/issues/1769  
+**Verdict:** partial — C 需将超时配置与安全联系渠道纳入采纳检查项。
 
 ### C8-A03 — partial
-**Claim:** Two-step rollout (canary → partial prod → full prod) with auto-rollback on policy reject spike is sufficient for all upgrade waves.  
-**Challenge:** Sufficient for single-region/single-tenant; multi-region or high-tenant blast radius may need more steps.  
-**Counter source:** https://github.com/kyverno/kyverno/releases  
-**Verdict:** partial — Add step count and scope by blast-radius class.
+**Claim:** Crawl4AI 策略与编码兼容性（BestFirstCrawlingStrategy、PDFContentScrapingStrategy、gbk）影响多语言与深度爬取采纳。  
+**Challenge:** 可能为边缘场景或已在 main 修复；需确认 issue 仍 open 及影响范围。  
+**Counter source:** https://github.com/unclecode/crawl4ai/issues/1815  
+**Verdict:** partial — C 在 crawl 栈 ADR 中将兼容性标为已知限制。
 
 ### C8-A04 — partial
-**Claim:** Versioned adapters for PyRIT/TruLens/OTel absorb API drift and reduce upgrade blast radius.  
-**Challenge:** Adapters add maintenance burden and can lag behind multi-version support.  
-**Counter source:** https://github.com/truera/trulens/releases  
-**Verdict:** partial — Document adapter maintenance SLA and version support window.
+**Claim:** Firecrawl v2 scrape parsers.mode 校验与 MCP/Google 模型兼容性影响自托管与 OpenCode 采纳。  
+**Challenge:** 可能为版本相关或下一版已修复。  
+**Counter source:** https://github.com/firecrawl/firecrawl/issues/2917  
+**Verdict:** partial — C 在兼容性矩阵中补充 Firecrawl 版本及 OpenCode vs 托管环境。
 
 ### C8-A05 — partial
-**Claim:** MCP-first then serving then orchestration upgrade order is the default sequence for OwlClaw.  
-**Challenge:** CVE or compliance can force serving or orchestration first.  
-**Counter source:** https://github.com/modelcontextprotocol/python-sdk/releases  
-**Verdict:** partial — Add event-driven reorder and exception path (e.g. CVE/compliance).
+**Claim:** Jina Reader 与 Agent/MCP 集成存在站点差异与鉴权问题（Reddit、Thales、MCP Unauthorized）。  
+**Challenge:** 「Jina 失败、Firecrawl 通过」为用户自述，非同 URL/同时间/同 Agent 的对照实验。  
+**Counter source:** https://github.com/jina-ai/reader/issues/1229  
+**Verdict:** partial — C 在无对照基准前勿作为公平对比结论；可记为「已报告的站点差异」。
 
 ### C8-A06 — partial
-**Claim:** Pin to v0.10.x / v0.145.x with rollback suggestion is adequate remediation for high-migration-complexity releases.  
-**Challenge:** Pin alone does not define how long the pin is safe (CVE, support EOL).  
-**Counter source:** https://github.com/open-telemetry/opentelemetry-collector/releases  
-**Verdict:** partial — Add pin expiry and security-backport policy.
+**Claim:** Perplexica 存在 token 消耗、上下文超限、LM Studio 断开与 Docker 镜像可用性等采纳与运维风险。  
+**Challenge:** 「极端 token」与断开未与 Farfalle/Turboseek 做基准对比；可能与模型或配置有关。  
+**Counter source:** https://github.com/ItzCrazyKns/Perplexica/issues/1031  
+**Verdict:** partial — C 补充 token 与 context 相关 caveat；无数据时不表述为对比风险。
 
-### C8-A07 — fails
-**Claim:** Temporary exception policy with expiry and compensating controls covers all waiver cases.  
-**Challenge:** C7-B-016: expiry without enforcement leads to permanent exceptions; manual expiry is insufficient.  
-**Counter source:** 30-analysis/cross/challenge_matrix_2026-03-09_C7.csv  
-**Verdict:** fails — Automated exception-expiry check and escalation required; do not rely on manual expiry only.
+### C8-A07 — partial
+**Claim:** Farfalle 自托管在 Docker、模型选择与端口占用方面存在采纳摩擦。  
+**Challenge:** 证据为 2025-03/08 的 issue；可能已修复或有文档 workaround。  
+**Counter source:** https://github.com/rashadphz/farfalle/issues/108  
+**Verdict:** partial — C 确认 issue 状态并将解决/修复时间纳入采纳说明。
 
 ### C8-A08 — partial
-**Claim:** P0 wave Week 1–2 and P1 wave Week 3–5 is execution-ready without dependency on incident freeze or owner availability.  
-**Challenge:** C7 handoff required: owner availability and incident-freeze dependency for waves.  
-**Counter source:** 20-normalized/handoff_B_to_C_2026-03-09_C7.md  
-**Verdict:** partial — Wave timing not execution-ready without these; add to rollout plan.
+**Claim:** Turboseek 功能缺口（Regenerate、Docker、本地 LLM）影响与 Perplexica/Farfalle 的选型对比。  
+**Challenge:** Feature request 不直接等于「不可采纳」；可能已在 roadmap 或 PR。  
+**Counter source:** https://github.com/Nutlope/turboseek/issues/14  
+**Verdict:** partial — C 标为能力缺口而非采纳阻断；有 roadmap/PR 时补充链接。
 
 ### C8-A09 — partial
-**Claim:** Recommendation A (LangGraph + MCP + Qdrant + LiteLLM + Istio + Langfuse) is the production-default stack for OwlClaw.  
-**Challenge:** Single combo assumes org has mesh and multi-stack capacity; small team or single-provider constraint.  
-**Counter source:** https://github.com/istio/istio  
-**Verdict:** partial — Label as scale profile and add minimal profile.
+**Claim:** Crawl4AI 版本升级存在显式破坏性变更（proxy_config、Python 3.10+）需迁移与兼容性评估。  
+**Challenge:** 破坏性变更为事实；边界在于迁移文档是否完整。  
+**Counter source:** https://github.com/unclecode/crawl4ai/releases/tag/v0.7.5  
+**Verdict:** partial — C 在升级矩阵中补充迁移检查项与 pin/rollback 建议。
 
 ### C8-A10 — partial
-**Claim:** Changelog-quality and no_clear_breaking classification does not require code-diff or compatibility-test evidence.  
-**Challenge:** Sparse or automated changelog can misclassify no_clear_breaking.  
-**Counter source:** https://github.com/aquasecurity/trivy/releases  
-**Verdict:** partial — Add code-diff or compatibility-test requirement for no_clear_breaking.
+**Claim:** Firecrawl 采纳信号：Skill/MCP/CLI、Zod v4、自托管 ARM64 与 Agent 工作流增强。  
+**Challenge:** Release 说明体现的是「功能存在」而非采纳（star、第三方集成）。  
+**Counter source:** https://github.com/firecrawl/firecrawl/releases/tag/v2.8.0  
+**Verdict:** partial — C 若称「采纳信号」需区分「功能信号」或补充采纳类指标/外部引用。
 
 ### C8-A11 — partial
-**Claim:** Keep previous known-good artifact bundle is sufficient rollback preparation for all components.  
-**Challenge:** Bundle may not include state or runtime-generated config; stateful components need explicit state snapshot and config export.  
-**Counter source:** https://github.com/mem0ai/mem0/releases  
-**Verdict:** partial — Define state snapshot and config export for stateful components.
+**Claim:** Firecrawl 自托管在 custom hostname、代理与部署配置上存在需求与问题。  
+**Challenge:** 多为增强类需求；可能有文档化 workaround。  
+**Counter source:** https://github.com/firecrawl/firecrawl/issues/2964  
+**Verdict:** partial — C 在 Firecrawl 采纳条目中补充自托管配置 caveat。
 
-### C8-A12 — partial
-**Claim:** Cross-track decision memo ownership and review cadence can be quarterly without loss of decision freshness.  
-**Challenge:** Quarterly can lag behind CVE or major release churn.  
-**Counter source:** 40-insights/risks/upgrade-risk-matrix.md  
-**Verdict:** partial — Add trigger-based review (e.g. P0 release, CVE) and keep quarterly as minimum floor.
+### C8-A12 — fails
+**Claim:** Crawl/Search 栈选型与分类由 30-analysis/crawl 文档与 CSV 归纳。  
+**Challenge:** 选型与分类仅依赖内部归纳，无外部采纳案例或 star/issue 趋势；采纳信号不可仅据此决策。  
+**Counter source:** ../../30-analysis/crawl/llm_web_crawl_search_2026-03-09.md  
+**Verdict:** fails — C 须补充外部来源（GitHub 活跃度、第三方博客或集成案例），或显式标注「内部归纳、待外部验证」。
+
+### C8-A13 — partial
+**Claim:** Firecrawl 与下游 RAG/调试的集成：markdown URL 错误与 web-to-RAG 故障诊断需求。  
+**Challenge:** Markdown URL 可能已修或有 workaround；RAG 调试为增强建议。  
+**Counter source:** https://github.com/firecrawl/firecrawl/issues/2971  
+**Verdict:** partial — C 纳入集成检查项并跟踪修复状态。
+
+### C8-A14 — partial
+**Claim:** Perplexica 与 openclaw web_search 等前端/API 的集成需求（front-facing chat API）。  
+**Challenge:** 属功能需求而非风险；Perplexica 或已可作为后端使用。  
+**Counter source:** https://github.com/ItzCrazyKns/Perplexica/issues/996  
+**Verdict:** partial — C 记为 openclaw 集成能力缺口，不作为采纳阻断项。
 
 ## Failed Claim (C Action Required)
 
-- **C8-A07:** Temporary exception policy with expiry and compensating controls covers all waiver cases.  
-  - **Why failed:** C7-B-016 already established that expiry without automated enforcement leads to permanent exceptions; A re-asserted the same policy without automation.  
-  - **Required C action:** Implement automated exception-expiry check and escalation; do not rely on manual expiry only; document in decision memo and risk register.
+- **C8-A12:** Crawl/Search 栈选型与分类由 30-analysis/crawl 文档与 CSV 归纳。  
+  - **Why failed:** 采纳信号与风险结论若仅依内部归纳、无外部采纳案例或 star/issue 趋势，不足以作为采纳决策唯一依据。  
+  - **Required C action:** 为 crawl 栈补充外部来源（GitHub activity、第三方博客或集成案例），或在文档中显式标注「内部归纳、待外部验证」，不得将内部归纳单独作为采纳信号依据。
 
 ## Red-Team Pattern Summary
 
-1. **Upgrade matrix:** Single source of truth and no_clear_breaking need changelog-quality and code-diff/compat-test (A01, A10).  
-2. **Rollout and waves:** Two-step and wave timing need blast-radius and owner/incident dependencies (A03, A08).  
-3. **Exception and rollback:** Exception policy must have automated expiry (A07 fails); pin and artifact bundle need expiry and state/config rules (A06, A11).  
-4. **Cross-track:** Recommendation A and decision cadence need profile labeling and trigger-based review (A09, A12).
+1. **Crawl4AI / Firecrawl:** 多数 claim 有明确 issue/release 支撑，但需区分「影响范围」「是否已修复」「配置/流程 vs 代码缺陷」；C 需补充版本与兼容性矩阵、采纳检查项。  
+2. **Jina / Perplexica / Farfalle / Turboseek:** 站点差异与 token/功能缺口缺乏对照基准或竞品数据；C 避免未验证的对比结论，可标为「已报告差异」或「能力缺口」。  
+3. **采纳信号:** A10、A12 将 release 功能或内部归纳等同于「采纳信号」；B 要求区分「功能存在」与「采纳证据」，且 A12 判 fails，要求补充外部验证或显式免责。
 
 ## Mandatory Rewrite Requests for Window C
 
-1. **Exception policy:** Add automated exception-expiry check and escalation; do not treat manual expiry as sufficient.  
-2. **Upgrade matrix:** Add changelog-quality flag and code-diff/compatibility-test requirement for no_clear_breaking.  
-3. **Rollout plan:** Add owner-availability and incident-freeze dependency for waves; add step count and scope by blast-radius class.  
-4. **Decision memo / executive digest:** Clarify audience (research vs ops); add trigger-based review (P0 release, CVE) with quarterly minimum; label Recommendation A as scale profile and add minimal profile.
+1. **C8-A12 (fails):** 采纳信号不可仅依 30-analysis/crawl 内部归纳；补充外部来源或标注「待外部验证」。  
+2. **Crawl 栈 ADR / 采纳清单:** 增加 Crawl4AI/Firecrawl 版本与兼容性、超时与安全联系、自托管与集成检查项；C8-A09 纳入升级矩阵与迁移/pin 建议。  
+3. **对比与风险表述:** Jina vs Firecrawl、Perplexica token/context 等不做无数据的对比结论；Turboseek/Farfalle 记为能力缺口并附 issue/PR 状态。  
+4. **Firecrawl 采纳条目:** 区分「功能信号」与「采纳证据」；自托管与 RAG 集成补充 caveat 与修复跟踪。

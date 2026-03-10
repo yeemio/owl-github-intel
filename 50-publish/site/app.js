@@ -487,6 +487,16 @@ function render() {
 
     if (matched.length === 0) {
       setStatus("search-status", i18n.translate("statusEmpty"), "empty");
+      const statusEl = document.getElementById("search-status");
+      if (statusEl) {
+        statusEl.appendChild(document.createTextNode(" "));
+        const clearBtn = document.createElement("button");
+        clearBtn.type = "button";
+        clearBtn.id = "clear-filters-btn";
+        clearBtn.className = "btn btn-inline";
+        clearBtn.textContent = i18n.translate("clearFilters");
+        statusEl.appendChild(clearBtn);
+      }
     } else {
       setStatus(
         "search-status",
@@ -500,15 +510,44 @@ function render() {
   }
 }
 
-function bindEvents() {
-  document.getElementById("lang-toggle").addEventListener("click", () => {
-    i18n.toggleLang();
-  });
+function clearFiltersAndRender() {
+  state.q = "";
+  state.theme = "all";
+  state.tag = "all";
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) searchInput.value = "";
+  router.writeHash(state);
+  const themeFilter = document.getElementById("theme-filter");
+  const tagFilter = document.getElementById("tag-filter");
+  if (themeFilter) themeFilter.value = "all";
+  if (tagFilter) tagFilter.value = "all";
+  render();
+}
 
-  document.getElementById("search-input").addEventListener("input", (e) => {
-    state.q = e.target.value || "";
-    router.writeHash(state);
-    render();
+function bindEvents() {
+  const langToggle = document.getElementById("lang-toggle");
+  if (langToggle) langToggle.addEventListener("click", () => i18n.toggleLang());
+
+  let searchDebounceId = 0;
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const value = e.target.value || "";
+      state.q = value;
+      if (searchDebounceId) clearTimeout(searchDebounceId);
+      searchDebounceId = setTimeout(() => {
+        searchDebounceId = 0;
+        router.writeHash(state);
+        render();
+      }, SEARCH_DEBOUNCE_MS);
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.id === "clear-filters-btn") {
+      e.preventDefault();
+      clearFiltersAndRender();
+    }
   });
 
   document.addEventListener("change", (e) => {
@@ -534,9 +573,16 @@ function bindEvents() {
     render();
   });
 
-  i18n.onChange(() => {
+  i18n.onChange((lang) => {
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+    const langToggle = document.getElementById("lang-toggle");
+    if (langToggle) langToggle.setAttribute("aria-label", lang === "zh" ? "Switch to English" : "切换到中文");
     render();
   });
+  const initialLang = i18n.getLang();
+  document.documentElement.lang = initialLang === "zh" ? "zh-CN" : "en";
+  const langToggle = document.getElementById("lang-toggle");
+  if (langToggle) langToggle.setAttribute("aria-label", initialLang === "zh" ? "Switch to English" : "切换到中文");
 }
 
 function ensureWrongRootWarning() {

@@ -14,17 +14,19 @@
           Research navigation for AI ecosystem intelligence
         </p>
       </div>
-      <button id="lang-toggle" class="btn">中文</button>
+      <button id="lang-toggle" class="btn" type="button">中文</button>
     </header>
 
-    <main class="layout">
-      <section class="card">
+    <main class="layout" role="main" aria-label="Portal content">
+      <section class="card" aria-label="Search and filters">
         <h2 id="searchTitle">Search</h2>
         <input
           id="search-input"
           class="search-input"
           type="text"
           placeholder="Type keywords..."
+          aria-label="Search and filter cards by title, description, path"
+          autocomplete="off"
         />
         <p id="searchHint" class="search-hint">
           Filter cards by title, description, and path.

@@ -2,7 +2,7 @@
 
 ## 2026-03-09 (continued)
 
-- **C8 Decision Desk 收口**：主题 crawl_search_adoption；未发现 A/B C8 产出（scan/evidence/challenge_log/challenge_matrix/handoffs），故未对 repo_master 与 adoption_backlog 做 Crawl/Search 变更；已新增 weekly_digest_2026-03-09_C8.md、CHANGELOG 本行、CYCLE_SCOREBOARD 的 C8 行；待 A/B 补跑后可重做 C8 决策。
+- **C8 Decision Desk 收口**：主题 Crawl/Search 栈采纳信号；已消费 A 的 scan/evidence/handoff 与 B 的 challenge 产出（B 内容与主题错位，为升级风险/跨轨）；按 A 证据更新 adoption_backlog（Crawl/Search P2 条件项）、upgrade-risk-matrix、repo_master；已写 weekly_digest_2026-03-09_C8.md、CYCLE_SCOREBOARD C8 行；无新 P0。
 - **3 窗口工作流固化**：新增 `00-index/THREE_WINDOW_WORKFLOW.md`，固定「统筹 + A/B/C」角色、单轮周期结构、产出路径命名、执行顺序、手递手规则、进入下一轮方式；MASTER_INDEX 与 WINDOW_ASSIGNMENTS_NOW 已链入，便于持续使用。
 - **3 窗口 C8 分配 + 统筹**：更新 `00-index/WINDOW_ASSIGNMENTS_NOW.md`：周期 C8、主题 Crawl/Search 栈采纳信号；窗口 A（Evidence Miner）、B（Red Team）、C（Decision Desk）各带复制用提示词与产出路径；新增「统筹」流程（发布→等待→收口→报告），收口时由统筹窗口执行 git commit/push。
 - **Crawl & search 收口**：补全 `30-analysis/crawl/`：新增 `README.md` 目录与分类速览；主文档第二节补许可/星数、新增第七节「选型速查」表；CSV 修正 Jina Reader self_hosted=no、Embedchain stars≈20k；BROWSE_BY_TOPIC 增加 crawl 目录链接。

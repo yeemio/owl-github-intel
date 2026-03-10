@@ -2,14 +2,18 @@
 
 Last updated: 2026-03-09
 Source baseline: `20-normalized/repo_master_latest.csv`
-Decision cycle: `C6` (Window C final after B challenge)
+Decision cycle: `C8` (Window C final after A+B; B challenge content theme-mismatched with A)
 
-## C6 Decision Principle
+## C8 Decision Principle
 
 - **Rule**: survives → candidate for backlog; partial → conditional only; fails → reject, do not promote.
-- B verdict summary: `survives=0`, `partial=17`, `fails=1`.
-- No new P0 promotions (no survives). All recommendations remain trigger- and profile-based.
-- **Rejected claim (do not promote)**: `C6-B-018` — batch_reindex_engine and incremental_pipeline_backbone must not be treated as permanently P2; at high document velocity they become critical path. Add velocity-based promotion rule and P1 trigger (e.g. docs/day or event-rate threshold) before promoting pipeline backbones (Kafka/Spark or equivalent).
+- **C8 theme**: Crawl/Search 栈采纳信号（Crawl4AI, Firecrawl, Jina Reader, Perplexica, Farfalle, Turboseek）。
+- A output: 14 claims, 44 evidence rows, 41 from issue/release. B output: 12 challenged; B’s verdict text referred to upgrade-risk/cross-track (theme mismatch with A). C resolved from **A’s evidence** and C’s own criteria; no new P0 (no survives; P0 requires ≥2 independent sources + risk + rollback).
+- **Rejected / not promoted**: None from A’s crawl/search claims; B’s only “fails” (C8-A07 in B’s matrix) referred to exception-policy automation, not a crawl stack claim — that governance action remains in risk register.
+
+## C6 Carryover (unchanged)
+
+- **Rejected claim (do not promote)**: `C6-B-018` — batch_reindex_engine and incremental_pipeline_backbone: add velocity-based promotion rule and P1 trigger before promoting pipeline backbones.
 
 ## P0 - Scale Profile (triggered)
 
@@ -42,6 +46,17 @@ Policy: allow lean baseline first; promote to P0 only when trigger thresholds ar
 - `huggingface/text-generation-inference`, `protectai/rebuff`
 
 **Pipeline backbones (e.g. Kafka/Spark, batch_reindex_engine, incremental_pipeline_backbone):** Remain P2 unless velocity-based trigger is defined and met (e.g. doc_velocity or event_rate threshold); then consider P1 with explicit rollback and adoption gate. Do not promote to P0 without at least 2 independent sources and explicit risk + rollback signal.
+
+## C8 Crawl/Search (P2 conditional)
+
+- `unclecode/crawl4ai` — P2: Docker/schema 0.8.x risk; MCP bridge timeout + Redis/security config; proxy_config breaking change. Adopt only after schema migration and security hardening; rollback to v0.7.x if regression.
+- `firecrawl/firecrawl` — P2: v2 parsers.mode + MCP/Google model compatibility; self-host hostname/proxy. Adopt with parser validation and self-host checklist; rollback to prior image if scrape failures.
+- `jina-ai/reader` — P2: Agent/MCP site variance (Reddit, Thales) and Unauthorized API key issues. Use with fallback (e.g. Firecrawl) and verify API key path before P1.
+- `ItzCrazyKns/Perplexica` — P2: token/context and LM Studio disconnect; Docker image availability. Adopt with token budget and local-LLM stability checks.
+- `rashadphz/farfalle` — P2: Docker/port and model selection friction. Sandbox first; document port fallback and model matrix.
+- `Nutlope/turboseek` — P2: no Regenerate/Docker/local LLM yet. Watch for feature parity before comparing to Perplexica/Farfalle.
+
+Trigger for P2→P1: two independent adoption signals (e.g. docs + issue resolution) and explicit risk + rollback note.
 
 ## Exception Policy (C6)
 
