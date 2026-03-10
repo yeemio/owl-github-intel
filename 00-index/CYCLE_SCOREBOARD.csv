@@ -4,3 +4,6 @@ C2,mcp_gateway,67,57,18,0,0,0,73,B-window review completed; all claims classifie
 C3,eval_security_failure_modes,0,0,18,1,0,0,76,B-window review completed; scoring-model gap identified and one claim failed
 C4,eval_security_failure_modes,0,0,18,1,0,0,77,B-window review completed; KPI and rollout fallback gaps identified with one failed claim
 C5,agent_rag_architecture_tradeoffs,0,0,18,1,0,0,78,B-window review completed; framework-local criteria failed without business outcome gates
+C6,agent_rag_architecture_tradeoffs,0,0,18,1,0,1,79,C Decision Desk completed; 0 promoted (no survives); 1 rejected (C6-B-018 pipeline backbone P2-only); velocity-based promotion rule added to backlog and risk matrix
+C7,upgrade_risk_cross_track,0,0,18,1,0,0,80,B-window review completed; exception policy and upgrade gates need automation and tiering
+C8,upgrade_risk_cross_track,32,14,12,1,0,0,81,B-window completed; A outputs created then B challenged 12 claims; C8-A07 fails (exception policy automation); handoff B→C written

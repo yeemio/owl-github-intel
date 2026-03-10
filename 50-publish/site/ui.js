@@ -59,7 +59,9 @@ export function renderLinks(targetId, items, options) {
   const itemClass = options.itemClass || "link-item";
 
   items.forEach((item) => {
-    const href = typeof item.href === "string" ? item.href : item.href[lang];
+    const href = typeof item.href === "string" ? item.href : (item.href && (item.href[lang] ?? item.href.en ?? item.href.zh));
+    const label = item[lang] ?? item.en ?? item.zh;
+    if (!href || !label || !Array.isArray(label)) return;
     const a = document.createElement("a");
     a.href = href;
     a.className = itemClass;
@@ -69,8 +71,8 @@ export function renderLinks(targetId, items, options) {
     a.dataset.theme = item.theme || "";
     a.dataset.tags = (item.tags || []).join(",");
 
-    const title = highlightText(item[lang][0], query);
-    const desc = highlightText(item[lang][1], query);
+    const title = highlightText(label[0] ?? "", query);
+    const desc = highlightText(label[1] ?? "", query);
     a.innerHTML = `${title}<small>${desc}</small>`;
     root.appendChild(a);
   });

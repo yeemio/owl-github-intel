@@ -1,0 +1,19 @@
+project,repo_url,license,stars_approx,focus,crawl,search_rag,self_hosted,notes
+Crawl4AI,https://github.com/unclecode/crawl4ai,Apache-2.0,61600,crawl+llm,yes,via RAG pipeline,yes,LLM-friendly markdown; parallel crawl; agent integration
+Firecrawl,https://github.com/firecrawl/firecrawl,AGPL-3.0,90260,crawl+llm,yes,api,yes,MCP server; JS render; batch; can self-host
+Jina Reader,https://github.com/jina-ai/reader,Apache-2.0,10155,crawl+search,yes,yes (s.jina.ai),no,r.jina.ai URL→markdown; free API; s.jina.ai search
+ForgeCrawl,https://github.com/cschweda/forgecrawl,,,crawl+llm,yes,no,yes,SQLite; Docker; markdown out; auth+cache
+LLM-Reader,https://github.com/m92vyas/llm-reader,,,crawl+llm,yes,no,yes,Python Playwright; RAG/extract
+Crawl2RAG,https://github.com/tavily-ai/crawl2rag,MIT,46,crawl+rag,yes,yes (vector),Tavily API,Tavily crawl→MongoDB vector; LangGraph; repo archived
+RagRabbit,https://github.com/madarco/ragrabbit,,,crawl+rag,yes,yes (pgvector),yes,Next.js; crawler+pgVector; LlamaIndex; Vercel
+Embedchain,https://github.com/embedchain/embedchain,Apache-2.0,20000,crawl+rag,yes,yes,yes,web/sitemap/PDF→chunk→vector DB→RAG
+DawnSearch,https://github.com/dawn-search/dawnsearch,,14,search,yes,yes (semantic),yes,Distributed semantic web search; early stage
+IntellilSearch,https://github.com/ashwantmanikoth/intellilsearch,,,crawl+search,yes,yes,,AI crawler; user query driven
+Tavily,https://docs.tavily.com,,,search API,via Crawl API,yes (Search API),no,Search+Extract+Crawl APIs; 1k free/mo; LLM-oriented
+Perplexica,https://github.com/ItzCrazyKns/Perplexica,MIT,32400,AI answer engine,no,yes (SearxNG meta-search),yes,Perplexity alternative; Ollama/OpenAI/Claude/Groq/Gemini; cited answers; image/video search; Next.js
+Farfalle,https://github.com/rashadphz/farfalle,Apache-2.0,3519,AI answer engine,no,yes (SearxNG/Tavily),yes,Self-host LLM; Python backend; Docker
+Turboseek,https://github.com/Nutlope/turboseek,,1615,AI answer engine,yes (scrape results),yes,yes,Search→scrape→LLM stream; Next.js; Together/OpenAI; no vector DB
+Sensei,https://github.com/jjleng/sensei,Apache-2.0,461,AI answer engine,,,yes,Yet another open source Perplexity; heysensei.app
+LangChain-SearXNG,https://github.com/ptonlix/LangChain-SearXNG,Apache-2.0,215,AI answer engine,no,yes (SearxNG),yes,LangChain+SearXNG; Chinese community
+Perplexify,https://github.com/kamranxdev/Perplexify,,14,AI answer engine,no,yes,yes,Fork of Perplexica; Search Orchestrator; TypeScript
+GNO,https://www.gno.sh (npm @gmickel/gno),,,"local knowledge+cite",no,yes (BM25+vector),yes,Local docs only; gno ask with citations; MCP/SKILL; no cloud

@@ -4,7 +4,8 @@
 **周期**: C8  
 **主题**: Crawl/Search 栈采纳信号 + 门户与主索引同步  
 
-**权威文档**: `00-index/THREE_WINDOW_EXECUTION_PLAN.md`  
+**固定流程**：`00-index/THREE_WINDOW_WORKFLOW.md`（持续工作流）  
+**细部规则与 KPI**：`00-index/THREE_WINDOW_EXECUTION_PLAN.md`  
 **数据上下文**: `20-normalized/repo_master_latest.csv`, `40-insights/adoption_backlog_latest.md`, `30-analysis/crawl/`
 
 ---
@@ -20,8 +21,8 @@
 3. **收口**：
    - 检查 A 的 handoff、B 的 handoff、C 的产出是否齐全；
    - 若有冲突（如多人改同一文件），以 C 窗口决策为准，或合并合理部分；
-   - 更新 `00-index/CYCLE_SCOREBOARD.csv` 的 C7 行（若 C 未写）；
-   - 执行：`cd D:\AI\owl-github-intel && git add -A && git status && git commit -m "chore(intel): C7 cycle outputs" && git push`
+   - 更新 `00-index/CYCLE_SCOREBOARD.csv` 的当轮行（若 C 未写）；
+   - 执行：`cd D:\AI\owl-github-intel && git add -A && git status && git commit -m "chore(intel): C8 cycle outputs" && git push`
 4. **报告**：在对话中简短汇报：本轮产出文件、提交 hash、下一轮建议（是否 C9、主题建议）。
 
 ### 本轮产出检查清单（统筹用）

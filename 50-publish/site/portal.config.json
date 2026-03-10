@@ -1,4 +1,109 @@
 {
   "text": {},
-  "groups": {}
+  "sectionTitles": {
+    "cycleDigests": {
+      "en": "Cycle Digests (C1–C8)",
+      "zh": "周期摘要 (C1–C8)"
+    }
+  },
+  "groups": {
+    "cycleDigests": [
+      {
+        "id": "cycle-scoreboard",
+        "theme": "operations",
+        "tags": ["cycle", "scoreboard", "quality"],
+        "en": ["Cycle Scoreboard", "A/B/C metrics and quality scores per cycle"],
+        "zh": ["周期记分板", "各周期 A/B/C 指标与质量分"],
+        "href": "../../00-index/CYCLE_SCOREBOARD.csv"
+      },
+      {
+        "id": "weekly-digest-c1",
+        "theme": "operations",
+        "tags": ["digest", "c1", "mcp", "gateway"],
+        "en": ["Weekly Digest C1", "MCP + Gateway reliability – final digest"],
+        "zh": ["周报 C1", "MCP + 网关可靠性 – 终版摘要"],
+        "href": "../weekly_digest_2026-03-09_C1.md"
+      },
+      {
+        "id": "weekly-digest-c2",
+        "theme": "operations",
+        "tags": ["digest", "c2", "mcp", "gateway"],
+        "en": ["Weekly Digest C2", "MCP + Gateway – conditional governance"],
+        "zh": ["周报 C2", "MCP + 网关 – 条件治理"],
+        "href": "../weekly_digest_2026-03-09_C2.md"
+      },
+      {
+        "id": "three-window-plan",
+        "theme": "operations",
+        "tags": ["execution", "command-center", "a-b-c"],
+        "en": ["Three-Window Execution Plan", "Window A/B/C workflow and handoffs"],
+        "zh": ["三窗口执行计划", "窗口 A/B/C 流程与交接"],
+        "href": "../../00-index/THREE_WINDOW_EXECUTION_PLAN.md"
+      },
+      {
+        "id": "handoff-b-to-c-c1",
+        "theme": "operations",
+        "tags": ["handoff", "c1", "b-to-c"],
+        "en": ["Handoff B→C C1", "Challenge package and action requests for C1"],
+        "zh": ["B→C 交接 C1", "C1 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C1.md"
+      },
+      {
+        "id": "handoff-b-to-c-c2",
+        "theme": "operations",
+        "tags": ["handoff", "c2", "b-to-c"],
+        "en": ["Handoff B→C C2", "Challenge package and action requests for C2"],
+        "zh": ["B→C 交接 C2", "C2 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C2.md"
+      },
+      {
+        "id": "scan-a-c3",
+        "theme": "operations",
+        "tags": ["scan", "c3", "window-a", "eval", "security"],
+        "en": ["Scan A C3", "Window A – Eval & security failure modes"],
+        "zh": ["扫描 A C3", "窗口 A – 评测与安全失败模式"],
+        "href": "../../10-raw/scans/scan_2026-03-09_A_C3.md"
+      },
+      {
+        "id": "handoff-a-to-b-c3",
+        "theme": "operations",
+        "tags": ["handoff", "c3", "a-to-b"],
+        "en": ["Handoff A→B C3", "Evidence package and claims for B to challenge"],
+        "zh": ["A→B 交接 C3", "证据包与待 B 挑战的结论"],
+        "href": "../../10-raw/scans/handoff_A_to_B_2026-03-09_C3.md"
+      },
+      {
+        "id": "handoff-b-to-c-c3",
+        "theme": "operations",
+        "tags": ["handoff", "c3", "b-to-c"],
+        "en": ["Handoff B→C C3", "Challenge package and action requests for C3"],
+        "zh": ["B→C 交接 C3", "C3 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C3.md"
+      },
+      {
+        "id": "handoff-b-to-c-c4",
+        "theme": "operations",
+        "tags": ["handoff", "c4", "b-to-c"],
+        "en": ["Handoff B→C C4", "Challenge package and action requests for C4"],
+        "zh": ["B→C 交接 C4", "C4 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C4.md"
+      },
+      {
+        "id": "handoff-b-to-c-c5",
+        "theme": "operations",
+        "tags": ["handoff", "c5", "b-to-c"],
+        "en": ["Handoff B→C C5", "Challenge package and action requests for C5"],
+        "zh": ["B→C 交接 C5", "C5 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C5.md"
+      },
+      {
+        "id": "handoff-b-to-c-c6",
+        "theme": "operations",
+        "tags": ["handoff", "c6", "b-to-c"],
+        "en": ["Handoff B→C C6", "Challenge package and action requests for C6"],
+        "zh": ["B→C 交接 C6", "C6 挑战包与 C 行动请求"],
+        "href": "../../20-normalized/handoff_B_to_C_2026-03-09_C6.md"
+      }
+    ]
+  }
 }

@@ -63,6 +63,12 @@ Use this page as the browsing entrypoint.
   - `30-analysis/security/w6_ai_security_governance_map.csv`
   - `30-analysis/security/w6_ai_security_control_module_mapping.csv`
 
+## Crawl & Search (LLM-oriented)
+
+- **目录**：`30-analysis/crawl/README.md`
+- **分析**：`30-analysis/crawl/llm_web_crawl_search_2026-03-09.md`（含选型速查）
+- **数据**：`30-analysis/crawl/llm_web_crawl_search_2026-03-09.csv`
+
 ## Cross-topic / Program-level
 
 - `30-analysis/cross/deep_ai_dev_landscape_2026-03-09.md`

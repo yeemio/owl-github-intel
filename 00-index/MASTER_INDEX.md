@@ -17,7 +17,8 @@ Use this page first, then jump by topic or output type.
 - 7-day guided route: `00-index/START_HERE_7_DAY_PATH.md`
 - High-value questions: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
-- Three-window execution plan: `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
+- **3 窗口 + 统筹 持续工作流**：`00-index/THREE_WINDOW_WORKFLOW.md`（固定流程，长期有效）
+- Three-window execution plan (KPI/细节): `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
 - **Current 3-window assignment (copy-paste prompts)**: `00-index/WINDOW_ASSIGNMENTS_NOW.md`
 - Cycle scoreboard: `00-index/CYCLE_SCOREBOARD.csv`
 - Public overview page: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`

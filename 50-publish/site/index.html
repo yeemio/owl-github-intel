@@ -55,12 +55,39 @@
         <h2 id="operationsTitle">Operations and Contribution</h2>
         <div id="operations" class="link-list"></div>
       </section>
+      <div id="dynamic-groups"></div>
     </main>
 
     <footer class="footer">
       <span id="footerText">All links point to repository files.</span>
     </footer>
 
+    <!-- Must run via HTTP: ES modules and fetch are blocked on file:// -->
+    <div id="file-protocol-warning" class="file-protocol-warning hidden" role="alert">
+      <strong>此页面需通过本地 HTTP 服务打开才能正常使用。</strong><br/>
+      <span class="en-only">This page must be opened via a local web server (browsers block scripts on file://).</span>
+      <p>请在<strong>仓库根目录</strong>执行以下命令之一，然后访问终端里提示的地址下的 <code>/50-publish/site/</code>：</p>
+      <pre>python -m http.server 3765</pre>
+      <p>或 <code>npx serve . -l 3765</code>，再打开 <code>http://localhost:3765/50-publish/site/</code></p>
+    </div>
+    <!-- Shown when server is run from site folder only (many links 404) -->
+    <div id="wrong-root-warning" class="file-protocol-warning hidden" role="alert">
+      <strong>当前很可能是从子目录提供页面，部分链接会 404。</strong><br/>
+      请改为在<strong>仓库根目录</strong>启动服务，并访问 <code>/50-publish/site/</code> 路径。<br/>
+      例如在项目根目录执行：<code>python -m http.server 3765</code>，然后打开 <code>http://localhost:3765/50-publish/site/</code>
+    </div>
+
+    <script>
+      (function () {
+        if (window.location.protocol === "file:") {
+          var el = document.getElementById("file-protocol-warning");
+          if (el) {
+            el.classList.remove("hidden");
+            document.body.insertBefore(el, document.body.firstChild);
+          }
+        }
+      })();
+    </script>
     <script type="module" src="./app.js"></script>
   </body>
 </html>

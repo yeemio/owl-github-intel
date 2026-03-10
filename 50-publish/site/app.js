@@ -27,6 +27,7 @@ const DEFAULT_TEXT = {
     statusError: "Render failed. Please refresh or check script errors.",
     statusEmpty: "No results. Try clearing filters or changing keywords.",
     statusReady: "Showing {count} cards.",
+    clearFilters: "Clear filters",
     footerText: "All links point to repository files.",
     toggle: "中文",
   },
@@ -49,10 +50,13 @@ const DEFAULT_TEXT = {
     statusError: "渲染失败，请刷新页面或检查脚本错误。",
     statusEmpty: "没有匹配结果，请清空筛选或更换关键词。",
     statusReady: "当前显示 {count} 个卡片。",
+    clearFilters: "清空筛选",
     footerText: "所有链接都指向仓库内文件。",
     toggle: "English",
   },
 };
+
+const SEARCH_DEBOUNCE_MS = 180;
 
 const DEFAULT_GROUPS = {
   quickStart: [
@@ -235,6 +239,8 @@ const SECTION_MAP = {
 
 let text = DEFAULT_TEXT;
 let groups = DEFAULT_GROUPS;
+/** @type {Record<string,{en?:string,zh?:string}>} */
+let sectionTitles = {};
 
 async function hydrateConfig() {
   try {
@@ -261,6 +267,9 @@ async function hydrateConfig() {
           }
         });
         groups = merged;
+      }
+      if (external.sectionTitles && typeof external.sectionTitles === "object") {
+        sectionTitles = { ...sectionTitles, ...external.sectionTitles };
       }
     }
   } catch (_err) {
@@ -399,6 +408,11 @@ function hydrateControls() {
   const tagFilter = document.getElementById("tag-filter");
   const lang = i18n.getLang();
 
+  const filterThemeLabel = document.getElementById("filterTheme");
+  const filterTagLabel = document.getElementById("filterTag");
+  if (filterThemeLabel) filterThemeLabel.textContent = text[lang].filterTheme ?? "Theme";
+  if (filterTagLabel) filterTagLabel.textContent = text[lang].filterTag ?? "Tag";
+
   themeFilter.innerHTML = "";
   tagFilter.innerHTML = "";
 
@@ -410,6 +424,10 @@ function hydrateControls() {
   tagFilter.add(allTagOption);
   filterModel.availableTags().forEach((tag) => tagFilter.add(new Option(tag, tag)));
 
+  const validThemes = filterModel.availableThemes();
+  const validTags = filterModel.availableTags();
+  if (!validThemes.includes(state.theme)) state.theme = "all";
+  if (!validTags.includes(state.tag)) state.tag = "all";
   themeFilter.value = state.theme;
   tagFilter.value = state.tag;
 }
@@ -434,6 +452,38 @@ function render() {
         itemClass: section === "topicHubs" ? "hub" : "link-item",
       });
     });
+
+    // Dynamic sections: any group key not in SECTION_MAP gets a card in #dynamic-groups
+    const dynamicSectionKeys = Object.keys(groups).filter((k) => !SECTION_MAP[k]);
+    const dynamicRoot = document.getElementById("dynamic-groups");
+    if (dynamicRoot && dynamicSectionKeys.length > 0) {
+      dynamicSectionKeys.forEach((sectionKey) => {
+        const containerId = "dynamic-" + sectionKey;
+        let card = document.getElementById(containerId);
+        if (!card) {
+          card = document.createElement("section");
+          card.className = "card";
+          card.id = containerId;
+          const h2 = document.createElement("h2");
+          h2.id = "dynamic-title-" + sectionKey;
+          const list = document.createElement("div");
+          list.className = "link-list";
+          list.id = "dynamic-list-" + sectionKey;
+          card.appendChild(h2);
+          card.appendChild(list);
+          dynamicRoot.appendChild(card);
+        }
+        const lang = i18n.getLang();
+        const titles = sectionTitles[sectionKey];
+        const titleEl = document.getElementById("dynamic-title-" + sectionKey);
+        if (titleEl && titles) titleEl.textContent = titles[lang] || titles.en || titles.zh || sectionKey;
+        renderLinks("dynamic-list-" + sectionKey, bySection[sectionKey] || [], {
+          lang: i18n.getLang(),
+          query: state.q,
+          itemClass: "link-item",
+        });
+      });
+    }
 
     if (matched.length === 0) {
       setStatus("search-status", i18n.translate("statusEmpty"), "empty");
@@ -489,15 +539,33 @@ function bindEvents() {
   });
 }
 
+function ensureWrongRootWarning() {
+  const el = document.getElementById("wrong-root-warning");
+  if (!el) return;
+  el.classList.remove("hidden");
+  el.style.display = "";
+  document.body.insertBefore(el, document.body.querySelector("main"));
+}
+
 async function bootstrap() {
   await hydrateConfig();
   const fromUrl = router.parseHash();
   state.q = fromUrl.q;
   state.theme = fromUrl.theme;
   state.tag = fromUrl.tag;
-  document.getElementById("search-input").value = state.q;
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) searchInput.value = state.q;
   bindEvents();
   render();
+
+  // Probe: if repo-root links 404, we're likely served from site folder only
+  try {
+    const probeUrl = new URL("../../00-index/CHANGELOG.md", location.href).href;
+    const res = await fetch(probeUrl, { method: "GET" });
+    if (!res.ok) ensureWrongRootWarning();
+  } catch (_) {
+    ensureWrongRootWarning();
+  }
 }
 
 bootstrap();
