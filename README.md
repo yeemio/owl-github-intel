@@ -11,6 +11,7 @@ License: MIT (see `LICENSE`).
 ## Start Here
 
 - Portal (GitHub Pages): `https://yeemio.github.io/owl-github-intel/50-publish/site/`
+- Docs overview: `docs/OVERVIEW.md`
 - Main entrypoint: `00-index/MASTER_INDEX.md`
 - Browse entrypoint: `00-index/BROWSE_BY_TOPIC.md`
 - Change log: `00-index/CHANGELOG.md`
@@ -38,6 +39,14 @@ License: MIT (see `LICENSE`).
 - `40-insights/adoption_backlog_latest.md`
 - `30-analysis/cross/deep_ai_dev_landscape_2026-03-09.md`
 - `30-analysis/cross/deep_ai_dev_repo_map_2026-03-09.csv`
+
+## Docs
+
+- `docs/OVERVIEW.md`
+- `docs/METHODOLOGY.md`
+- `docs/DATA_SCHEMA.md`
+- `docs/GLOSSARY.md`
+- `docs/FAQ.md`
 
 ## Update Rule
 

@@ -1,12 +1,58 @@
 {
   "text": {},
   "sectionTitles": {
+    "docs": {
+      "en": "Docs",
+      "zh": "文档"
+    },
     "cycleDigests": {
       "en": "Cycle Digests (C1–C8)",
       "zh": "周期摘要 (C1–C8)"
     }
   },
   "groups": {
+    "docs": [
+      {
+        "id": "docs-overview",
+        "theme": "overview",
+        "tags": ["docs", "start-here"],
+        "en": ["Docs Overview", "What this repo is and how to use it"],
+        "zh": ["项目总览文档", "这个仓库是什么、如何阅读与使用"],
+        "href": "../../docs/OVERVIEW.md"
+      },
+      {
+        "id": "docs-methodology",
+        "theme": "overview",
+        "tags": ["docs", "method"],
+        "en": ["Methodology", "Evidence-first rules and decision posture"],
+        "zh": ["方法论", "证据优先规则与决策口径"],
+        "href": "../../docs/METHODOLOGY.md"
+      },
+      {
+        "id": "docs-schema",
+        "theme": "overview",
+        "tags": ["docs", "schema", "csv"],
+        "en": ["Data Schema", "Field meanings for the core datasets"],
+        "zh": ["数据字典", "核心数据资产字段含义与约束"],
+        "href": "../../docs/DATA_SCHEMA.md"
+      },
+      {
+        "id": "docs-glossary",
+        "theme": "overview",
+        "tags": ["docs", "terms"],
+        "en": ["Glossary", "Definitions for P0/P1/P2 and core terms"],
+        "zh": ["术语表", "P0/P1/P2 等术语定义"],
+        "href": "../../docs/GLOSSARY.md"
+      },
+      {
+        "id": "docs-faq",
+        "theme": "overview",
+        "tags": ["docs", "faq"],
+        "en": ["FAQ", "Common questions and conventions"],
+        "zh": ["常见问题", "阅读方式与约定"],
+        "href": "../../docs/FAQ.md"
+      }
+    ],
     "cycleDigests": [
       {
         "id": "weekly-digest-c1",
