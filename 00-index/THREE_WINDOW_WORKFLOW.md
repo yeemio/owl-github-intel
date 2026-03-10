@@ -2,8 +2,9 @@
 
 本文档为 **固定流程**，每轮研究均按此执行，长期有效。
 
-**当前轮次任务与复制用提示词**：见 `00-index/WINDOW_ASSIGNMENTS_NOW.md`（每轮更新周期号与主题）。  
-**细部规则与 KPI**：见 `00-index/THREE_WINDOW_EXECUTION_PLAN.md`。
+- **当前排期（本轮排了啥）**：**[00-index/CURRENT_CYCLE.md](00-index/CURRENT_CYCLE.md)**（统筹每轮更新：周期号、主题、A/B/C 任务概要、产出路径、下一轮预备）
+- **当前轮次提示词**：`00-index/WINDOW_ASSIGNMENTS_NOW.md`（复制用全文）
+- **细部规则与 KPI**：`00-index/THREE_WINDOW_EXECUTION_PLAN.md`
 
 ---
 
