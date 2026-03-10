@@ -7,12 +7,12 @@ It turns scattered public signals (issues, PRs, releases, docs) into decision-re
 
 - A static portal for browsing: `50-publish/site/` (GitHub Pages-friendly)
 - Core datasets (CSV/MD) you can reuse:
-  - `20-normalized/repo_master_latest.csv` (master repo map + decision fields)
-  - `40-insights/adoption_backlog_latest.md` (current adoption recommendations)
-  - `40-insights/risks/failure-patterns.csv` (recurring failure signatures)
-  - `40-insights/risks/upgrade-risk-matrix.csv` (upgrade/migration risks)
+  - `data/master/repo_master.csv` (master repo map + decision fields)
+  - `insights/adoption_backlog.md` (current adoption recommendations)
+  - `data/risks/failure-patterns.csv` (recurring failure signatures)
+  - `data/risks/upgrade-risk-matrix.csv` (upgrade/migration risks)
 - Publish outputs:
-  - `50-publish/weekly_digest_*.md` (cycle digests)
+  - `publish/digests/weekly_digest_*.md` (cycle digests)
 
 ## What This Is Not
 
@@ -23,11 +23,11 @@ It turns scattered public signals (issues, PRs, releases, docs) into decision-re
 ## Fast Start (10 minutes)
 
 1. Open the portal: `50-publish/site/`
-2. Read the latest adoption plan: `40-insights/adoption_backlog_latest.md`
+2. Read the latest adoption plan: `insights/adoption_backlog.md`
 3. Check risks:
-   - `40-insights/risks/failure-patterns.md`
-   - `40-insights/risks/upgrade-risk-matrix.md`
-4. If you need full context, jump into `30-analysis/` by topic.
+   - `data/risks/failure-patterns.md`
+   - `data/risks/upgrade-risk-matrix.md`
+4. If you need full context, jump into `analysis/` by topic.
 
 ## How To Contribute
 

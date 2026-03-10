@@ -12,33 +12,34 @@ License: MIT (see `LICENSE`).
 
 - Portal (GitHub Pages): `https://yeemio.github.io/owl-github-intel/50-publish/site/`
 - Docs overview: `docs/OVERVIEW.md`
-- Main entrypoint: `00-index/MASTER_INDEX.md`
-- Browse entrypoint: `00-index/BROWSE_BY_TOPIC.md`
-- Change log: `00-index/CHANGELOG.md`
-- Research trail map: `00-index/RESEARCH_TRAIL_MAP.md`
-- 7-day guided path: `00-index/START_HERE_7_DAY_PATH.md`
-- High-value question bank: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
-- Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
-- Public project overview: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
+- Main entrypoint: `index/MASTER_INDEX.md`
+- Browse entrypoint: `index/BROWSE_BY_TOPIC.md`
+- Change log: `index/CHANGELOG.md`
+- Research trail map: `index/RESEARCH_TRAIL_MAP.md`
+- 7-day guided path: `index/START_HERE_7_DAY_PATH.md`
+- High-value question bank: `index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
+- Researcher quickstart: `index/QUICKSTART_FOR_RESEARCHERS.md`
+- Public project overview: `publish/overview_public.md`
 - Static portal (EN/ZH): `50-publish/site/index.html` (recommended entrypoint: `/50-publish/site/`)
 - Bilingual content pages: `50-publish/site/content/en/` and `50-publish/site/content/zh/`
 
 ## Directory Layout
 
-- `00-index/`: always-updated navigation and operating status
-- `10-raw/`: raw incoming scans and source snapshots
-- `20-normalized/`: deduplicated and normalized master datasets
-- `30-analysis/`: topic and cross-topic analysis reports
-- `40-insights/`: prioritized decisions and adoption backlog
-- `50-publish/`: publish-ready external-facing outputs
-- `99-archive/`: deprecated or replaced documents
+- `index/`: navigation and reading paths
+- `sources/`: raw scans and source snapshots
+- `analysis/`: topic and cross-topic analysis reports
+- `data/`: curated datasets (master + risks)
+- `insights/`: current adoption decisions
+- `publish/`: publish-ready external-facing outputs (digests, overview)
+- `50-publish/site/`: static portal (kept for GitHub Pages path stability)
+- `99-archive/`: deprecated or internal-only documents
 
 ## Current Core Files
 
-- `20-normalized/repo_master_latest.csv`
-- `40-insights/adoption_backlog_latest.md`
-- `30-analysis/cross/deep_ai_dev_landscape_2026-03-09.md`
-- `30-analysis/cross/deep_ai_dev_repo_map_2026-03-09.csv`
+- `data/master/repo_master.csv`
+- `insights/adoption_backlog.md`
+- `analysis/cross/deep_ai_dev_landscape_2026-03-09.md`
+- `analysis/cross/deep_ai_dev_repo_map_2026-03-09.csv`
 
 ## Docs
 
@@ -53,9 +54,9 @@ License: MIT (see `LICENSE`).
 Every update should:
 
 1. Add/refresh source artifacts.
-2. Update normalized master table.
-3. Reflect decisions in adoption backlog.
-4. Append one line to `00-index/CHANGELOG.md`.
+2. Update curated datasets under `data/`.
+3. Reflect decisions in `insights/`.
+4. Append one line to `index/CHANGELOG.md`.
 
 ## Portal (Optional)
 

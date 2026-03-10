@@ -7,8 +7,8 @@
 Browsers block ES modules and fetch on `file://`, so the page will be blank or non-interactive.
 
 **必须从仓库根目录启动 HTTP 服务** / **You must start the HTTP server from the repository root**  
-否则门户里指向 `00-index`、`40-insights`、`20-normalized` 等的链接会 404。  
-Otherwise links to `00-index`, `40-insights`, `20-normalized` will 404.
+否则门户里指向 `index`、`data`、`insights` 等的链接会 404。  
+Otherwise links to `index`, `data`, `insights` will 404.
 
 1. 在终端中进入**仓库根目录**（`owl-github-intel`）  
    In a terminal, go to the **repository root** (`owl-github-intel`):

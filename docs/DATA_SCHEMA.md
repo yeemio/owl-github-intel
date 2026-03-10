@@ -2,7 +2,7 @@
 
 This document describes the meaning of the most important datasets in this repo.
 
-## `20-normalized/repo_master_latest.csv`
+## `data/master/repo_master.csv`
 
 Purpose: canonical repository map with decision fields.
 
@@ -20,7 +20,7 @@ Key columns (high level):
 - `exception_policy`: constraints for timeboxed exceptions
 - `updated_at`: last updated date
 
-## `40-insights/risks/failure-patterns.csv`
+## `data/risks/failure-patterns.csv`
 
 Purpose: recurring production failure signatures extracted from public issue/discussion evidence.
 
@@ -29,7 +29,7 @@ Expect fields such as:
 - `repo`, `failure_type`, `trigger_condition`, `root_cause`, `fix_method`
 - `reproducible`, `source_url`
 
-## `40-insights/risks/upgrade-risk-matrix.csv`
+## `data/risks/upgrade-risk-matrix.csv`
 
 Purpose: track breaking change and migration risks across key dependencies.
 
@@ -44,5 +44,5 @@ If you add/remove/rename columns:
 
 1. Update this document.
 2. Update any portal/validation scripts that assume headers.
-3. Keep a short note in `00-index/CHANGELOG.md`.
+3. Keep a short note in `index/CHANGELOG.md`.
 

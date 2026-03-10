@@ -2,9 +2,9 @@
 
 本文档为 **固定流程**，每轮研究均按此执行，长期有效。
 
-- **当前排期（本轮排了啥）**：**[00-index/CURRENT_CYCLE.md](00-index/CURRENT_CYCLE.md)**（统筹每轮更新：周期号、主题、A/B/C 任务概要、产出路径、下一轮预备）
-- **当前轮次提示词**：`00-index/WINDOW_ASSIGNMENTS_NOW.md`（复制用全文）
-- **细部规则与 KPI**：`00-index/THREE_WINDOW_EXECUTION_PLAN.md`
+- **当前排期（本轮排了啥）**：**[index/CURRENT_CYCLE.md](index/CURRENT_CYCLE.md)**（统筹每轮更新：周期号、主题、A/B/C 任务概要、产出路径、下一轮预备）
+- **当前轮次提示词**：`index/WINDOW_ASSIGNMENTS_NOW.md`（复制用全文）
+- **细部规则与 KPI**：`index/THREE_WINDOW_EXECUTION_PLAN.md`
 
 ---
 
@@ -31,17 +31,17 @@
 
 | 窗口 | 产出文件（将 `<date>`、`<C>` 换为当轮日期与周期号，如 2026-03-09、C8） |
 |------|----------------------------------------------------------------------|
-| A | `10-raw/scans/scan_<date>_A_<C>.md` |
-| A | `10-raw/scans/evidence_<date>_A_<C>.csv` |
-| A | `10-raw/scans/handoff_A_to_B_<date>_<C>.md` |
-| B | `30-analysis/cross/challenge_log_<date>_<C>.md` |
-| B | `30-analysis/cross/challenge_matrix_<date>_<C>.csv` |
-| B | `20-normalized/handoff_B_to_C_<date>_<C>.md` |
-| C | 视情况更新：`20-normalized/repo_master_latest.csv`、`40-insights/adoption_backlog_latest.md` |
-| C | **必做**：至少更新一个风险文件（`40-insights/risks/failure-patterns.csv` 或 `upgrade-risk-matrix.csv`），与当轮（如 C9）证据/B 风险相关 |
-| C | 必写：`50-publish/weekly_digest_<date>_<C>.md`（文末「下轮 5 个未知」须包含 B 的 **top 5 风险**中至少 2 条，形成 B→C→下一轮闭环） |
-| C | 必写：在 `00-index/CHANGELOG.md` 追加一行当轮摘要 |
-| C | 必写：在 `00-index/CYCLE_SCOREBOARD.csv` 添加当轮一行（cycle_id, theme, a_sources, b_challenged, c_promoted_p0, notes 等） |
+| A | `sources/scans/scan_<date>_A_<C>.md` |
+| A | `sources/scans/evidence_<date>_A_<C>.csv` |
+| A | `sources/scans/handoff_A_to_B_<date>_<C>.md` |
+| B | `analysis/cross/challenge_log_<date>_<C>.md` |
+| B | `analysis/cross/challenge_matrix_<date>_<C>.csv` |
+| B | `99-archive/handoffs/handoff_B_to_C_<date>_<C>.md` |
+| C | 视情况更新：`data/master/repo_master.csv`、`insights/adoption_backlog.md` |
+| C | **必做**：至少更新一个风险文件（`data/risks/failure-patterns.csv` 或 `upgrade-risk-matrix.csv`），与当轮（如 C9）证据/B 风险相关 |
+| C | 必写：`publish/digests/weekly_digest_<date>_<C>.md`（文末「下轮 5 个未知」须包含 B 的 **top 5 风险**中至少 2 条，形成 B→C→下一轮闭环） |
+| C | 必写：在 `index/CHANGELOG.md` 追加一行当轮摘要 |
+| C | 必写：在 `index/CYCLE_SCOREBOARD.csv` 添加当轮一行（cycle_id, theme, a_sources, b_challenged, c_promoted_p0, notes 等） |
 
 ---
 
@@ -91,7 +91,7 @@
 
 - 每轮结束后，**统筹**在汇报中给出下一轮建议（如 C9、主题建议）。  
 - 下一轮开始时：  
-  - 打开 `00-index/WINDOW_ASSIGNMENTS_NOW.md`；  
+  - 打开 `index/WINDOW_ASSIGNMENTS_NOW.md`；  
   - 将周期号、日期、主题、以及 A/B/C 的产出路径与提示词中的占位（如 C8、2026-03-09）替换为新一轮（如 C9、当轮日期）；  
   - 保存后由统筹提交并推送，然后按「三、执行顺序」从步骤 2 开始执行。
 
@@ -101,10 +101,10 @@
 
 | 文档 | 用途 |
 |------|------|
-| **本文档** `00-index/THREE_WINDOW_WORKFLOW.md` | 固定流程，持续使用 |
-| `00-index/WINDOW_ASSIGNMENTS_NOW.md` | 当前轮次任务与复制用提示词（每轮更新） |
-| `00-index/THREE_WINDOW_EXECUTION_PLAN.md` | 细部规则、KPI、时间盒、硬指标 |
-| `00-index/CYCLE_SCOREBOARD.csv` | 每轮得分与备注 |
+| **本文档** `index/THREE_WINDOW_WORKFLOW.md` | 固定流程，持续使用 |
+| `index/WINDOW_ASSIGNMENTS_NOW.md` | 当前轮次任务与复制用提示词（每轮更新） |
+| `index/THREE_WINDOW_EXECUTION_PLAN.md` | 细部规则、KPI、时间盒、硬指标 |
+| `index/CYCLE_SCOREBOARD.csv` | 每轮得分与备注 |
 
 ---
 

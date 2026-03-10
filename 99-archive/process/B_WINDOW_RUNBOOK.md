@@ -2,7 +2,7 @@
 
 每轮 B 执行前/后按本清单自检，确保 C 能直接用于 digest 与闭环。
 
-**依据**：`00-index/THREE_WINDOW_WORKFLOW.md` — B 窗口必填规范。
+**依据**：`index/THREE_WINDOW_WORKFLOW.md` — B 窗口必填规范。
 
 ---
 
@@ -33,7 +33,7 @@
 
 每条需**可执行**且**和证据相关**（能对应到具体文件、矩阵或证据来源）。
 
-- **行动 1**：具体动作 + 涉及文件/资产 + 证据依据（如「在 40-insights/risks/ 中新增…，依据 Cx-Ayy 与 challenge_matrix」）
+- **行动 1**：具体动作 + 涉及文件/资产 + 证据依据（如「在 data/risks/ 中新增…，依据 Cx-Ayy 与 challenge_matrix」）
 - **行动 2**：具体动作 + 涉及文件/资产 + 证据依据
 - **行动 3**：具体动作 + 涉及文件/资产 + 证据依据
 
@@ -43,9 +43,9 @@ C 应能据此更新 risk 文件、backlog 或 digest，并在「下轮 5 个未
 
 ## 3. 产出文件检查
 
-- [ ] `30-analysis/cross/challenge_log_<date>_<C>.md`：含逐条挑战摘要、verdict、失败 claim 及 C 必做动作
-- [ ] `30-analysis/cross/challenge_matrix_<date>_<C>.csv`：列含 `claim_id`、`challenge_type`、`counter_source_url`、`verdict`、`notes`
-- [ ] `20-normalized/handoff_B_to_C_<date>_<C>.md`：含 **Summary Counts**、**Top 5 风险（简短描述 + claim_id）**、**给 C 的 3 条建议行动**、必要时 Priority Warning
+- [ ] `analysis/cross/challenge_log_<date>_<C>.md`：含逐条挑战摘要、verdict、失败 claim 及 C 必做动作
+- [ ] `analysis/cross/challenge_matrix_<date>_<C>.csv`：列含 `claim_id`、`challenge_type`、`counter_source_url`、`verdict`、`notes`
+- [ ] `99-archive/handoffs/handoff_B_to_C_<date>_<C>.md`：含 **Summary Counts**、**Top 5 风险（简短描述 + claim_id）**、**给 C 的 3 条建议行动**、必要时 Priority Warning
 
 ---
 

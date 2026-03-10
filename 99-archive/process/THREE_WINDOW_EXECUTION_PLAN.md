@@ -42,9 +42,9 @@ Generate high-density evidence, not summary prose.
 
 ## Mandatory output files per cycle
 
-1. `10-raw/scans/scan_<date>_A_<cycle>.md`
-2. `10-raw/scans/evidence_<date>_A_<cycle>.csv`
-3. `10-raw/scans/handoff_A_to_B_<date>_<cycle>.md`
+1. `sources/scans/scan_<date>_A_<cycle>.md`
+2. `sources/scans/evidence_<date>_A_<cycle>.csv`
+3. `sources/scans/handoff_A_to_B_<date>_<cycle>.md`
 
 ## Copy-paste prompt for Window A
 
@@ -59,9 +59,9 @@ Generate high-density evidence, not summary prose.
 - 每条证据写 claim_id，后续给B窗口挑战
 - 严禁无来源结论
 文件写入：
-10-raw/scans/scan_<date>_A_<cycle>.md
-10-raw/scans/evidence_<date>_A_<cycle>.csv
-10-raw/scans/handoff_A_to_B_<date>_<cycle>.md
+sources/scans/scan_<date>_A_<cycle>.md
+sources/scans/evidence_<date>_A_<cycle>.csv
+sources/scans/handoff_A_to_B_<date>_<cycle>.md
 ```
 
 ## A窗口硬指标
@@ -82,9 +82,9 @@ Try to break A's claims with counterexamples and boundary conditions.
 
 ## Mandatory output files per cycle
 
-1. `30-analysis/cross/challenge_log_<date>_<cycle>.md`
-2. `30-analysis/cross/challenge_matrix_<date>_<cycle>.csv`
-3. `20-normalized/handoff_B_to_C_<date>_<cycle>.md`
+1. `analysis/cross/challenge_log_<date>_<cycle>.md`
+2. `analysis/cross/challenge_matrix_<date>_<cycle>.csv`
+3. `99-archive/handoffs/handoff_B_to_C_<date>_<cycle>.md`
 
 ## Copy-paste prompt for Window B
 
@@ -99,9 +99,9 @@ Try to break A's claims with counterexamples and boundary conditions.
 - fails
 并给 counter_source_url。
 输出：
-30-analysis/cross/challenge_log_<date>_<cycle>.md
-30-analysis/cross/challenge_matrix_<date>_<cycle>.csv
-20-normalized/handoff_B_to_C_<date>_<cycle>.md
+analysis/cross/challenge_log_<date>_<cycle>.md
+analysis/cross/challenge_matrix_<date>_<cycle>.csv
+99-archive/handoffs/handoff_B_to_C_<date>_<cycle>.md
 ```
 
 ## B窗口硬指标
@@ -122,13 +122,13 @@ Resolve contested claims and update official decision assets.
 
 ## Mandatory output files per cycle
 
-1. update `20-normalized/repo_master_latest.csv`
-2. update `40-insights/adoption_backlog_latest.md`
+1. update `data/master/repo_master.csv`
+2. update `insights/adoption_backlog.md`
 3. **update at least one risk file** (content must relate to current-cycle evidence / B risks, e.g. C9):
-   - `40-insights/risks/failure-patterns.csv` or
-   - `40-insights/risks/upgrade-risk-matrix.csv`
-4. `50-publish/weekly_digest_<date>_<cycle>.md` — **digest closure**: the section "下轮 5 个未知" / "Next 5 unknowns" must include **at least 2 items from B's top 5 risks**, so that B→C→next round forms a loop.
-5. append `00-index/CHANGELOG.md`
+   - `data/risks/failure-patterns.csv` or
+   - `data/risks/upgrade-risk-matrix.csv`
+4. `publish/digests/weekly_digest_<date>_<cycle>.md` — **digest closure**: the section "下轮 5 个未知" / "Next 5 unknowns" must include **at least 2 items from B's top 5 risks**, so that B→C→next round forms a loop.
+5. append `index/CHANGELOG.md`
 
 ## Copy-paste prompt for Window C
 
@@ -138,11 +138,11 @@ Resolve contested claims and update official decision assets.
 2) partial -> 仅标注为条件性结论
 3) fails -> 进入驳回列表，不进backlog
 必须更新：
-- 20-normalized/repo_master_latest.csv
-- 40-insights/adoption_backlog_latest.md
-- 40-insights/risks/*.csv（至少一个，且与当轮证据/B 风险相关）
-- 50-publish/weekly_digest_<date>_<cycle>.md（文末「下轮 5 个未知」须包含 B 的 **top 5 风险**中至少 2 条，形成 B→C→下一轮闭环）
-- 00-index/CHANGELOG.md
+- data/master/repo_master.csv
+- insights/adoption_backlog.md
+- data/risks/*.csv（至少一个，且与当轮证据/B 风险相关）
+- publish/digests/weekly_digest_<date>_<cycle>.md（文末「下轮 5 个未知」须包含 B 的 **top 5 风险**中至少 2 条，形成 B→C→下一轮闭环）
+- index/CHANGELOG.md
 ```
 
 ## C窗口硬指标
@@ -159,7 +159,7 @@ If C cannot justify a P0, downgrade to P1/P2.
 
 Create and update each cycle:
 
-- `00-index/CYCLE_SCOREBOARD.csv`
+- `index/CYCLE_SCOREBOARD.csv`
 
 Fields:
 

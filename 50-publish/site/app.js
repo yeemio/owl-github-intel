@@ -39,7 +39,7 @@ const DEFAULT_TEXT = {
     wrongRootWarningTitle: "Links may 404: server is likely not run from repo root.",
     wrongRootWarningBody: "Run the HTTP server from the repository root and open /50-publish/site/. Example: python -m http.server 3765 then open http://localhost:3765/50-publish/site/",
     noscriptLine1: "JavaScript is disabled.",
-    noscriptLine2: "This portal needs JavaScript for navigation and filters. Enable it and refresh, or browse 00-index, 40-insights, 50-publish in your editor.",
+    noscriptLine2: "This portal needs JavaScript for navigation and filters. Enable it and refresh, or browse index, data, insights, analysis, publish in your editor.",
   },
   zh: {
     title: "Owl AI 开发生态研究导航",
@@ -72,7 +72,7 @@ const DEFAULT_TEXT = {
     wrongRootWarningTitle: "部分链接可能 404：当前很可能未从仓库根目录启动服务。",
     wrongRootWarningBody: "请在仓库根目录启动 HTTP 服务并访问 /50-publish/site/。例如：python -m http.server 3765，然后打开 http://localhost:3765/50-publish/site/",
     noscriptLine1: "未启用 JavaScript。",
-    noscriptLine2: "本门户需 JavaScript 加载导航与筛选。请启用后刷新，或在编辑器中浏览 00-index、40-insights、50-publish。",
+    noscriptLine2: "本门户需 JavaScript 加载导航与筛选。请启用后刷新，或在编辑器中浏览 index、data、insights、analysis、publish。",
   },
 };
 
@@ -105,7 +105,7 @@ const DEFAULT_GROUPS = {
       tags: ["public", "overview"],
       en: ["Public Overview", "External-facing project introduction page"],
       zh: ["对外项目总览", "面向公开展示的项目首页"],
-      href: "../PROJECT_OVERVIEW_PUBLIC.md",
+      href: "../../publish/overview_public.md",
     },
   ],
   researchPaths: [
@@ -115,7 +115,7 @@ const DEFAULT_GROUPS = {
       tags: ["path", "deep-dive", "reproducible"],
       en: ["Research Trail Map", "Follow fast/deep/reproducible study trails"],
       zh: ["研究路径图", "按速览/深挖/复现路径推进"],
-      href: "../../00-index/RESEARCH_TRAIL_MAP.md",
+      href: "../../index/RESEARCH_TRAIL_MAP.md",
     },
     {
       id: "7-day-path",
@@ -123,7 +123,7 @@ const DEFAULT_GROUPS = {
       tags: ["planning", "roadmap"],
       en: ["7-Day Path", "A complete one-week deep study route"],
       zh: ["7天路线", "一周完成深度研究的完整路径"],
-      href: "../../00-index/START_HERE_7_DAY_PATH.md",
+      href: "../../index/START_HERE_7_DAY_PATH.md",
     },
     {
       id: "high-value-questions",
@@ -131,7 +131,7 @@ const DEFAULT_GROUPS = {
       tags: ["questions", "analysis"],
       en: ["High-Value Questions", "Question bank for deeper analysis"],
       zh: ["高价值问题库", "驱动深入分析的问题集"],
-      href: "../../00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md",
+      href: "../../index/HIGH_VALUE_RESEARCH_QUESTIONS.md",
     },
   ],
   topicHubs: [
@@ -199,7 +199,7 @@ const DEFAULT_GROUPS = {
       tags: ["upgrade", "migration", "breaking-change"],
       en: ["Upgrade Risk Matrix", "Breaking change and migration risk tracking"],
       zh: ["升级风险矩阵", "破坏性变更与迁移风险跟踪"],
-      href: "../../40-insights/risks/upgrade-risk-matrix.md",
+      href: "../../data/risks/upgrade-risk-matrix.md",
     },
     {
       id: "risk-register",
@@ -207,7 +207,7 @@ const DEFAULT_GROUPS = {
       tags: ["register", "tracking"],
       en: ["Risk Register", "Consolidated risk records"],
       zh: ["风险总表", "集中化风险登记清单"],
-      href: "../../40-insights/risks/master_risk_register_2026-03-09.csv",
+      href: "../../data/risks/master_risk_register_2026-03-09.csv",
     },
   ],
   operations: [
@@ -217,7 +217,7 @@ const DEFAULT_GROUPS = {
       tags: ["normalized", "master-table"],
       en: ["Normalized Master Table", "Latest deduplicated repository map"],
       zh: ["主归一化表", "最新去重仓库主表"],
-      href: "../../20-normalized/repo_master_latest.csv",
+      href: "../../data/master/repo_master.csv",
     },
     {
       id: "adoption-backlog",
@@ -225,7 +225,7 @@ const DEFAULT_GROUPS = {
       tags: ["decision", "backlog", "p0-p1-p2"],
       en: ["Adoption Backlog", "Current P0/P1/P2 decision list"],
       zh: ["采纳待办", "当前 P0/P1/P2 决策清单"],
-      href: "../../40-insights/adoption_backlog_latest.md",
+      href: "../../insights/adoption_backlog.md",
     },
     {
       id: "change-log",
@@ -233,7 +233,7 @@ const DEFAULT_GROUPS = {
       tags: ["changelog", "updates"],
       en: ["Change Log", "Operational updates and structural changes"],
       zh: ["更新日志", "运营更新与结构变更记录"],
-      href: "../../00-index/CHANGELOG.md",
+      href: "../../index/CHANGELOG.md",
     },
   ],
 };
@@ -670,7 +670,7 @@ async function bootstrap() {
 
   // Probe: if repo-root links 404, we're likely served from site folder only
   try {
-    const probeUrl = new URL("../../00-index/CHANGELOG.md", location.href).href;
+    const probeUrl = new URL("../../index/CHANGELOG.md", location.href).href;
     const res = await fetch(probeUrl, { method: "GET" });
     if (!res.ok) ensureWrongRootWarning();
   } catch (_) {

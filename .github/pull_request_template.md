@@ -14,6 +14,6 @@ Commands run and results.
 
 - [ ] No secrets added
 - [ ] All new claims have source URLs
-- [ ] `00-index/CHANGELOG.md` updated if needed
+- [ ] `index/CHANGELOG.md` updated if needed
 - [ ] Portal link check run if portal content changed (`node 50-publish/site/check-portal-links.js`)
 

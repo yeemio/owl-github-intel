@@ -4,9 +4,9 @@
 **周期**: C9  
 **主题**: 全轨道采纳信号 + 失败模式复核（agent / mcp / rag / gateway / eval / security + C8 未知项深挖）  
 
-**固定流程**：`00-index/THREE_WINDOW_WORKFLOW.md`（持续工作流）  
-**细部规则与 KPI**：`00-index/THREE_WINDOW_EXECUTION_PLAN.md`  
-**数据上下文**: `20-normalized/repo_master_latest.csv`, `40-insights/adoption_backlog_latest.md`, `40-insights/risks/`, `50-publish/weekly_digest_2026-03-09_C8.md`（下轮 5 个未知）
+**固定流程**：`index/THREE_WINDOW_WORKFLOW.md`（持续工作流）  
+**细部规则与 KPI**：`index/THREE_WINDOW_EXECUTION_PLAN.md`  
+**数据上下文**: `data/master/repo_master.csv`, `insights/adoption_backlog.md`, `data/risks/`, `publish/digests/weekly_digest_2026-03-09_C8.md`（下轮 5 个未知）
 
 ---
 
@@ -25,7 +25,7 @@
 
 - [ ] A: `scan_2026-03-09_A_C9.md`, `evidence_2026-03-09_A_C9.csv`, `handoff_A_to_B_2026-03-09_C9.md`
 - [ ] B: `challenge_log_2026-03-09_C9.md`, `challenge_matrix_2026-03-09_C9.csv`, `handoff_B_to_C_2026-03-09_C9.md`
-- [ ] C: 至少更新 `repo_master_latest.csv` 或 `adoption_backlog_latest.md` 之一 + 至少一个 `40-insights/risks/*` + `weekly_digest_2026-03-09_C9.md` + `CHANGELOG.md` + `CYCLE_SCOREBOARD.csv` 的 C9 行
+- [ ] C: 至少更新 `repo_master_latest.csv` 或 `adoption_backlog_latest.md` 之一 + 至少一个 `data/risks/*` + `weekly_digest_2026-03-09_C9.md` + `CHANGELOG.md` + `CYCLE_SCOREBOARD.csv` 的 C9 行
 
 ---
 
@@ -35,9 +35,9 @@
 
 **产出**（均写在 `D:\AI\owl-github-intel\` 下）：
 
-1. `10-raw/scans/scan_2026-03-09_A_C9.md`
-2. `10-raw/scans/evidence_2026-03-09_A_C9.csv`
-3. `10-raw/scans/handoff_A_to_B_2026-03-09_C9.md`
+1. `sources/scans/scan_2026-03-09_A_C9.md`
+2. `sources/scans/evidence_2026-03-09_A_C9.csv`
+3. `sources/scans/handoff_A_to_B_2026-03-09_C9.md`
 
 **复制到窗口 A 的提示词**：
 
@@ -46,11 +46,11 @@
 
 任务：
 1) 六轨覆盖：对 agent、mcp、rag、gateway、eval、security 每轨至少产出 2 条可验证证据（采纳案例、集成方式、已知问题、升级/兼容性讨论），来源含 issue/PR/release。每条证据带 claim_id（如 C9-A01…），topic 填对应轨道。
-2) C8 未知深挖：阅读 50-publish/weekly_digest_2026-03-09_C8.md 末尾「Next 5 unknowns」，从中选至少 2 条做深挖，每条至少 2 个独立来源 URL，产出追加到同一 evidence CSV，claim_id 连续编号。
+2) C8 未知深挖：阅读 publish/digests/weekly_digest_2026-03-09_C8.md 末尾「Next 5 unknowns」，从中选至少 2 条做深挖，每条至少 2 个独立来源 URL，产出追加到同一 evidence CSV，claim_id 连续编号。
 3) 在 D:\AI\owl-github-intel\ 下生成：
-   - 10-raw/scans/scan_2026-03-09_A_C9.md（按 claim_id 的说明与上下文，可分段：六轨 / C8 未知）
-   - 10-raw/scans/evidence_2026-03-09_A_C9.csv（列：claim_id, topic, claim, source_type, url, evidence_excerpt, date_observed, novelty）
-   - 10-raw/scans/handoff_A_to_B_2026-03-09_C9.md（交给 B 的 claim_id 列表、六轨与 C8 未知对应关系、开放问题）
+   - sources/scans/scan_2026-03-09_A_C9.md（按 claim_id 的说明与上下文，可分段：六轨 / C8 未知）
+   - sources/scans/evidence_2026-03-09_A_C9.csv（列：claim_id, topic, claim, source_type, url, evidence_excerpt, date_observed, novelty）
+   - sources/scans/handoff_A_to_B_2026-03-09_C9.md（交给 B 的 claim_id 列表、六轨与 C8 未知对应关系、开放问题）
 
 要求：
 - 至少 45 个来源 URL，其中至少 15 个来自 issue/PR/release（非仅 README）。
@@ -68,9 +68,9 @@
 
 **产出**：
 
-1. `30-analysis/cross/challenge_log_2026-03-09_C9.md`
-2. `30-analysis/cross/challenge_matrix_2026-03-09_C9.csv`
-3. `20-normalized/handoff_B_to_C_2026-03-09_C9.md`
+1. `analysis/cross/challenge_log_2026-03-09_C9.md`
+2. `analysis/cross/challenge_matrix_2026-03-09_C9.csv`
+3. `99-archive/handoffs/handoff_B_to_C_2026-03-09_C9.md`
 
 **复制到窗口 B 的提示词**：
 
@@ -79,14 +79,14 @@
 
 任务：
 1) 阅读 D:\AI\owl-github-intel\ 下 A 的 C9 产出：
-   - 10-raw/scans/scan_2026-03-09_A_C9.md
-   - 10-raw/scans/evidence_2026-03-09_A_C9.csv
-   - 10-raw/scans/handoff_A_to_B_2026-03-09_C9.md
+   - sources/scans/scan_2026-03-09_A_C9.md
+   - sources/scans/evidence_2026-03-09_A_C9.csv
+   - sources/scans/handoff_A_to_B_2026-03-09_C9.md
 2) 对**每一个** claim_id：寻找反例或边界条件；给出 verdict：survives | partial | fails；并填 counter_source_url（如有）。不得遗漏任何一条。
 3) 在 D:\AI\owl-github-intel\ 下生成：
-   - 30-analysis/cross/challenge_log_2026-03-09_C9.md（逐条挑战与 verdict 说明，可按六轨或 C8 未知分段）
-   - 30-analysis/cross/challenge_matrix_2026-03-09_C9.csv（列：claim_id, challenge_type, counter_source_url, verdict, notes）
-   - 20-normalized/handoff_B_to_C_2026-03-09_C9.md（必须包含：survives/partial/fails 数量；**top 5 风险**（简短描述+claim_id）；**给 C 的 3 条建议行动**（可执行、与证据相关））
+   - analysis/cross/challenge_log_2026-03-09_C9.md（逐条挑战与 verdict 说明，可按六轨或 C8 未知分段）
+   - analysis/cross/challenge_matrix_2026-03-09_C9.csv（列：claim_id, challenge_type, counter_source_url, verdict, notes）
+   - 99-archive/handoffs/handoff_B_to_C_2026-03-09_C9.md（必须包含：survives/partial/fails 数量；**top 5 风险**（简短描述+claim_id）；**给 C 的 3 条建议行动**（可执行、与证据相关））
 
 要求：
 - 挑战 A 产出的全部 claim，无遗漏。
@@ -104,12 +104,12 @@
 
 **产出**：
 
-1. 更新 `20-normalized/repo_master_latest.csv`（若本轮有 repo 需新增或调整优先级/风险）
-2. 更新 `40-insights/adoption_backlog_latest.md`（P0/P1/P2 或触发条件、C9 决策原则）
-3. 更新至少一个：`40-insights/risks/failure-patterns.csv` 或 `40-insights/risks/upgrade-risk-matrix.csv`（新增或修订与 C9 证据相关的行）
-4. 新增 `50-publish/weekly_digest_2026-03-09_C9.md`（本轮变更、关键决策、B 的 top 5 风险与 3 条建议的采纳情况；**下轮 5 个未知**须包含 B 的 top 5 中至少 2 条）
-5. 追加 `00-index/CHANGELOG.md`（一行 C9 摘要）
-6. 在 `00-index/CYCLE_SCOREBOARD.csv` 中新增 C9 行（cycle_id=C9, theme=full_track_failure_review, a_sources, a_hard_evidence, b_challenged, b_failed_claims, c_promoted_p0, c_rejected, quality_score_100, notes）
+1. 更新 `data/master/repo_master.csv`（若本轮有 repo 需新增或调整优先级/风险）
+2. 更新 `insights/adoption_backlog.md`（P0/P1/P2 或触发条件、C9 决策原则）
+3. 更新至少一个：`data/risks/failure-patterns.csv` 或 `data/risks/upgrade-risk-matrix.csv`（新增或修订与 C9 证据相关的行）
+4. 新增 `publish/digests/weekly_digest_2026-03-09_C9.md`（本轮变更、关键决策、B 的 top 5 风险与 3 条建议的采纳情况；**下轮 5 个未知**须包含 B 的 top 5 中至少 2 条）
+5. 追加 `index/CHANGELOG.md`（一行 C9 摘要）
+6. 在 `index/CYCLE_SCOREBOARD.csv` 中新增 C9 行（cycle_id=C9, theme=full_track_failure_review, a_sources, a_hard_evidence, b_challenged, b_failed_claims, c_promoted_p0, c_rejected, quality_score_100, notes）
 
 **复制到窗口 C 的提示词**：
 
@@ -120,11 +120,11 @@
 1) 阅读 D:\AI\owl-github-intel\ 下 A 与 B 的 C9 产出（scan, evidence CSV, challenge_log, challenge_matrix, handoffs）。特别注意 B 的 handoff 中的「top 5 风险」与「给 C 的 3 条建议行动」。
 2) 规则：survives → 可进入 backlog 候选；partial → 仅条件性采纳；fails → 不提升、记录原因。
 3) 在 D:\AI\owl-github-intel\ 下完成：
-   - 若有 repo 需纳入或调整：更新 20-normalized/repo_master_latest.csv、40-insights/adoption_backlog_latest.md；
-   - 更新至少一个风险文件：40-insights/risks/failure-patterns.csv 或 upgrade-risk-matrix.csv（与 C9 证据/B 风险相关的新增或修订）；
-   - 新增 50-publish/weekly_digest_2026-03-09_C9.md（本轮变更、关键决策、B 的 top 5 风险及 3 条建议的采纳情况；文末「下轮 5 个未知」必须包含 B 的 top 5 风险中至少 2 条）；
-   - 在 00-index/CHANGELOG.md 追加一行 C9 摘要；
-   - 在 00-index/CYCLE_SCOREBOARD.csv 添加 C9 行（cycle_id=C9, theme=full_track_failure_review, 及 a_sources, b_challenged, c_promoted_p0 等可填字段，notes 简要说明）。
+   - 若有 repo 需纳入或调整：更新 data/master/repo_master.csv、insights/adoption_backlog.md；
+   - 更新至少一个风险文件：data/risks/failure-patterns.csv 或 upgrade-risk-matrix.csv（与 C9 证据/B 风险相关的新增或修订）；
+   - 新增 publish/digests/weekly_digest_2026-03-09_C9.md（本轮变更、关键决策、B 的 top 5 风险及 3 条建议的采纳情况；文末「下轮 5 个未知」必须包含 B 的 top 5 风险中至少 2 条）；
+   - 在 index/CHANGELOG.md 追加一行 C9 摘要；
+   - 在 index/CYCLE_SCOREBOARD.csv 添加 C9 行（cycle_id=C9, theme=full_track_failure_review, 及 a_sources, b_challenged, c_promoted_p0 等可填字段，notes 简要说明）。
 
 要求：
 - 任何新 P0 必须有至少 2 个独立来源且具备风险与回滚说明。

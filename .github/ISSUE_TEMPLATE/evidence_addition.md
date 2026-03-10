@@ -19,5 +19,5 @@ agent | mcp | rag | gateway | eval | security | cross
 
 ## Suggested output location
 
-For example: `10-raw/scans/scan_<date>_A_<cycle>.md` or a specific dataset row in `20-normalized/repo_master_latest.csv`.
+For example: `sources/scans/scan_<date>_A_<cycle>.md` or a specific dataset row in `data/master/repo_master.csv`.
 

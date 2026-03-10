@@ -15,9 +15,9 @@ Preferred source types (highest to lowest):
 
 The repository maintains a small set of “official” decision assets:
 
-- `20-normalized/repo_master_latest.csv`: the canonical repo table (with risks and rollback signals)
-- `40-insights/adoption_backlog_latest.md`: the current shortlist and adoption posture
-- `40-insights/risks/*.csv|*.md`: risk intelligence (failure + upgrade)
+- `data/master/repo_master.csv`: the canonical repo table (with risks and rollback signals)
+- `insights/adoption_backlog.md`: the current shortlist and adoption posture
+- `data/risks/*.csv|*.md`: risk intelligence (failure + upgrade)
 
 Other files are supporting context or publications (digests, deep dives).
 

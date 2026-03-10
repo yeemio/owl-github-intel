@@ -6,8 +6,8 @@
       "zh": "文档"
     },
     "cycleDigests": {
-      "en": "Cycle Digests (C1–C8)",
-      "zh": "周期摘要 (C1–C8)"
+      "en": "Cycle Digests (C1–C9)",
+      "zh": "周期摘要 (C1–C9)"
     }
   },
   "groups": {
@@ -60,7 +60,7 @@
         "tags": ["digest", "c1", "mcp", "gateway"],
         "en": ["Weekly Digest C1", "MCP + Gateway reliability – final digest"],
         "zh": ["周报 C1", "MCP + 网关可靠性 – 终版摘要"],
-        "href": "../weekly_digest_2026-03-09_C1.md"
+        "href": "../../publish/digests/weekly_digest_2026-03-09_C1.md"
       },
       {
         "id": "weekly-digest-c2",
@@ -68,7 +68,7 @@
         "tags": ["digest", "c2", "mcp", "gateway"],
         "en": ["Weekly Digest C2", "MCP + Gateway – conditional governance"],
         "zh": ["周报 C2", "MCP + 网关 – 条件治理"],
-        "href": "../weekly_digest_2026-03-09_C2.md"
+        "href": "../../publish/digests/weekly_digest_2026-03-09_C2.md"
       },
       {
         "id": "weekly-digest-c8",
@@ -76,7 +76,7 @@
         "tags": ["digest", "c8", "crawl", "search"],
         "en": ["Weekly Digest C8", "Crawl/Search adoption signals – final digest"],
         "zh": ["周报 C8", "Crawl/Search 采纳信号 – 终版摘要"],
-        "href": "../weekly_digest_2026-03-09_C8.md"
+        "href": "../../publish/digests/weekly_digest_2026-03-09_C8.md"
       },
       {
         "id": "weekly-digest-c9",
@@ -84,7 +84,7 @@
         "tags": ["digest", "c9", "cross", "risk"],
         "en": ["Weekly Digest C9", "Full-track adoption + failure pattern review"],
         "zh": ["周报 C9", "全轨道采纳 + 失败模式复核"],
-        "href": "../weekly_digest_2026-03-09_C9.md"
+        "href": "../../publish/digests/weekly_digest_2026-03-09_C9.md"
       }
     ]
   }

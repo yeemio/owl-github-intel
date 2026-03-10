@@ -45,5 +45,5 @@
 
 - **cycleDigests** in `portal.config.json` extended with:
   - Scan A C3 + Handoff A→B C3 (Window A artifacts for C3)
-  - Handoff B→C for C3, C4, C5, C6 (links to `20-normalized/handoff_B_to_C_2026-03-09_Cx.md`)
+  - Handoff B→C for C3, C4, C5, C6 (links to `99-archive/handoffs/handoff_B_to_C_2026-03-09_Cx.md`)
 - Theme/tags: all use `operations`; tags include `c3`–`c6`, `handoff`, `b-to-c`, `scan`, `window-a` for filter and search.
