@@ -76,3 +76,9 @@ Use this structure in your own docs or tickets:
   - `../data/risks/failure-patterns.md`
   - `../data/risks/upgrade-risk-matrix.md`
 
+### 带入你的库（BYO Inventory）
+
+如果你有自己的技术栈清单（GitHub 仓库、工具、组件），可以直接生成一份“对照报告”：
+
+- 模板：`../templates/user_inventory.csv`
+- 使用说明：`../docs/BRING_YOUR_STACK.md`

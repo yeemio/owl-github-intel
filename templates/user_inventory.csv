@@ -1,0 +1,6 @@
+repo,url,lane,criticality,notes
+langchain-ai/langgraph,https://github.com/langchain-ai/langgraph,agent,high,core orchestration candidate
+modelcontextprotocol/servers,https://github.com/modelcontextprotocol/servers,mcp,high,tool boundary baseline
+BerriAI/litellm,https://github.com/BerriAI/litellm,gateway,high,inference routing and policy
+langfuse/langfuse,https://github.com/langfuse/langfuse,eval,medium,observability
+qdrant/qdrant,https://github.com/qdrant/qdrant,rag,medium,vector store

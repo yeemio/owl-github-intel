@@ -105,6 +105,14 @@ const DEFAULT_GROUPS = {
       href: "../../publish/starter_pack.md",
     },
     {
+      id: "bring-your-stack",
+      theme: "operations",
+      tags: ["byo", "inventory", "analysis"],
+      en: ["Bring Your Stack", "Analyze your inventory against this intel database"],
+      zh: ["带入你的库", "用你的库存对照我们的数据库快速出报告"],
+      href: "../../docs/BRING_YOUR_STACK.md",
+    },
+    {
       id: "researcher-quickstart",
       theme: "overview",
       tags: ["onboarding", "workflow", "research"],

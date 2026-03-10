@@ -18,6 +18,7 @@ License: MIT (see `LICENSE`).
 - Single entrypoint: `index/START_HERE.md`
 - Latest one-page brief: `publish/LATEST.md`
 - 10-minute decision kit: `publish/starter_pack.md`
+- Bring your stack: `docs/BRING_YOUR_STACK.md`
 - Core dataset: `data/master/repo_master.csv`
 
 If you prefer reading without the portal:

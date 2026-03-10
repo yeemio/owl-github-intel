@@ -25,6 +25,7 @@ const DEFAULT_HREFS = [
   "../../docs/DATA_SCHEMA.md",
   "../../docs/GLOSSARY.md",
   "../../docs/FAQ.md",
+  "../../docs/BRING_YOUR_STACK.md",
   "../../index/RESEARCH_TRAIL_MAP.md",
   "../../index/START_HERE_7_DAY_PATH.md",
   "../../index/HIGH_VALUE_RESEARCH_QUESTIONS.md",

@@ -89,9 +89,11 @@ def main() -> int:
         require_file("docs/DATA_SCHEMA.md")
         require_file("docs/GLOSSARY.md")
         require_file("docs/FAQ.md")
+        require_file("docs/BRING_YOUR_STACK.md")
         require_file("index/MASTER_INDEX.md")
         require_file("publish/LATEST.md")
         require_file("publish/starter_pack.md")
+        require_file("templates/user_inventory.csv")
 
         require_columns(
             repo_master,

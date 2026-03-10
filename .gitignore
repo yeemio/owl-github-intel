@@ -23,6 +23,7 @@ Thumbs.db
 
 # Generated reports (do not commit)
 50-publish/site/check-portal-links-report.md
+publish/reports/
 
 # Playwright / browser automation artifacts (if you add them later)
 playwright-report/
