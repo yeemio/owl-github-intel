@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Owl GitHub Intel</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="modulepreload" href="./api_client.js" />
     <script>
       (function () {
         var lang = localStorage.getItem("owl.portal.lang");
@@ -43,6 +44,95 @@
         <p id="searchHint" class="search-hint">
           Filter cards by title, description, and path.
         </p>
+      </section>
+
+      <section id="engine-section" class="card" aria-label="">
+        <div class="engine-head">
+          <div class="engine-head-text">
+            <h2 id="engineTitle">Intel Engine</h2>
+            <p id="engineSubtitle" class="muted">
+              Turn intent or repo inventory into an evidence-backed recommendation report.
+            </p>
+          </div>
+          <div class="engine-api">
+            <label id="engineApiBaseLabel" class="label" for="engine-api-base">API Base</label>
+            <div class="engine-api-row">
+              <input
+                id="engine-api-base"
+                class="text-input"
+                type="text"
+                placeholder="http://127.0.0.1:8800"
+                autocomplete="off"
+                inputmode="url"
+              />
+              <button id="engine-api-save" class="btn btn-small" type="button">Save</button>
+              <button id="engine-api-clear" class="btn btn-ghost btn-small" type="button">Clear</button>
+            </div>
+            <p id="engineApiBaseHint" class="hint">
+              Tip: run the API locally, then open this portal via local HTTP. You can also use
+              <code>?apiBase=http://127.0.0.1:8800</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="engine-grid">
+          <div class="engine-pane">
+            <h3 id="engineRecommendTitle">Recommend by Intent</h3>
+            <textarea
+              id="engine-intent"
+              class="text-area"
+              rows="4"
+              placeholder="Describe what you want to build, constraints, and what you already have..."
+            ></textarea>
+            <div class="engine-row">
+              <label id="engineLaneLabel" class="label" for="engine-lane">Lane</label>
+              <select id="engine-lane" class="select-control"></select>
+              <label id="engineLicenseDenyLabel" class="label" for="engine-license-deny">Deny licenses</label>
+              <input
+                id="engine-license-deny"
+                class="text-input"
+                type="text"
+                placeholder="GPL-3.0, AGPL-3.0"
+                autocomplete="off"
+              />
+            </div>
+            <button id="engine-recommend" class="btn btn-primary" type="button">Recommend</button>
+          </div>
+
+          <div class="engine-pane">
+            <h3 id="engineInventoryTitle">Analyze Inventory</h3>
+            <textarea
+              id="engine-inventory"
+              class="text-area"
+              rows="4"
+              placeholder="Paste owner/repo list, one per line"
+            ></textarea>
+            <button id="engine-analyze" class="btn btn-primary" type="button">Analyze</button>
+          </div>
+
+          <div class="engine-pane">
+            <h3 id="engineSubmitTitle">Submit Repo</h3>
+            <input
+              id="engine-submit"
+              class="text-input"
+              type="text"
+              placeholder="https://github.com/owner/repo"
+              autocomplete="off"
+              inputmode="url"
+            />
+            <button id="engine-submit-btn" class="btn btn-primary" type="button">Submit</button>
+            <p id="engineSubmitHint" class="hint">MVP: appends to data/db/submissions.csv.</p>
+          </div>
+        </div>
+
+        <div class="engine-output">
+          <div id="engine-status" class="status-banner" data-type="ready" aria-live="polite" aria-atomic="true"></div>
+          <div class="engine-output-actions">
+            <button id="engine-download" class="btn btn-small" type="button" disabled>Download</button>
+            <button id="engine-clear" class="btn btn-ghost btn-small" type="button" disabled>Clear</button>
+          </div>
+          <pre id="engine-output" class="engine-pre" aria-live="polite"></pre>
+        </div>
       </section>
 
       <section class="card">

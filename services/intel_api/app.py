@@ -39,6 +39,7 @@ def _read_json(handler: BaseHTTPRequestHandler) -> dict:
 def _write_json(handler: BaseHTTPRequestHandler, status: int, payload: dict) -> None:
     data = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
     handler.send_response(status)
+    _cors(handler)
     handler.send_header("Content-Type", "application/json; charset=utf-8")
     handler.send_header("Content-Length", str(len(data)))
     handler.end_headers()
@@ -95,8 +96,6 @@ class Handler(BaseHTTPRequestHandler):
                 )
                 report = recommend_by_intent(STORE, query=query, constraints=constraints)
                 md = render_markdown(report)
-                self.send_response(200)
-                _cors(self)
                 _write_json(self, 200, {"report": report.to_dict(), "markdown": md})
                 return
 
@@ -147,4 +146,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

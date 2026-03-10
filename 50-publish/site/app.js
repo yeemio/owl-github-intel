@@ -4,6 +4,7 @@ import {
   setStatus,
   renderLinks,
 } from "./ui.js";
+import { getApiBase, postJson, setApiBase } from "./api_client.js";
 
 const STORAGE_LANG_KEY = "owl.portal.lang";
 
@@ -40,6 +41,36 @@ const DEFAULT_TEXT = {
     wrongRootWarningBody: "Run the HTTP server from the repository root and open /50-publish/site/. Example: python -m http.server 3765 then open http://localhost:3765/50-publish/site/",
     noscriptLine1: "JavaScript is disabled.",
     noscriptLine2: "This portal needs JavaScript for navigation and filters. Enable it and refresh, or browse index, data, insights, analysis, publish in your editor.",
+
+    engineTitle: "Intel Engine",
+    engineSubtitle: "Turn intent or repo inventory into an evidence-backed recommendation report.",
+    engineApiBaseLabel: "API Base",
+    "engine-api-save": "Save",
+    "engine-api-clear": "Clear",
+    engineApiBaseHint: "Tip: run the API locally, then open this portal via local HTTP. You can also use ?apiBase=http://127.0.0.1:8800.",
+    engineRecommendTitle: "Recommend by Intent",
+    engineIntentPlaceholder: "Describe what you want to build, constraints, and what you already have...",
+    engineLaneLabel: "Lane",
+    engineAllLanes: "All lanes",
+    engineLicenseDenyLabel: "Deny licenses",
+    engineLicenseDenyPlaceholder: "GPL-3.0, AGPL-3.0",
+    "engine-recommend": "Recommend",
+    engineInventoryTitle: "Analyze Inventory",
+    engineInventoryPlaceholder: "Paste owner/repo list, one per line",
+    "engine-analyze": "Analyze",
+    engineSubmitTitle: "Submit Repo",
+    engineSubmitPlaceholder: "https://github.com/owner/repo",
+    "engine-submit-btn": "Submit",
+    engineSubmitHint: "MVP: appends to data/db/submissions.csv.",
+    "engine-download": "Download",
+    "engine-clear": "Clear",
+    engineSectionAriaLabel: "Intel engine: recommendations, inventory analysis, and submissions",
+
+    engineStatusNeedApiBase: "Set API Base (start services/intel_api/app.py) then try again.",
+    engineStatusSavedApiBase: "Saved API base.",
+    engineStatusClearedApiBase: "Cleared API base.",
+    engineStatusRunning: "Running...",
+    engineStatusDone: "Done.",
   },
   zh: {
     title: "Owl GitHub 情报",
@@ -73,10 +104,41 @@ const DEFAULT_TEXT = {
     wrongRootWarningBody: "请在仓库根目录启动 HTTP 服务并访问 /50-publish/site/。例如：python -m http.server 3765，然后打开 http://localhost:3765/50-publish/site/",
     noscriptLine1: "未启用 JavaScript。",
     noscriptLine2: "本门户需 JavaScript 加载导航与筛选。请启用后刷新，或在编辑器中浏览 index、data、insights、analysis、publish。",
+
+    engineTitle: "情报引擎",
+    engineSubtitle: "把意图或仓库清单转换为带证据的推荐报告。",
+    engineApiBaseLabel: "API 地址",
+    "engine-api-save": "保存",
+    "engine-api-clear": "清除",
+    engineApiBaseHint: "提示：请在本地启动 API，并通过本地 HTTP 打开本门户。也可使用 ?apiBase=http://127.0.0.1:8800。",
+    engineRecommendTitle: "按意图推荐",
+    engineIntentPlaceholder: "描述你要做什么、约束条件、以及你已有的基础设施/库...",
+    engineLaneLabel: "方向",
+    engineAllLanes: "全部方向",
+    engineLicenseDenyLabel: "排除许可证",
+    engineLicenseDenyPlaceholder: "GPL-3.0, AGPL-3.0",
+    "engine-recommend": "推荐",
+    engineInventoryTitle: "库存分析",
+    engineInventoryPlaceholder: "粘贴 owner/repo 列表，一行一个",
+    "engine-analyze": "分析",
+    engineSubmitTitle: "提交仓库",
+    engineSubmitPlaceholder: "https://github.com/owner/repo",
+    "engine-submit-btn": "提交",
+    engineSubmitHint: "MVP：追加写入 data/db/submissions.csv。",
+    "engine-download": "下载",
+    "engine-clear": "清空",
+    engineSectionAriaLabel: "情报引擎：推荐、库存分析与提交",
+
+    engineStatusNeedApiBase: "请先设置 API 地址（启动 services/intel_api/app.py），再重试。",
+    engineStatusSavedApiBase: "已保存 API 地址。",
+    engineStatusClearedApiBase: "已清除 API 地址。",
+    engineStatusRunning: "执行中...",
+    engineStatusDone: "完成。",
   },
 };
 
 const SEARCH_DEBOUNCE_MS = 180;
+const ENGINE_LANES = ["", "agent", "mcp", "rag", "gateway", "eval", "security"];
 
 const DEFAULT_GROUPS = {
   quickStart: [
@@ -457,6 +519,209 @@ function applyText(lang) {
   if (mainEl && t.mainAriaLabel != null) mainEl.setAttribute("aria-label", t.mainAriaLabel);
   const searchSection = document.getElementById("search-section");
   if (searchSection && t.searchSectionAriaLabel != null) searchSection.setAttribute("aria-label", t.searchSectionAriaLabel);
+
+  const engineSection = document.getElementById("engine-section");
+  if (engineSection && t.engineSectionAriaLabel != null) engineSection.setAttribute("aria-label", t.engineSectionAriaLabel);
+
+  const intent = document.getElementById("engine-intent");
+  if (intent && t.engineIntentPlaceholder != null) intent.placeholder = t.engineIntentPlaceholder;
+  const inventory = document.getElementById("engine-inventory");
+  if (inventory && t.engineInventoryPlaceholder != null) inventory.placeholder = t.engineInventoryPlaceholder;
+  const submit = document.getElementById("engine-submit");
+  if (submit && t.engineSubmitPlaceholder != null) submit.placeholder = t.engineSubmitPlaceholder;
+  const deny = document.getElementById("engine-license-deny");
+  if (deny && t.engineLicenseDenyPlaceholder != null) deny.placeholder = t.engineLicenseDenyPlaceholder;
+}
+
+function setEngineStatus(text, type) {
+  const el = document.getElementById("engine-status");
+  if (!el) return;
+  el.textContent = text || "";
+  el.dataset.type = type || "ready";
+}
+
+function parseList(raw) {
+  return String(raw || "")
+    .split(/[\n,]/g)
+    .map((x) => x.trim())
+    .filter((x) => x);
+}
+
+function setEngineBusy(isBusy) {
+  const ids = [
+    "engine-api-save",
+    "engine-api-clear",
+    "engine-recommend",
+    "engine-analyze",
+    "engine-submit-btn",
+  ];
+  ids.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.disabled = Boolean(isBusy);
+  });
+}
+
+let engineLastMarkdown = "";
+function setEngineOutputMarkdown(md) {
+  engineLastMarkdown = String(md || "");
+  const pre = document.getElementById("engine-output");
+  if (pre) pre.textContent = engineLastMarkdown;
+  const dl = document.getElementById("engine-download");
+  const clear = document.getElementById("engine-clear");
+  const enabled = Boolean(engineLastMarkdown);
+  if (dl) dl.disabled = !enabled;
+  if (clear) clear.disabled = !enabled;
+}
+
+function clearEngineOutput() {
+  setEngineOutputMarkdown("");
+  setEngineStatus("", "ready");
+}
+
+function hydrateEngineControls() {
+  const lane = document.getElementById("engine-lane");
+  if (lane && !lane.dataset.hydrated) {
+    lane.dataset.hydrated = "true";
+  }
+  if (lane) {
+    const selected = lane.value || "";
+    lane.innerHTML = "";
+    lane.add(new Option(i18n.translate("engineAllLanes") || "All lanes", ""));
+    ENGINE_LANES.filter((x) => x).forEach((k) => lane.add(new Option(k, k)));
+    lane.value = selected;
+  }
+
+  const base = document.getElementById("engine-api-base");
+  if (base && !base.value) {
+    base.value = getApiBase() || "";
+  }
+}
+
+async function runRecommend() {
+  const intent = document.getElementById("engine-intent")?.value || "";
+  const lane = document.getElementById("engine-lane")?.value || "";
+  const denyRaw = document.getElementById("engine-license-deny")?.value || "";
+  const license_deny = parseList(denyRaw);
+
+  setEngineBusy(true);
+  setEngineStatus(i18n.translate("engineStatusRunning"), "loading");
+  try {
+    const payload = {
+      query: String(intent || "").trim(),
+      constraints: {
+        lane: lane || null,
+        license_deny: license_deny.length ? license_deny : null,
+      },
+    };
+    const data = await postJson("/recommend", payload);
+    setEngineOutputMarkdown(data && data.markdown ? data.markdown : JSON.stringify(data, null, 2));
+    setEngineStatus(i18n.translate("engineStatusDone"), "ready");
+  } catch (err) {
+    const msg = String((err && err.message) || err || "error");
+    if (err && err.code === "NO_API_BASE") {
+      setEngineStatus(i18n.translate("engineStatusNeedApiBase"), "empty");
+    } else {
+      setEngineStatus(msg, "error");
+    }
+  } finally {
+    setEngineBusy(false);
+  }
+}
+
+async function runInventory() {
+  const raw = document.getElementById("engine-inventory")?.value || "";
+  const repos = parseList(raw);
+  setEngineBusy(true);
+  setEngineStatus(i18n.translate("engineStatusRunning"), "loading");
+  try {
+    const data = await postJson("/analyze/inventory", { repos });
+    setEngineOutputMarkdown(data && data.markdown ? data.markdown : JSON.stringify(data, null, 2));
+    setEngineStatus(i18n.translate("engineStatusDone"), "ready");
+  } catch (err) {
+    const msg = String((err && err.message) || err || "error");
+    if (err && err.code === "NO_API_BASE") {
+      setEngineStatus(i18n.translate("engineStatusNeedApiBase"), "empty");
+    } else {
+      setEngineStatus(msg, "error");
+    }
+  } finally {
+    setEngineBusy(false);
+  }
+}
+
+async function runSubmit() {
+  const value = (document.getElementById("engine-submit")?.value || "").trim();
+  setEngineBusy(true);
+  setEngineStatus(i18n.translate("engineStatusRunning"), "loading");
+  try {
+    const data = await postJson("/submit", { repo_or_url: value });
+    const sid = (data && data.submission_id) || "";
+    setEngineOutputMarkdown(`# Submission queued\n\n- submission_id: ${sid}\n- status: queued\n`);
+    setEngineStatus(i18n.translate("engineStatusDone"), "ready");
+  } catch (err) {
+    const msg = String((err && err.message) || err || "error");
+    if (err && err.code === "NO_API_BASE") {
+      setEngineStatus(i18n.translate("engineStatusNeedApiBase"), "empty");
+    } else {
+      setEngineStatus(msg, "error");
+    }
+  } finally {
+    setEngineBusy(false);
+  }
+}
+
+function bindEngineEvents() {
+  const root = document.getElementById("engine-section");
+  if (!root) return;
+  if (root.dataset.initialized) return;
+  root.dataset.initialized = "true";
+
+  hydrateEngineControls();
+
+  const save = document.getElementById("engine-api-save");
+  const clear = document.getElementById("engine-api-clear");
+  const base = document.getElementById("engine-api-base");
+  if (save && base) {
+    save.addEventListener("click", () => {
+      setApiBase(String(base.value || "").trim());
+      setEngineStatus(i18n.translate("engineStatusSavedApiBase"), "ready");
+    });
+  }
+  if (clear && base) {
+    clear.addEventListener("click", () => {
+      setApiBase("");
+      base.value = "";
+      setEngineStatus(i18n.translate("engineStatusClearedApiBase"), "ready");
+    });
+  }
+
+  const recommend = document.getElementById("engine-recommend");
+  if (recommend) recommend.addEventListener("click", () => runRecommend());
+
+  const analyze = document.getElementById("engine-analyze");
+  if (analyze) analyze.addEventListener("click", () => runInventory());
+
+  const submit = document.getElementById("engine-submit-btn");
+  if (submit) submit.addEventListener("click", () => runSubmit());
+
+  const dl = document.getElementById("engine-download");
+  if (dl) {
+    dl.addEventListener("click", () => {
+      if (!engineLastMarkdown) return;
+      const blob = new Blob([engineLastMarkdown], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "owl-intel-report.md";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 250);
+    });
+  }
+
+  const outClear = document.getElementById("engine-clear");
+  if (outClear) outClear.addEventListener("click", () => clearEngineOutput());
 }
 
 function hydrateControls() {
@@ -513,6 +778,7 @@ function render() {
   try {
     setStatus("search-status", i18n.translate("statusLoading"), "loading");
     applyText(i18n.getLang());
+    hydrateEngineControls();
     hydrateControls();
 
     const matched = filterModel.queryEntries(state);
@@ -635,6 +901,8 @@ function clearFiltersAndRender() {
 function bindEvents() {
   const langToggle = document.getElementById("lang-toggle");
   if (langToggle) langToggle.addEventListener("click", () => i18n.toggleLang());
+
+  bindEngineEvents();
 
   let searchDebounceId = 0;
   const searchInput = document.getElementById("search-input");
