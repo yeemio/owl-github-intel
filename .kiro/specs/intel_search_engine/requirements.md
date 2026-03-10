@@ -6,6 +6,15 @@
 
 ---
 
+## 0. Scope and Architecture Source of Truth
+
+- Architecture and directory contract: `docs/ARCHITECTURE.md` (source of truth)
+- Product roadmap entrypoint: `index/PRODUCT_ROADMAP.md`
+
+MVP scope decision:
+- Public-only closed loop first (no private repos).
+- Portal UX can be hosted as static frontend (GitHub Pages) while backend runs elsewhere; URLs must remain stable.
+
 ## 1. Background and Motivation
 
 ### 1.1 Current problem
@@ -193,4 +202,4 @@ Assumptions:
 
 - Current deliverables: `publish/LATEST.md`, `publish/starter_pack.md`
 - Current dataset: `data/master/repo_master.csv`
-
+- Architecture: `docs/ARCHITECTURE.md`

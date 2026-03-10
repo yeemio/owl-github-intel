@@ -9,6 +9,14 @@
 Source of truth:
 - `docs/ARCHITECTURE.md`
 
+Directory contract for implementation:
+- Frontend: `apps/portal/`
+- API: `services/intel_api/`
+- Worker: `services/ingest_worker/`
+- Shared core: `packages/intel_core/`
+- Connectors: `packages/connectors/`
+- Index infra: `infra/index/`
+
 ### 1.1 Components
 
 - **Web Portal (frontend)**: a search-like UI.
@@ -163,3 +171,7 @@ This is how we prevent “awesome list drift”.
 - Rate limit external fetches.
 - Store only public artifacts.
 - Provide clear disclaimer that outputs are decision inputs, not guarantees.
+
+Deployment note (MVP):
+- Static portal at `50-publish/site/` remains stable for GitHub Pages.
+- API/worker can be deployed separately; the portal can talk to the API via HTTPS.
