@@ -1,6 +1,6 @@
 # Adoption Backlog (Latest)
 
-Last updated: 2026-03-09
+Last updated: 2026-03-10
 Source baseline: `data/master/repo_master.csv`
 Decision cycle: `C9` (Window C final after A+B)
 
@@ -51,6 +51,7 @@ Policy: allow lean baseline first; promote to P0 only when trigger thresholds ar
 
 - `milvus-io/milvus`, `microsoft/durabletask-python`, `dapr/dapr-agents`
 - `huggingface/text-generation-inference`, `protectai/rebuff`
+- `camel-ai/camel` — P2: research-first multi-agent framework; keep isolated from production; promote only after stability evidence and clear boundary contracts.
 
 **Pipeline backbones (e.g. Kafka/Spark, batch_reindex_engine, incremental_pipeline_backbone):** Remain P2 unless velocity-based trigger is defined and met (e.g. doc_velocity or event_rate threshold); then consider P1 with explicit rollback and adoption gate. Do not promote to P0 without at least 2 independent sources and explicit risk + rollback signal.
 
