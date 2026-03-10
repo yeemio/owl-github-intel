@@ -1,8 +1,10 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  font-family: "Avenir Next", Avenir, "Gill Sans", "Trebuchet MS", sans-serif;
+  background: radial-gradient(1200px 900px at 18% -10%, rgba(57, 215, 255, 0.16), transparent 55%),
+    radial-gradient(900px 700px at 85% 0%, rgba(167, 243, 208, 0.10), transparent 55%),
+    linear-gradient(180deg, #070a13, #0b1220);
+  color: #e5e7eb;
 }
 
 .wrap {
@@ -20,17 +22,17 @@ body {
 }
 
 .btn {
-  border: 1px solid #334155;
+  border: 1px solid rgba(148, 163, 184, 0.28);
   border-radius: 8px;
   padding: 8px 12px;
-  background: #1e293b;
-  color: #e2e8f0;
+  background: rgba(17, 24, 39, 0.62);
+  color: #e5e7eb;
   text-decoration: none;
   display: inline-block;
 }
 .btn:hover {
-  background: #334155;
-  border-color: #475569;
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(148, 163, 184, 0.42);
 }
 .btn:focus-visible {
   outline: 2px solid #60a5fa;
@@ -38,17 +40,39 @@ body {
 }
 
 .card {
-  border: 1px solid #334155;
-  background: #111827;
-  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(17, 24, 39, 0.62);
+  border-radius: 14px;
   padding: 14px;
   margin-bottom: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
 }
 
 h1, h2, h3 {
   margin-top: 0;
 }
 
+h1, h2, h3 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  letter-spacing: 0.2px;
+}
+
 ul {
   margin: 8px 0;
+}
+
+a {
+  color: rgba(186, 230, 253, 0.95);
+}
+a:hover {
+  color: rgba(167, 243, 208, 0.95);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: enterCard 480ms ease-out both; }
+}
+
+@keyframes enterCard {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

@@ -9,8 +9,8 @@ const STORAGE_LANG_KEY = "owl.portal.lang";
 
 const DEFAULT_TEXT = {
   en: {
-    title: "Owl AI Dev Intel Portal",
-    subtitle: "Research navigation for AI ecosystem intelligence",
+    title: "Owl GitHub Intel",
+    subtitle: "Decision-grade intelligence from the AI developer ecosystem",
     quickStartTitle: "Quick Start",
     researchPathsTitle: "Research Paths",
     topicHubsTitle: "Topic Hubs",
@@ -42,8 +42,8 @@ const DEFAULT_TEXT = {
     noscriptLine2: "This portal needs JavaScript for navigation and filters. Enable it and refresh, or browse index, data, insights, analysis, publish in your editor.",
   },
   zh: {
-    title: "Owl AI 开发生态研究导航",
-    subtitle: "面向 AI 生态情报的可追踪研究入口",
+    title: "Owl GitHub 情报",
+    subtitle: "从 AI 开发生态提炼可决策情报的研究导航入口",
     quickStartTitle: "快速开始",
     researchPathsTitle: "研究路径",
     topicHubsTitle: "主题导航",
