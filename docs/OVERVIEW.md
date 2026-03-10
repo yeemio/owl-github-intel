@@ -14,6 +14,10 @@ It turns scattered public signals (issues, PRs, releases, docs) into decision-re
 - Publish outputs:
   - `publish/digests/weekly_digest_*.md` (cycle digests)
 
+## Architecture
+
+- Source of truth: `docs/ARCHITECTURE.md`
+
 ## What This Is Not
 
 - Not an internal team runbook or an execution workflow guide.

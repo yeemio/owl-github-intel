@@ -6,6 +6,9 @@
 
 ## 1. Architecture Overview
 
+Source of truth:
+- `docs/ARCHITECTURE.md`
+
 ### 1.1 Components
 
 - **Web Portal (frontend)**: a search-like UI.
@@ -160,4 +163,3 @@ This is how we prevent “awesome list drift”.
 - Rate limit external fetches.
 - Store only public artifacts.
 - Provide clear disclaimer that outputs are decision inputs, not guarantees.
-

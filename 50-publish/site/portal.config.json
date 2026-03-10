@@ -51,6 +51,14 @@
         "en": ["FAQ", "Common questions and conventions"],
         "zh": ["常见问题", "阅读方式与约定"],
         "href": "../../docs/FAQ.md"
+      },
+      {
+        "id": "docs-architecture",
+        "theme": "overview",
+        "tags": ["docs", "architecture", "system"],
+        "en": ["Architecture", "System layout, boundaries, and evolution plan"],
+        "zh": ["架构体系", "目录结构、边界与演进策略（真源）"],
+        "href": "../../docs/ARCHITECTURE.md"
       }
     ],
     "cycleDigests": [

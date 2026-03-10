@@ -90,6 +90,7 @@ def main() -> int:
         require_file("docs/GLOSSARY.md")
         require_file("docs/FAQ.md")
         require_file("docs/BRING_YOUR_STACK.md")
+        require_file("docs/ARCHITECTURE.md")
         require_file("index/MASTER_INDEX.md")
         require_file("publish/LATEST.md")
         require_file("publish/starter_pack.md")
