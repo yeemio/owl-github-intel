@@ -2,6 +2,7 @@
 
 ## 2026-03-09 (continued)
 
+- **C9 分配（加量）**：更新 `WINDOW_ASSIGNMENTS_NOW.md` 为 C9；主题「全轨道采纳信号 + 失败模式复核」；A 要求六轨覆盖 + C8 未知深挖（≥45 URL，≥18 claim），B 要求全部挑战 + handoff 含 top 5 风险与 3 条建议行动，C 要求更新至少一个 risk 文件且 digest 下轮未知引用 B top 5 中≥2 条；文末增加 C10 预备说明。
 - **C8 Decision Desk 收口**：主题 Crawl/Search 栈采纳信号；已消费 A 的 scan/evidence/handoff 与 B 的 challenge 产出（B 内容与主题错位，为升级风险/跨轨）；按 A 证据更新 adoption_backlog（Crawl/Search P2 条件项）、upgrade-risk-matrix、repo_master；已写 weekly_digest_2026-03-09_C8.md、CYCLE_SCOREBOARD C8 行；无新 P0。
 - **3 窗口工作流固化**：新增 `00-index/THREE_WINDOW_WORKFLOW.md`，固定「统筹 + A/B/C」角色、单轮周期结构、产出路径命名、执行顺序、手递手规则、进入下一轮方式；MASTER_INDEX 与 WINDOW_ASSIGNMENTS_NOW 已链入，便于持续使用。
 - **3 窗口 C8 分配 + 统筹**：更新 `00-index/WINDOW_ASSIGNMENTS_NOW.md`：周期 C8、主题 Crawl/Search 栈采纳信号；窗口 A（Evidence Miner）、B（Red Team）、C（Decision Desk）各带复制用提示词与产出路径；新增「统筹」流程（发布→等待→收口→报告），收口时由统筹窗口执行 git commit/push。
