@@ -1,6 +1,6 @@
 # Overview
 
-Owl GitHub Intelligence is an evidence-led research publication about the AI development ecosystem.
+Owl GitHub Intel is an evidence-led research publication about the AI development ecosystem.
 It turns scattered public signals (issues, PRs, releases, docs) into decision-ready artifacts: datasets, risk intelligence, and adoption guidance.
 
 ## What You Get
@@ -32,4 +32,3 @@ It turns scattered public signals (issues, PRs, releases, docs) into decision-re
 ## How To Contribute
 
 See `CONTRIBUTING.md`. If you add new conclusions, include sources and update the relevant dataset row(s).
-

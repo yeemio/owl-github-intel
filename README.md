@@ -1,8 +1,12 @@
-# Owl GitHub Intelligence
+# Owl GitHub Intel
 
 [![ci](https://github.com/yeemio/owl-github-intel/actions/workflows/ci.yml/badge.svg)](https://github.com/yeemio/owl-github-intel/actions/workflows/ci.yml)
 
-This workspace stores and maintains external AI ecosystem intelligence for OwlClaw.
+Owl GitHub Intel is an evidence-led research publication about the AI development ecosystem.
+It turns scattered public signals (issues, PRs, releases, docs) into decision-grade artifacts:
+datasets, risk intelligence, and adoption guidance.
+
+This repository is independent. It was originally built to support OwlClaw, but it is not an OwlClaw codebase or documentation site.
 
 If you are a researcher, architect, or builder, this repository is meant to be navigated as a research trail, not a dump folder.
 
@@ -11,17 +15,13 @@ License: MIT (see `LICENSE`).
 ## Start Here
 
 - Portal (GitHub Pages): `https://yeemio.github.io/owl-github-intel/50-publish/site/`
+- Single entrypoint: `index/START_HERE.md`
+- Core dataset: `data/master/repo_master.csv`
+
+If you prefer reading without the portal:
+- Master index: `index/MASTER_INDEX.md`
 - Docs overview: `docs/OVERVIEW.md`
-- Main entrypoint: `index/MASTER_INDEX.md`
-- Browse entrypoint: `index/BROWSE_BY_TOPIC.md`
-- Change log: `index/CHANGELOG.md`
-- Research trail map: `index/RESEARCH_TRAIL_MAP.md`
-- 7-day guided path: `index/START_HERE_7_DAY_PATH.md`
-- High-value question bank: `index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
-- Researcher quickstart: `index/QUICKSTART_FOR_RESEARCHERS.md`
-- Public project overview: `publish/overview_public.md`
-- Static portal (EN/ZH): `50-publish/site/index.html` (recommended entrypoint: `/50-publish/site/`)
-- Bilingual content pages: `50-publish/site/content/en/` and `50-publish/site/content/zh/`
+- Public overview: `publish/overview_public.md`
 
 ## Directory Layout
 

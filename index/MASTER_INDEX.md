@@ -1,7 +1,7 @@
 # Owl GitHub Intel - Master Index
 
 Last updated: 2026-03-09 (restructured)
-Owner: OwlClaw intel workspace
+Owner: Maintainers of this intel workspace (independent; originally built to support OwlClaw)
 
 ---
 
@@ -12,6 +12,7 @@ Use this page first, then jump by topic or output type.
 
 ## Quick Navigation
 
+- Recommended start: `index/START_HERE.md`
 - Browse by topic: `index/BROWSE_BY_TOPIC.md`
 - Change history: `index/CHANGELOG.md`
 - File catalog: `index/FILE_CATALOG.md`

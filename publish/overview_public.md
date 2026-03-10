@@ -1,4 +1,4 @@
-# Owl AI Dev Intel
+# Owl GitHub Intel
 
 An evidence-led research workspace for AI development ecosystems, curated for platform builders.
 
