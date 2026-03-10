@@ -1,5 +1,7 @@
 # Owl GitHub Intelligence
 
+[![ci](https://github.com/yeemio/owl-github-intel/actions/workflows/ci.yml/badge.svg)](https://github.com/yeemio/owl-github-intel/actions/workflows/ci.yml)
+
 This workspace stores and maintains external AI ecosystem intelligence for OwlClaw.
 
 If you are a researcher, architect, or builder, this repository is meant to be navigated as a research trail, not a dump folder.
@@ -8,6 +10,7 @@ License: MIT (see `LICENSE`).
 
 ## Start Here
 
+- Portal (GitHub Pages): `https://yeemio.github.io/owl-github-intel/50-publish/site/`
 - Main entrypoint: `00-index/MASTER_INDEX.md`
 - Browse entrypoint: `00-index/BROWSE_BY_TOPIC.md`
 - Change log: `00-index/CHANGELOG.md`
@@ -16,7 +19,7 @@ License: MIT (see `LICENSE`).
 - High-value question bank: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
 - Public project overview: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
-- Static portal (EN/ZH): `50-publish/site/index.html`
+- Static portal (EN/ZH): `50-publish/site/index.html` (recommended entrypoint: `/50-publish/site/`)
 - Bilingual content pages: `50-publish/site/content/en/` and `50-publish/site/content/zh/`
 
 ## Directory Layout

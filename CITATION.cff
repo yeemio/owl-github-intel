@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "Owl GitHub Intelligence"
+message: "If you use this work, please cite it."
+type: dataset
+license: MIT
+authors:
+  - name: "yeemio"
+repository-code: "https://github.com/yeemio/owl-github-intel"
+url: "https://yeemio.github.io/owl-github-intel/50-publish/site/"
+version: "0.1.0"
+date-released: "2026-03-10"
+
