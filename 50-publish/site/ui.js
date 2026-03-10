@@ -1,8 +1,9 @@
 function escapeHtml(value) {
+  // Avoid String.prototype.replaceAll for wider browser compatibility (some in-app browsers lack it).
   return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
 
 function highlightText(content, query) {

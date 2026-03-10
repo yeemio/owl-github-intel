@@ -3,16 +3,6 @@
 Last updated: 2026-03-09 (restructured)
 Owner: OwlClaw intel workspace
 
-## 当前排期 (Current Cycle)
-
-**→ 详细排期与各窗口任务**：**[00-index/CURRENT_CYCLE.md](00-index/CURRENT_CYCLE.md)**（由统筹每轮更新）
-
-| 周期 | 主题 | A | B | C |
-|------|------|---|---|---|
-| **C9** | 全轨道采纳信号 + 失败模式复核（六轨 + C8 未知深挖） | 六轨证据 + C8 未知≥2 条，≥45 URL / ≥18 claim | 全部挑战 + handoff 含 top 5 风险与 3 条建议 | 更新主表/risk + digest 下轮未知含 B top5≥2 条 |
-
-复制用提示词：`00-index/WINDOW_ASSIGNMENTS_NOW.md`。流程：`00-index/THREE_WINDOW_WORKFLOW.md`。
-
 ---
 
 ## What this is
@@ -22,7 +12,6 @@ Use this page first, then jump by topic or output type.
 
 ## Quick Navigation
 
-- **当前排期（谁在干啥）**: `00-index/CURRENT_CYCLE.md`
 - Browse by topic: `00-index/BROWSE_BY_TOPIC.md`
 - Change history: `00-index/CHANGELOG.md`
 - File catalog: `00-index/FILE_CATALOG.md`
@@ -30,10 +19,6 @@ Use this page first, then jump by topic or output type.
 - 7-day guided route: `00-index/START_HERE_7_DAY_PATH.md`
 - High-value questions: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
-- **3 窗口 + 统筹 持续工作流**：`00-index/THREE_WINDOW_WORKFLOW.md`（固定流程，长期有效）
-- Three-window execution plan (KPI/细节): `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
-- **Current 3-window assignment (copy-paste prompts)**: `00-index/WINDOW_ASSIGNMENTS_NOW.md`
-- Cycle scoreboard: `00-index/CYCLE_SCOREBOARD.csv`
 - Public overview page: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
 - Static portal (EN/ZH): `50-publish/site/index.html`
 - Master normalized repo table: `20-normalized/repo_master_latest.csv`

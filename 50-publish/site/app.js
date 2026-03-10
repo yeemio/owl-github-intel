@@ -133,17 +133,6 @@ const DEFAULT_GROUPS = {
       zh: ["高价值问题库", "驱动深入分析的问题集"],
       href: "../../00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md",
     },
-    {
-      id: "3-window-plan",
-      theme: "operations",
-      tags: ["execution", "command-center", "parallel"],
-      en: ["3-Window Command Plan", "Minute-level execution for parallel windows"],
-      zh: ["三窗口指挥计划", "分钟级并行执行作战方案"],
-      href: {
-        en: "./content/en/execution-plan.html",
-        zh: "./content/zh/execution-plan.html",
-      },
-    },
   ],
   topicHubs: [
     {

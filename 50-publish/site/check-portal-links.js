@@ -21,8 +21,6 @@ const DEFAULT_HREFS = [
   "../../00-index/RESEARCH_TRAIL_MAP.md",
   "../../00-index/START_HERE_7_DAY_PATH.md",
   "../../00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md",
-  "./content/en/execution-plan.html",
-  "./content/zh/execution-plan.html",
   "./content/en/topic-agent.html",
   "./content/zh/topic-agent.html",
   "./content/en/topic-mcp.html",
