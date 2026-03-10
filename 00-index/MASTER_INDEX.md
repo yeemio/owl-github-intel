@@ -18,6 +18,7 @@ Use this page first, then jump by topic or output type.
 - High-value questions: `00-index/HIGH_VALUE_RESEARCH_QUESTIONS.md`
 - Researcher quickstart: `00-index/QUICKSTART_FOR_RESEARCHERS.md`
 - Three-window execution plan: `00-index/THREE_WINDOW_EXECUTION_PLAN.md`
+- **Current 3-window assignment (copy-paste prompts)**: `00-index/WINDOW_ASSIGNMENTS_NOW.md`
 - Cycle scoreboard: `00-index/CYCLE_SCOREBOARD.csv`
 - Public overview page: `50-publish/PROJECT_OVERVIEW_PUBLIC.md`
 - Static portal (EN/ZH): `50-publish/site/index.html`

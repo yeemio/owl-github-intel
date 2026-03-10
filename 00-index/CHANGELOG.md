@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-03-09 (continued)
+
+- Added `00-index/WINDOW_ASSIGNMENTS_NOW.md`: C6 cycle assignment for 3 windows (A: Evidence Miner, B: Red Team, C: Decision Desk); theme: upgrade risk + cross-track; copy-paste prompts and output paths included. MASTER_INDEX linked to WINDOW_ASSIGNMENTS_NOW.
+
 ## 2026-03-09
 
 - Created structured intel workspace folders:
