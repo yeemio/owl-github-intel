@@ -33,6 +33,10 @@ jobs:
         run: |
           python scripts/validate_data.py
 
+      - name: Validate product catalog DB
+        run: |
+          python scripts/validate_catalog_db.py
+
       - name: Start static server from repo root
         run: |
           python -m http.server 3765 --bind 127.0.0.1 >/tmp/http.log 2>&1 &

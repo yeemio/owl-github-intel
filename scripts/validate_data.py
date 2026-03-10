@@ -95,6 +95,8 @@ def main() -> int:
         require_file("publish/LATEST.md")
         require_file("publish/starter_pack.md")
         require_file("templates/user_inventory.csv")
+        require_file("data/db/evidence.csv")
+        require_file("data/db/submissions.csv")
 
         require_columns(
             repo_master,
