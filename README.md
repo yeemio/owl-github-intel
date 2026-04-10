@@ -6,6 +6,9 @@ Owl GitHub Intel is an evidence-led research publication about the AI developmen
 It turns scattered public signals (issues, PRs, releases, docs) into decision-grade artifacts:
 datasets, risk intelligence, and adoption guidance.
 
+Part of a broader local-first AI tooling stack by [yeemio](https://github.com/yeemio).
+Related public repos: [owlcc-byoscc](https://github.com/yeemio/owlcc-byoscc), [owlclaw-core](https://github.com/yeemio/owlclaw-core), [omlx-runtime-hardening](https://github.com/yeemio/omlx-runtime-hardening).
+
 This repository is independent. It was originally built to support OwlClaw, but it is not an OwlClaw codebase or documentation site.
 
 If you are a researcher, architect, or builder, this repository is meant to be navigated as a research trail, not a dump folder.
